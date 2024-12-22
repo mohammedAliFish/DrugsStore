@@ -37,8 +37,9 @@
             this.colCompanyGuid = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCompanyCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCompanyName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.btnDelete = new System.Windows.Forms.Button();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.btnSaveOrUpdate = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.CompanyCodeText = new DevExpress.XtraEditors.TextEdit();
             this.CompanyNameText = new DevExpress.XtraEditors.TextEdit();
@@ -55,7 +56,6 @@
             this.barButtonAddorUpdateCompany = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
             this.splitContainerControl1.Panel1.SuspendLayout();
@@ -65,6 +65,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.companyGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCompany)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CompanyCodeText.Properties)).BeginInit();
@@ -74,8 +76,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCompanyCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCompanyName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
-            this.panelControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainerControl1
@@ -94,6 +94,8 @@
             // 
             // splitContainerControl1.Panel2
             // 
+            this.splitContainerControl1.Panel2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.splitContainerControl1.Panel2.Appearance.Options.UseBackColor = true;
             this.splitContainerControl1.Panel2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.splitContainerControl1.Panel2.Controls.Add(this.panelControl1);
             this.splitContainerControl1.Panel2.Controls.Add(this.dataLayoutControl1);
@@ -133,22 +135,43 @@
             // 
             this.colCompanyGuid.FieldName = "CompanyGUID";
             this.colCompanyGuid.Name = "colCompanyGuid";
-            this.colCompanyGuid.Visible = true;
-            this.colCompanyGuid.VisibleIndex = 0;
             // 
             // colCompanyCode
             // 
             this.colCompanyCode.FieldName = "CompanyCode";
             this.colCompanyCode.Name = "colCompanyCode";
             this.colCompanyCode.Visible = true;
-            this.colCompanyCode.VisibleIndex = 1;
+            this.colCompanyCode.VisibleIndex = 0;
             // 
             // colCompanyName
             // 
             this.colCompanyName.FieldName = "CompanyName";
             this.colCompanyName.Name = "colCompanyName";
             this.colCompanyName.Visible = true;
-            this.colCompanyName.VisibleIndex = 2;
+            this.colCompanyName.VisibleIndex = 1;
+            // 
+            // panelControl1
+            // 
+            this.panelControl1.Appearance.BackColor = System.Drawing.Color.Gray;
+            this.panelControl1.Appearance.Options.UseBackColor = true;
+            this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.panelControl1.Controls.Add(this.btnSaveOrUpdate);
+            this.panelControl1.Controls.Add(this.btnDelete);
+            this.panelControl1.Location = new System.Drawing.Point(26, 393);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(424, 144);
+            this.panelControl1.TabIndex = 3;
+            // 
+            // btnSaveOrUpdate
+            // 
+            this.btnSaveOrUpdate.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveOrUpdate.Location = new System.Drawing.Point(223, 50);
+            this.btnSaveOrUpdate.Name = "btnSaveOrUpdate";
+            this.btnSaveOrUpdate.Size = new System.Drawing.Size(187, 34);
+            this.btnSaveOrUpdate.TabIndex = 1;
+            this.btnSaveOrUpdate.Text = "حفظ";
+            this.btnSaveOrUpdate.UseVisualStyleBackColor = true;
+            this.btnSaveOrUpdate.Click += new System.EventHandler(this.btnSaveOrUpdate_Click);
             // 
             // btnDelete
             // 
@@ -162,19 +185,9 @@
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // btnSaveOrUpdate
-            // 
-            this.btnSaveOrUpdate.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveOrUpdate.Location = new System.Drawing.Point(223, 50);
-            this.btnSaveOrUpdate.Name = "btnSaveOrUpdate";
-            this.btnSaveOrUpdate.Size = new System.Drawing.Size(187, 34);
-            this.btnSaveOrUpdate.TabIndex = 1;
-            this.btnSaveOrUpdate.Text = "حفظ";
-            this.btnSaveOrUpdate.UseVisualStyleBackColor = true;
-            this.btnSaveOrUpdate.Click += new System.EventHandler(this.btnSaveOrUpdate_Click);
-            // 
             // dataLayoutControl1
             // 
+            this.dataLayoutControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dataLayoutControl1.BackColor = System.Drawing.Color.Silver;
             this.dataLayoutControl1.Controls.Add(this.CompanyCodeText);
             this.dataLayoutControl1.Controls.Add(this.CompanyNameText);
@@ -184,7 +197,7 @@
             this.dataLayoutControl1.OptionsView.RightToLeftMirroringApplied = true;
             this.dataLayoutControl1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dataLayoutControl1.Root = this.Root;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(424, 73);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(424, 105);
             this.dataLayoutControl1.TabIndex = 0;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
@@ -192,9 +205,11 @@
             // 
             this.CompanyCodeText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CompanyCodeText.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceCompany, "CompanyCode", true));
-            this.CompanyCodeText.Location = new System.Drawing.Point(12, 12);
+            this.CompanyCodeText.Location = new System.Drawing.Point(20, 20);
             this.CompanyCodeText.Name = "CompanyCodeText";
-            this.CompanyCodeText.Size = new System.Drawing.Size(329, 20);
+            this.CompanyCodeText.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CompanyCodeText.Properties.Appearance.Options.UseFont = true;
+            this.CompanyCodeText.Size = new System.Drawing.Size(313, 22);
             this.CompanyCodeText.StyleController = this.dataLayoutControl1;
             this.CompanyCodeText.TabIndex = 4;
             this.CompanyCodeText.EditValueChanged += new System.EventHandler(this.CompanyCodeTextEdit_EditValueChanged);
@@ -202,9 +217,11 @@
             // CompanyNameText
             // 
             this.CompanyNameText.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceCompany, "CompanyName", true));
-            this.CompanyNameText.Location = new System.Drawing.Point(12, 36);
+            this.CompanyNameText.Location = new System.Drawing.Point(20, 62);
             this.CompanyNameText.Name = "CompanyNameText";
-            this.CompanyNameText.Size = new System.Drawing.Size(329, 20);
+            this.CompanyNameText.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CompanyNameText.Properties.Appearance.Options.UseFont = true;
+            this.CompanyNameText.Size = new System.Drawing.Size(313, 22);
             this.CompanyNameText.StyleController = this.dataLayoutControl1;
             this.CompanyNameText.TabIndex = 5;
             this.CompanyNameText.EditValueChanged += new System.EventHandler(this.CompanyNameTextEdit_EditValueChanged);
@@ -216,7 +233,7 @@
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(424, 73);
+            this.Root.Size = new System.Drawing.Size(424, 105);
             this.Root.TextVisible = false;
             // 
             // layoutControlGroup1
@@ -228,22 +245,24 @@
             this.ItemForCompanyName});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(404, 53);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(404, 85);
             // 
             // ItemForCompanyCode
             // 
             this.ItemForCompanyCode.Control = this.CompanyCodeText;
             this.ItemForCompanyCode.Location = new System.Drawing.Point(0, 0);
             this.ItemForCompanyCode.Name = "ItemForCompanyCode";
-            this.ItemForCompanyCode.Size = new System.Drawing.Size(404, 24);
+            this.ItemForCompanyCode.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
+            this.ItemForCompanyCode.Size = new System.Drawing.Size(404, 42);
             this.ItemForCompanyCode.TextSize = new System.Drawing.Size(59, 13);
             // 
             // ItemForCompanyName
             // 
             this.ItemForCompanyName.Control = this.CompanyNameText;
-            this.ItemForCompanyName.Location = new System.Drawing.Point(0, 24);
+            this.ItemForCompanyName.Location = new System.Drawing.Point(0, 42);
             this.ItemForCompanyName.Name = "ItemForCompanyName";
-            this.ItemForCompanyName.Size = new System.Drawing.Size(404, 29);
+            this.ItemForCompanyName.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
+            this.ItemForCompanyName.Size = new System.Drawing.Size(404, 43);
             this.ItemForCompanyName.TextSize = new System.Drawing.Size(59, 13);
             // 
             // barManager1
@@ -319,20 +338,10 @@
             this.barButtonItem3.Id = 2;
             this.barButtonItem3.Name = "barButtonItem3";
             // 
-            // panelControl1
-            // 
-            this.panelControl1.Appearance.BackColor = System.Drawing.Color.Gray;
-            this.panelControl1.Appearance.Options.UseBackColor = true;
-            this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.panelControl1.Controls.Add(this.btnSaveOrUpdate);
-            this.panelControl1.Controls.Add(this.btnDelete);
-            this.panelControl1.Location = new System.Drawing.Point(26, 393);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(424, 144);
-            this.panelControl1.TabIndex = 3;
-            // 
             // CompanyForm
             // 
+            this.Appearance.BackColor = System.Drawing.Color.Silver;
+            this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(995, 702);
@@ -354,6 +363,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.companyGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCompany)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.CompanyCodeText.Properties)).EndInit();
@@ -363,8 +374,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCompanyCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCompanyName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
-            this.panelControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 
+using task1.Forms.Category;
 using task1.Forms.Company;
+using task1.Forms.Item;
 
 namespace task1
 {
@@ -23,6 +22,18 @@ namespace task1
         {
             CompanyForm companyForm = new CompanyForm();
             companyForm.Show();
+        }
+
+        private void barButtonItem12_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CategoryForm categoryForm = new CategoryForm();
+            categoryForm.Show();
+        }
+
+        private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ItemsForm itemsForm = new ItemsForm();
+            itemsForm.Show();
         }
     }
 }

@@ -1,9 +1,8 @@
 ﻿using System;
-
 using System.Data;
 using System.Data.SqlClient;
-using System.Runtime.Remoting.Contexts;
 using System.Windows.Forms;
+using DevExpress.XtraGrid;
 
 
 namespace task1.Forms.Company
@@ -20,147 +19,44 @@ namespace task1.Forms.Company
             LoadCompanyData();
         }
 
+        private bool isNewRecord = true;
+
         private void LoadCompanyData()
         {
             string GetAllCompanies = "CompanyGet";
             DataTable table = sqlHelper.ExecuteStoredProcedure(GetAllCompanies);
             companyGridControl.DataSource = table;
-            if (table.Rows.Count > 0)
-            {
-                companyGridView.FocusedRowHandle = table.Rows.Count - 1;
-            }
+
+           
+            companyGridView.ClearSelection();
+            companyGridView.FocusedRowHandle = GridControl.InvalidRowHandle;
+
+           
+            isNewRecord = true;
+            CompanyCodeText.Text = string.Empty;
+            CompanyNameText.Text = string.Empty;
         }
-
-        //private void btnSaveOrUpdate_Click(object sender, EventArgs e)
-        //{
-        //    //string companyGUID = companyGridView.GetFocusedRowCellValue("CompanyGUID").ToString(); 
-        //    string companyName = CompanyNameText.Text;
-        //    string companyCode = CompanyCodeText.Text;
-
-        //    string CompanySave = "CompanySave";
-        //    SqlParameter[] pr = new SqlParameter[]
-        //    {
-
-        //        new SqlParameter("@CompanyCode",companyCode),
-        //        new SqlParameter("@CompanyName" , companyName)
-        //    };
-
-        //    sqlHelper.ExecuteNonQuery(CompanySave, CommandType.StoredProcedure, pr);
-
-        //    MessageBox.Show("اضافه تمت");
-
-        //    LoadCompanyData();
-
-        //    CompanyCodeText.Text = string.Empty;
-        //    CompanyNameText.Text = string.Empty;
-
-        //}
-
-        //private void btnSaveOrUpdate_Click(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-              
-        //        string companyGUID = companyGridView.GetFocusedRowCellValue("CompanyGUID").ToString(); 
-        //        string companyName = CompanyNameText.Text; 
-        //        string companyCode = CompanyCodeText.Text; 
-
-        //        if (string.IsNullOrEmpty(companyName) || string.IsNullOrEmpty(companyCode))
-        //        {
-        //            MessageBox.Show("الرجاء إدخال اسم الشركة ورمز الشركة");
-        //            return;
-        //        }
-
-        //        string CompanySave = "CompanySave";
-
-              
-        //        SqlParameter[] parameters = new SqlParameter[]
-        //        {
-        //    new SqlParameter("@CompanyGUID", SqlDbType.UniqueIdentifier)
-        //    {
-        //        Value = string.IsNullOrEmpty(companyGUID) ? (object)DBNull.Value : Guid.Parse(companyGUID),
-        //        Direction = ParameterDirection.InputOutput
-        //    },
-        //    new SqlParameter("@CompanyName", SqlDbType.NVarChar) { Value = companyName },
-        //    new SqlParameter("@CompanyCode", SqlDbType.NVarChar) { Value = companyCode }
-        //        };
-
-        //        sqlHelper.ExecuteStoredProcedureWithOutput(CompanySave, parameters);
-
-              
-        //        MessageBox.Show("تم الحفظ ");
-
-             
-        //        LoadCompanyData();
-
-             
-        //        CompanyCodeText.Text = string.Empty;
-        //        CompanyNameText.Text = string.Empty;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show($"حدث خطأ: {ex.Message}");
-        //    }
-        //}
-
-
-
-
-        //private void btnDelete_Click(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-
-        //        object companyGuidObj = companyGridControl.GetFocusedRowCellValue("CompanyGUID");
-        //        if (companyGuidObj == null || string.IsNullOrWhiteSpace(companyGuidObj.ToString()))
-        //        {
-        //            MessageBox.Show("الرجاء تحديد الشركة المراد حذفها.");
-        //            return;
-        //        }
-
-        //        Guid companyGuid = Guid.Parse(companyGuidObj.ToString());
-
-
-        //        var confirmResult = MessageBox.Show("هل تريد حذف الشركة");
-        //        if (confirmResult == DialogResult.Yes)
-        //        {
-
-        //            string DeleteCompany = "DeleteCompany";
-        //            SqlParameter[] parameters = {
-        //        new SqlParameter("@CompanyGUID", companyGuid)
-        //    };
-
-        //            sqlHelper.ExecuteNonQuery(DeleteCompany, CommandType.StoredProcedure, parameters);
-
-        //            MessageBox.Show("تم حذف  بنجاح");
-
-
-        //            LoadCompanyData();
-
-
-        //            CompanyCodeText.Text = string.Empty;
-        //            CompanyNameText.Text = string.Empty;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show($"حدث خطأ   : {ex.Message}");
-        //    }
-        //}
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             try
             {
-
+              
                 object companyGuidObj = companyGridView.GetFocusedRowCellValue("CompanyGUID");
+
                 if (companyGuidObj == null || string.IsNullOrWhiteSpace(companyGuidObj.ToString()))
                 {
-                    MessageBox.Show("الرجاء تحديد الشركة المراد حذفها");
+                    MessageBox.Show(" تحديد الشركة  لحذفها");
                     return;
                 }
 
-                Guid companyGuid = Guid.Parse(companyGuidObj.ToString());
+             
+                Guid companyGuid;
+                if (!Guid.TryParse(companyGuidObj.ToString(), out companyGuid))
+                {
+                    MessageBox.Show("تعذر قراءة معرف الشركة. الرجاء المحاولة مرة أخرى.");
+                    return;
+                }
 
 
                 var confirmResult = MessageBox.Show("هل تريد حذف الشركة؟");
@@ -169,80 +65,95 @@ namespace task1.Forms.Company
                     return;
                 }
 
-
+           
                 string CompanyDelete = "CompanyDelete";
+
+    
                 SqlParameter[] parameters = {
             new SqlParameter("@CompanyGUID", SqlDbType.UniqueIdentifier) { Value = companyGuid }
         };
 
+            
+                int rowsAffected = sqlHelper.ExecuteNonQuery(CompanyDelete, CommandType.StoredProcedure, parameters);
 
-                sqlHelper.ExecuteNonQuery(CompanyDelete, CommandType.StoredProcedure, parameters);
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("تم الحذف ");
 
+                
+                    LoadCompanyData();
 
-                MessageBox.Show("تم الحذف بنجاح");
-
-
-                LoadCompanyData();
-
-
-                CompanyCodeText.Text = string.Empty;
-                CompanyNameText.Text = string.Empty;
+               
+                    CompanyCodeText.Text = string.Empty;
+                    CompanyNameText.Text = string.Empty;
+                }
+                else
+                {
+                    MessageBox.Show("لم يتم العثور على الشركة أو تعذر حذفها.");
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"حدث خطأ   : {ex.Message}");
+                MessageBox.Show($"حدث خطأ أثناء الحذف: {ex.Message}");
             }
         }
+
+
 
         private void btnSaveOrUpdate_Click(object sender, EventArgs e)
         {
             try
             {
-                // Retrieve values from input fields
-                string companyGUID = companyGridView.GetFocusedRowCellValue("CompanyGUID").ToString(); // Get GUID if a row is selected
-                string companyName = CompanyNameText.Text.Trim(); // Get company name
-                string companyCode = CompanyCodeText.Text.Trim(); // Get company code
+                string companyGUID = null;
 
-                // Validate input
+                
+                if (!isNewRecord && companyGridView.FocusedRowHandle >= 0)
+                {
+                    companyGUID = companyGridView.GetFocusedRowCellValue("CompanyGUID")?.ToString();
+                }
+
+                string companyName = CompanyNameText.Text.Trim();
+                string companyCode = CompanyCodeText.Text.Trim();
+
+               
                 if (string.IsNullOrEmpty(companyName) || string.IsNullOrEmpty(companyCode))
                 {
-                    MessageBox.Show("الرجاء إدخال اسم الشركة ورمز الشركة", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(" إدخال اسم ورمز الشركة");
                     return;
                 }
 
-                // Define stored procedure name
+               
                 string CompanySave = "CompanySave";
 
-                // Prepare parameters for the stored procedure
+                
                 SqlParameter[] parameters = new SqlParameter[]
                 {
             new SqlParameter("@CompanyGUID", SqlDbType.UniqueIdentifier)
             {
-                Value = string.IsNullOrEmpty(companyGUID) ? (object)DBNull.Value : Guid.Parse(companyGUID), // Null for new records
-                Direction = ParameterDirection.InputOutput // For output of GUID after insert
+                Value = string.IsNullOrEmpty(companyGUID) ? (object)DBNull.Value : Guid.Parse(companyGUID),
+                Direction = ParameterDirection.InputOutput
             },
             new SqlParameter("@CompanyName", SqlDbType.NVarChar) { Value = companyName },
             new SqlParameter("@CompanyCode", SqlDbType.NVarChar) { Value = companyCode }
                 };
 
-                // Execute the stored procedure
+               
                 sqlHelper.ExecuteStoredProcedureWithOutput(CompanySave, parameters);
 
-                // Display success message
-                MessageBox.Show("تم الحفظ بنجاح", "نجاح", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+                MessageBox.Show(isNewRecord ? "تم الإضافة بنجاح" : "تم التحديث بنجاح");
 
-                // Reload data in the grid
+              
                 LoadCompanyData();
-
-                // Clear input fields
-                CompanyCodeText.Text = string.Empty;
-                CompanyNameText.Text = string.Empty;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"حدث خطأ أثناء الحفظ: {ex.Message}", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($" خطأ الحفظ {ex.Message}");
             }
         }
+
+
+
 
 
 
@@ -265,19 +176,22 @@ namespace task1.Forms.Company
         {
             try
             {
-              
                 if (companyGridView.FocusedRowHandle >= 0)
                 {
-                   
+                  
                     CompanyCodeText.Text = companyGridView.GetFocusedRowCellValue("CompanyCode").ToString();
                     CompanyNameText.Text = companyGridView.GetFocusedRowCellValue("CompanyName").ToString();
+
+                    
+                    isNewRecord = false;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"حدث خطا  : {ex.Message}");
+                MessageBox.Show($" خطأ تحديد الشركة {ex.Message}");
             }
         }
+
 
     }
 }
