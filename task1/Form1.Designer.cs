@@ -35,6 +35,7 @@
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem13 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl2 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl3 = new DevExpress.XtraBars.BarDockControl();
@@ -44,7 +45,6 @@
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,6 +114,16 @@
             this.barButtonItem13.Name = "barButtonItem13";
             this.barButtonItem13.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem13_ItemClick);
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "اداره الاسعار";
+            this.barButtonItem1.Id = 8;
+            this.barButtonItem1.ItemAppearance.Hovered.BackColor = System.Drawing.Color.Silver;
+            this.barButtonItem1.ItemAppearance.Hovered.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.barButtonItem1.ItemAppearance.Hovered.Options.UseBackColor = true;
+            this.barButtonItem1.ItemAppearance.Hovered.Options.UseFont = true;
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
             // barDockControl1
             // 
             this.barDockControl1.CausesValidation = false;
@@ -176,12 +186,6 @@
             this.barButtonItem11.Caption = "barButtonItem11";
             this.barButtonItem11.Id = 5;
             this.barButtonItem11.Name = "barButtonItem11";
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "اداره الاسعار";
-            this.barButtonItem1.Id = 8;
-            this.barButtonItem1.Name = "barButtonItem1";
             // 
             // Form1
             // 

@@ -77,7 +77,7 @@ namespace task1.Forms.Item
             if (CategoryComboBox.SelectedItem != null)
             {
                 string selectedCategory = CategoryComboBox.SelectedItem.ToString();
-                MessageBox.Show($"Selected Category: {selectedCategory}");
+                MessageBox.Show($" تم اختيار الفئه: {selectedCategory}");
                 
             }
         }
@@ -88,7 +88,7 @@ namespace task1.Forms.Item
             {
             
                 string selectedCompany = CompanyComboBox.SelectedItem.ToString();
-                MessageBox.Show($"Selected Company");
+                MessageBox.Show($" تم اختيار الشركه : {selectedCompany}");
             }
         }
 

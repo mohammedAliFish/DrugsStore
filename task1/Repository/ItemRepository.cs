@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using DevExpress.XtraGrid;
-using System.Windows.Forms;
 using task1.Model.Entities;
 
 namespace task1.Data
@@ -20,7 +18,7 @@ namespace task1.Data
             }
             catch (Exception ex)
             {
-                throw new Exception("An error occurred while fetching items data.", ex);
+                throw new Exception("حدث خطا", ex);
             }
         }
 
