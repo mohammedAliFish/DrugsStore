@@ -80,7 +80,7 @@ namespace task1.Forms.Category
                
                 if (string.IsNullOrEmpty(categoryName) || string.IsNullOrEmpty(categoryCode))
                 {
-                    MessageBox.Show(" إدخال اسم  ورمز الفئة");
+                    MessageBox.Show(" إدخال اسم  ورمز اللفئة");
                     return;
                 }
 

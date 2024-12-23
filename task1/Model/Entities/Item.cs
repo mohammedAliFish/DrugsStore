@@ -20,8 +20,7 @@ namespace task1.Model.Entities
         public string ItemDescription { get; set; }
 
 
-        //public Guid CategoryGUID { get; set; }
-        //public Guid CompanyGUID { get; set; }
+       
 
         [Display(Name = "   التصنيف ")]
         public Category Category { get; set; }

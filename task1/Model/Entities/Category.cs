@@ -15,5 +15,10 @@ namespace task1.Model.Entities
 
         [Display(Name = "اسم التصنيف")]
         public string CategoryName { get; set; }
+
+        public override string ToString()
+        {
+            return CategoryName; 
+        }
     }
 }

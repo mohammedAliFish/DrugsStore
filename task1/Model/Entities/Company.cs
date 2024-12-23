@@ -13,5 +13,10 @@ namespace task1.Model.Entities
 
         [Display(Name = "اسم الشركه")]
         public string CompanyName { get; set; }
+
+        public override string ToString()
+        {
+            return CompanyName;
+        }
     }
 }

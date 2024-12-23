@@ -49,6 +49,9 @@
             this.colCompanyGUID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCategory = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCompany = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnAddOrUpdate = new System.Windows.Forms.Button();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.ItemNameText = new DevExpress.XtraEditors.TextEdit();
             this.ItemCodeText = new DevExpress.XtraEditors.TextEdit();
@@ -72,6 +75,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.itemGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemNameText.Properties)).BeginInit();
@@ -181,6 +186,7 @@
             // splitContainerControl1.Panel2
             // 
             this.splitContainerControl1.Panel2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.splitContainerControl1.Panel2.Controls.Add(this.panelControl1);
             this.splitContainerControl1.Panel2.Controls.Add(this.dataLayoutControl1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(1242, 583);
@@ -217,6 +223,7 @@
             this.colCompany});
             this.itemGridView.GridControl = this.itemGridControl;
             this.itemGridView.Name = "itemGridView";
+            this.itemGridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.itemGridView_RowClick);
             // 
             // colItemGUID
             // 
@@ -267,6 +274,37 @@
             this.colCompany.Name = "colCompany";
             this.colCompany.Visible = true;
             this.colCompany.VisibleIndex = 4;
+            // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.btnDelete);
+            this.panelControl1.Controls.Add(this.btnAddOrUpdate);
+            this.panelControl1.Location = new System.Drawing.Point(45, 396);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(449, 100);
+            this.panelControl1.TabIndex = 1;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(52, 31);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(106, 32);
+            this.btnDelete.TabIndex = 1;
+            this.btnDelete.Text = "حذف";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnAddOrUpdate
+            // 
+            this.btnAddOrUpdate.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddOrUpdate.Location = new System.Drawing.Point(318, 31);
+            this.btnAddOrUpdate.Name = "btnAddOrUpdate";
+            this.btnAddOrUpdate.Size = new System.Drawing.Size(106, 32);
+            this.btnAddOrUpdate.TabIndex = 0;
+            this.btnAddOrUpdate.Text = "حفظ";
+            this.btnAddOrUpdate.UseVisualStyleBackColor = true;
+            this.btnAddOrUpdate.Click += new System.EventHandler(this.btnAddOrUpdate_Click);
             // 
             // dataLayoutControl1
             // 
@@ -428,6 +466,8 @@
             // 
             // ItemsForm
             // 
+            this.Appearance.BackColor = System.Drawing.Color.Silver;
+            this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1266, 642);
@@ -449,6 +489,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.itemGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ItemNameText.Properties)).EndInit();
@@ -503,5 +545,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn colCompanyGUID;
         private DevExpress.XtraGrid.Columns.GridColumn colCategory;
         private DevExpress.XtraGrid.Columns.GridColumn colCompany;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnAddOrUpdate;
     }
 }

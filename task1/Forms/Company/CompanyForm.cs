@@ -59,7 +59,7 @@ namespace task1.Forms.Company
                 }
 
 
-                var confirmResult = MessageBox.Show("هل تريد حذف الشركة؟");
+                var confirmResult = MessageBox.Show("هل تريد حذف الشركة؟", "تأكيد الحذف", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (confirmResult != DialogResult.Yes)
                 {
                     return;
