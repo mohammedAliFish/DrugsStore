@@ -27,5 +27,10 @@ namespace task1.Model.Entities
         [Display(Name = "   الشركه")]
         public Company Company { get; set; }
 
+        public override string ToString()
+        {
+            return ItemName; 
+        }
+
     }
 }

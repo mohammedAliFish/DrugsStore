@@ -17,6 +17,8 @@ namespace task1.Forms.Company
         private void CompanyForm_Load(object sender, EventArgs e)
         {
             LoadCompanyData();
+            companyGridView.RowCellClick += companyGridView_RowCellClick;
+
         }
 
         private bool isNewRecord = true;
@@ -192,6 +194,35 @@ namespace task1.Forms.Company
             }
         }
 
+        private void companyGridView_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
+        {
+            try
+            {
+                if (e.RowHandle >= 0)
+                {
+                    // Ensure these column names exist in the data source
+                    var companyCode = companyGridView.GetRowCellValue(e.RowHandle, "CompanyCode")?.ToString();
+                    var companyName = companyGridView.GetRowCellValue(e.RowHandle, "CompanyName")?.ToString();
+
+                    if (!string.IsNullOrEmpty(companyCode) && !string.IsNullOrEmpty(companyName))
+                    {
+                        CompanyCodeText.Text = companyCode;
+                        CompanyNameText.Text = companyName;
+
+                        // Mark as not a new record
+                        isNewRecord = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("تعذر استرداد بيانات الشركة. يرجى المحاولة مرة أخرى.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"خطأ أثناء تحديد الشركة: {ex.Message}");
+            }
+        }
 
     }
 }

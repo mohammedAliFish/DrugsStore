@@ -188,6 +188,7 @@
             this.categoryGridControl.MainView = this.categoryGridView;
             this.categoryGridControl.MenuManager = this.barManager1;
             this.categoryGridControl.Name = "categoryGridControl";
+            this.categoryGridControl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.categoryGridControl.Size = new System.Drawing.Size(492, 551);
             this.categoryGridControl.TabIndex = 0;
             this.categoryGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -201,28 +202,29 @@
             this.colCategoryName});
             this.categoryGridView.GridControl = this.categoryGridControl;
             this.categoryGridView.Name = "categoryGridView";
+            this.categoryGridView.OptionsBehavior.Editable = false;
             this.categoryGridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView1_RowClick);
             // 
             // colCategoryGuid
             // 
             this.colCategoryGuid.FieldName = "CategoryGUID";
             this.colCategoryGuid.Name = "colCategoryGuid";
-            this.colCategoryGuid.Visible = true;
-            this.colCategoryGuid.VisibleIndex = 0;
             // 
             // colCategoryCode
             // 
+            this.colCategoryCode.Caption = "رمز التصنيف";
             this.colCategoryCode.FieldName = "CategoryCode";
             this.colCategoryCode.Name = "colCategoryCode";
             this.colCategoryCode.Visible = true;
-            this.colCategoryCode.VisibleIndex = 1;
+            this.colCategoryCode.VisibleIndex = 0;
             // 
             // colCategoryName
             // 
+            this.colCategoryName.Caption = "اسم التصنيف";
             this.colCategoryName.FieldName = "CategoryName";
             this.colCategoryName.Name = "colCategoryName";
             this.colCategoryName.Visible = true;
-            this.colCategoryName.VisibleIndex = 2;
+            this.colCategoryName.VisibleIndex = 1;
             // 
             // panelControl1
             // 

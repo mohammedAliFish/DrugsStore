@@ -64,12 +64,19 @@
     <Compile Include="CenterForm.Designer.cs">
       <DependentUpon>CenterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Item\InputItemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Item\InputItemForm.Designer.cs">
+      <DependentUpon>InputItemForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Price\PriceForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Price\PriceForm.Designer.cs">
       <DependentUpon>PriceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Entities\Price.cs" />
     <Compile Include="Repository\CategoryRepository.cs" />
     <Compile Include="Repository\CompanyRepository.cs" />
     <Compile Include="Repository\ItemRepository.cs" />
@@ -103,6 +110,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data\sqlHelper.cs" />
+    <Compile Include="Repository\PriceRepository.cs" />
     <EmbeddedResource Include="CenterForm.resx">
       <DependentUpon>CenterForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -114,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Company\CompanyForm.resx">
       <DependentUpon>CompanyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Item\InputItemForm.resx">
+      <DependentUpon>InputItemForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Item\ItemsForm.resx">
       <DependentUpon>ItemsForm.cs</DependentUpon>
@@ -135,6 +146,7 @@
     <None Include="Properties\DataSources\task1.Model.Entities.Category.datasource" />
     <None Include="Properties\DataSources\task1.Model.Entities.Company.datasource" />
     <None Include="Properties\DataSources\task1.Model.Entities.Item.datasource" />
+    <None Include="Properties\DataSources\task1.Model.Entities.Price.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

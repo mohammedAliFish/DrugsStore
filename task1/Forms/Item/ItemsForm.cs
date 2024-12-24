@@ -11,8 +11,8 @@ namespace task1.Forms.Item
 {
     public partial class ItemsForm : CenterForm
     {
-       
-       
+        public DevExpress.XtraGrid.GridControl ItemGridControl => itemGridControl;
+        public DevExpress.XtraGrid.Views.Grid.GridView ItemGridView => itemGridView;
         public ItemsForm()
         {
             InitializeComponent();
@@ -20,7 +20,7 @@ namespace task1.Forms.Item
         private bool isNewRecord = true;
         private Guid selectedItemGuid = Guid.Empty;
 
-        private void LoadItemsData()
+        public void LoadItemsData()
         {
             
             string GetAllItems = "ItemGet";
@@ -30,12 +30,12 @@ namespace task1.Forms.Item
             itemGridView.ClearSelection();
             itemGridView.FocusedRowHandle = GridControl.InvalidRowHandle;
 
-            isNewRecord = true;
-            ItemCodeText.Text = string.Empty;
-            ItemDescriptionText.Text = string.Empty;
-            ItemNameText.Text = string.Empty;
-            CategoryComboBox.SelectedIndex = -1;
-            CompanyComboBox.SelectedIndex = -1;
+            //isNewRecord = true;
+            //ItemCodeText.Text = string.Empty;
+            //ItemDescriptionText.Text = string.Empty;
+            //ItemNameText.Text = string.Empty;
+            //CategoryComboBox.SelectedIndex = -1;
+            //CompanyComboBox.SelectedIndex = -1;
 
 
             CategoryRepository categoryRepository = new CategoryRepository();
@@ -45,17 +45,17 @@ namespace task1.Forms.Item
             var companies = companyRepository.GetCompanies();
 
 
-            CategoryComboBox.Properties.Items.Clear();
-            foreach (var category in categories)
-            {
-                CategoryComboBox.Properties.Items.Add(category);
-            }
+            //CategoryComboBox.Properties.Items.Clear();
+            //foreach (var category in categories)
+            //{
+            //    CategoryComboBox.Properties.Items.Add(category);
+            //}
 
-            CompanyComboBox.Properties.Items.Clear();
-            foreach (var company in companies)
-            {
-                CompanyComboBox.Properties.Items.Add(company);
-            }
+            //CompanyComboBox.Properties.Items.Clear();
+            //foreach (var company in companies)
+            //{
+            //    CompanyComboBox.Properties.Items.Add(company);
+            //}
 
         }
 
@@ -74,70 +74,70 @@ namespace task1.Forms.Item
 
         private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CategoryComboBox.SelectedItem != null)
-            {
-                string selectedCategory = CategoryComboBox.SelectedItem.ToString();
-                MessageBox.Show($" تم اختيار الفئه: {selectedCategory}");
+            //if (CategoryComboBox.SelectedItem != null)
+            //{
+            //    string selectedCategory = CategoryComboBox.SelectedItem.ToString();
+            //    MessageBox.Show($" تم اختيار الفئه: {selectedCategory}");
                 
-            }
+            //}
         }
 
         private void CompanyComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CompanyComboBox.SelectedItem != null) 
-            {
+            //if (CompanyComboBox.SelectedItem != null) 
+            //{
             
-                string selectedCompany = CompanyComboBox.SelectedItem.ToString();
-                MessageBox.Show($" تم اختيار الشركه : {selectedCompany}");
-            }
+            //    string selectedCompany = CompanyComboBox.SelectedItem.ToString();
+            //    MessageBox.Show($" تم اختيار الشركه : {selectedCompany}");
+            //}
         }
 
-        private void btnAddOrUpdate_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (string.IsNullOrWhiteSpace(ItemNameText.Text) || CategoryComboBox.SelectedItem == null || CompanyComboBox.SelectedItem == null)
-                {
-                    MessageBox.Show("الرجاء ملء جميع الحقول المطلوبة.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+        //private void btnAddOrUpdate_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (string.IsNullOrWhiteSpace(ItemNameText.Text) || CategoryComboBox.SelectedItem == null || CompanyComboBox.SelectedItem == null)
+        //        {
+        //            MessageBox.Show("الرجاء ملء جميع الحقول المطلوبة.");
+        //            return;
+        //        }
 
               
-                var selectedCategory = CategoryComboBox.SelectedItem as Model.Entities.Category;
-                var selectedCompany = CompanyComboBox.SelectedItem as Model.Entities.Company;
+        //        var selectedCategory = CategoryComboBox.SelectedItem as Model.Entities.Category;
+        //        var selectedCompany = CompanyComboBox.SelectedItem as Model.Entities.Company;
 
-                if (selectedCategory == null || selectedCompany == null)
-                {
-                    MessageBox.Show("الرجاء تحديد تصنيف وشركة صحيحين.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+        //        if (selectedCategory == null || selectedCompany == null)
+        //        {
+        //            MessageBox.Show("الرجاء تحديد تصنيف وشركة صحيحين.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //            return;
+        //        }
 
               
-                ItemRepository itemRepository = new ItemRepository();  
+        //        ItemRepository itemRepository = new ItemRepository();  
 
-                var item = new Model.Entities.Item
-                {
-                    ItemGUID = isNewRecord ? Guid.Empty : selectedItemGuid,
-                    ItemName = ItemNameText.Text.Trim(),
-                    ItemCode = ItemCodeText.Text.Trim(),
-                    ItemDescription = ItemDescriptionText.Text.Trim(),
-                    Category = selectedCategory,
-                    Company = selectedCompany
-                };
+        //        var item = new Model.Entities.Item
+        //        {
+        //            ItemGUID = isNewRecord ? Guid.Empty : selectedItemGuid,
+        //            ItemName = ItemNameText.Text.Trim(),
+        //            ItemCode = ItemCodeText.Text.Trim(),
+        //            ItemDescription = ItemDescriptionText.Text.Trim(),
+        //            Category = selectedCategory,
+        //            Company = selectedCompany
+        //        };
 
                 
-                itemRepository.SaveItem(item);
+        //        itemRepository.SaveItem(item);
 
-                MessageBox.Show(isNewRecord ? "تمت إضافة العنصر بنجاح." : "تم تحديث العنصر بنجاح.", "نجاح", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        MessageBox.Show(isNewRecord ? "تمت إضافة العنصر بنجاح." : "تم تحديث العنصر بنجاح.", "نجاح", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                
-                LoadItemsData();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"حدث خطأ: {ex.Message}", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        //        LoadItemsData();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"حدث خطأ: {ex.Message}", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
 
 
 
@@ -194,11 +194,11 @@ namespace task1.Forms.Item
                 if (selectedRow != null)
                 {
                     selectedItemGuid = Guid.Parse(selectedRow["ItemGUID"].ToString());
-                    ItemNameText.Text = selectedRow["ItemName"].ToString();
-                    ItemCodeText.Text = selectedRow["ItemCode"].ToString();
-                    ItemDescriptionText.Text = selectedRow["ItemDescription"].ToString();
-                    CategoryComboBox.SelectedItem = selectedRow["CategoryName"].ToString();
-                    CompanyComboBox.SelectedItem = selectedRow["CompanyName"].ToString();
+                    //ItemNameText.Text = selectedRow["ItemName"].ToString();
+                    //ItemCodeText.Text = selectedRow["ItemCode"].ToString();
+                    //ItemDescriptionText.Text = selectedRow["ItemDescription"].ToString();
+                    //CategoryComboBox.SelectedItem = selectedRow["CategoryName"].ToString();
+                    //CompanyComboBox.SelectedItem = selectedRow["CompanyName"].ToString();
                     isNewRecord = false;
                 }
             }
@@ -206,6 +206,12 @@ namespace task1.Forms.Item
             {
                 MessageBox.Show($"حدث خطأ أثناء تحميل البيانات: {ex.Message}");
             }
+        }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            InputItemForm inputItemForm = new InputItemForm(this);
+            inputItemForm.ShowDialog();
         }
     }
 }

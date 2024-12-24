@@ -123,6 +123,7 @@
             this.barButtonItem1.ItemAppearance.Hovered.Options.UseBackColor = true;
             this.barButtonItem1.ItemAppearance.Hovered.Options.UseFont = true;
             this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // barDockControl1
             // 

@@ -49,6 +49,7 @@
             this.ItemForCompanyName = new DevExpress.XtraLayout.LayoutControlItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -111,6 +112,7 @@
             this.companyGridControl.Location = new System.Drawing.Point(0, 0);
             this.companyGridControl.MainView = this.companyGridView;
             this.companyGridControl.Name = "companyGridControl";
+            this.companyGridControl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.companyGridControl.Size = new System.Drawing.Size(454, 613);
             this.companyGridControl.TabIndex = 0;
             this.companyGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -129,7 +131,9 @@
             this.colCompanyName});
             this.companyGridView.GridControl = this.companyGridControl;
             this.companyGridView.Name = "companyGridView";
+            this.companyGridView.OptionsBehavior.Editable = false;
             this.companyGridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.companyGridView_RowClick);
+            this.companyGridView.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.companyGridView_RowCellClick);
             // 
             // colCompanyGuid
             // 
@@ -138,6 +142,7 @@
             // 
             // colCompanyCode
             // 
+            this.colCompanyCode.Caption = "رمز الشركه";
             this.colCompanyCode.FieldName = "CompanyCode";
             this.colCompanyCode.Name = "colCompanyCode";
             this.colCompanyCode.Visible = true;
@@ -145,6 +150,7 @@
             // 
             // colCompanyName
             // 
+            this.colCompanyName.Caption = "اسم الشركه";
             this.colCompanyName.FieldName = "CompanyName";
             this.colCompanyName.Name = "colCompanyName";
             this.colCompanyName.Visible = true;
@@ -277,8 +283,9 @@
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barButtonAddorUpdateCompany,
             this.barButtonItem2,
-            this.barButtonItem3});
-            this.barManager1.MaxItemId = 3;
+            this.barButtonItem3,
+            this.barButtonItem1});
+            this.barManager1.MaxItemId = 4;
             // 
             // bar1
             // 
@@ -287,6 +294,12 @@
             this.bar1.DockRow = 0;
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar1.Text = "Tools";
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "اضافه عنصر";
+            this.barButtonItem1.Id = 3;
+            this.barButtonItem1.Name = "barButtonItem1";
             // 
             // barDockControlTop
             // 
@@ -407,5 +420,6 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSaveOrUpdate;
         private DevExpress.XtraEditors.PanelControl panelControl1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }
