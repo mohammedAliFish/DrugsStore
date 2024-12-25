@@ -11,8 +11,9 @@ namespace task1.Forms.Item
     public partial class InputItemForm : Form 
     {
         private readonly Guid _itemsG;
-        private DevExpress.XtraEditors.LookUpEdit categoryLookUpEdit;
-        private DevExpress.XtraEditors.LookUpEdit companyLookUpEdit;
+       
+        private DevExpress.XtraEditors.LookUpEdit catLookUpEdit;
+        private DevExpress.XtraEditors.LookUpEdit comLookUpEdit;
 
 
 
@@ -24,7 +25,9 @@ namespace task1.Forms.Item
         public InputItemForm(Guid itemsG)
         {
             InitializeComponent();
-            _itemsG = itemsG; 
+            _itemsG = itemsG;
+            
+            
         }
         public void OpenForNewRecord()
         {
@@ -55,11 +58,7 @@ namespace task1.Forms.Item
             ItemDescriptionText.Text = string.Empty;
            
         }
-        class itemCategory1
-        {
-            public string CategoryName { get; set; }
-            public Guid CategoryGuid { get; set; }
-        }
+       
         public void LoadCategoriesAndCompanies()
         {
             try
@@ -72,20 +71,21 @@ namespace task1.Forms.Item
                 var categories = categoryRepository.GetCategories();
                 var companies = companyRepository.GetCompanies();
 
-                var item = new List<itemCategory1>();
-                itemCategory1 it = new itemCategory1();
-                it.CategoryName = "moh";
-                it.CategoryGuid = Guid.NewGuid();
 
-                item.Add(it);
 
-                categoryLookUpEdit.Properties.DataSource = item;
-                categoryLookUpEdit.Properties.DisplayMember = "CategoryName";
-                categoryLookUpEdit.Properties.ValueMember = "CategoryGuid";
+                if (catLookUpEdit != null)
+                {
+                    catLookUpEdit.Properties.DataSource = categories;
+                    catLookUpEdit.Properties.DisplayMember = "CategoryName";
+                    catLookUpEdit.Properties.ValueMember = "CategoryGuid";
+                }
 
-                companyLookUpEdit.Properties.DataSource = companies;
-                companyLookUpEdit.Properties.DisplayMember = "CompanyName";
-                companyLookUpEdit.Properties.ValueMember = "CompanyGuid";
+                if (comLookUpEdit != null)
+                {
+                    comLookUpEdit.Properties.DataSource = companies;
+                    comLookUpEdit.Properties.DisplayMember = "CompanyName";
+                    comLookUpEdit.Properties.ValueMember = "CompanyGuid";
+                }
 
 
 
@@ -97,49 +97,53 @@ namespace task1.Forms.Item
         }
 
 
-       
+
         private void btnAddOrUpdate_Click(object sender, EventArgs e)
         {
             try
             {
+                
                 if (string.IsNullOrWhiteSpace(ItemNameText.Text) ||
-                categoryLookUpEdit.EditValue == null ||
-                companyLookUpEdit.EditValue == null)
+                    catLookUpEdit.EditValue == null ||
+                    comLookUpEdit.EditValue == null)
                 {
                     MessageBox.Show("الرجاء ملء جميع الحقول المطلوبة.");
                     return;
                 }
 
-                var selectedCategoryGuid = (Guid)categoryLookUpEdit.EditValue;
-                var selectedCompanyGuid = (Guid)companyLookUpEdit.EditValue;
+              
+                if (!Guid.TryParse(catLookUpEdit.EditValue.ToString(), out var selectedCategoryGuid) ||
+                    !Guid.TryParse(comLookUpEdit.EditValue.ToString(), out var selectedCompanyGuid))
+                {
+                    MessageBox.Show("Invalid category or company selection.");
+                    return;
+                }
 
+             
                 ItemRepository itemRepository = new ItemRepository();
 
                 var item = new Model.Entities.Item
                 {
-                    ItemGUID = selectedItemGuid,
+                    ItemGUID = selectedItemGuid == Guid.Empty ? Guid.NewGuid() : selectedItemGuid,
                     ItemName = ItemNameText.Text.Trim(),
                     ItemCode = ItemCodeText.Text.Trim(),
                     ItemDescription = ItemDescriptionText.Text.Trim(),
                     Category = new Model.Entities.Category { CategoryGuid = selectedCategoryGuid },
-                    Company = new Model.Entities.Company { CompanyGuid = selectedCompanyGuid },
-                  
-
+                    Company = new Model.Entities.Company { CompanyGuid = selectedCompanyGuid }
                 };
 
+               
                 itemRepository.SaveItem(item);
 
-                MessageBox.Show("تم   بنجاح.", "نجاح", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-               
+                MessageBox.Show("تم الحفظ بنجاح.", "نجاح", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"حدث خطأ  : {ex.Message} {ex.StackTrace}");
-                Console.WriteLine(ex.StackTrace);
+                MessageBox.Show($"حدث خطأ: {ex.Message} \n {ex.StackTrace}");
             }
         }
+
 
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -177,51 +181,35 @@ namespace task1.Forms.Item
         }
         public void SetItemData(Guid itemGuid, string itemName, string itemCode, string itemDescription, Guid categoryGuid, Guid companyGuid)
         {
+            
+
+            if (ItemNameText == null || ItemCodeText == null || ItemDescriptionText == null)
+                throw new NullReferenceException("Text controls are not initialized");
             selectedItemGuid = itemGuid;
             ItemNameText.Text = itemName;
             ItemCodeText.Text = itemCode;
             ItemDescriptionText.Text = itemDescription;
 
-           
-            
 
-            
 
-          
-            categoryLookUpEdit.EditValue = categoryGuid;
-            companyLookUpEdit.EditValue = companyGuid;
+            catLookUpEdit.EditValue = categoryGuid;
+            comLookUpEdit.EditValue = companyGuid;
 
-          
+
 
             isNewRecord = false;
         }
 
 
 
-        private void RefreshItemsFormGrid()
-        {
-            //if (_itemsForm != null)
-            //{
-            //    _itemsForm.LoadItemsData(); 
-            //}
-        }
+        
 
-        private void CategoryComboBox_Properties_SelectedIndexChanged(object sender, EventArgs e)
+        private void catlookUpEdit_EditValueChanged_1(object sender, EventArgs e)
         {
 
         }
 
-        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lookUpEdit2_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lookUpEdit1_EditValueChanged(object sender, EventArgs e)
+        private void comlookUpEdit_EditValueChanged(object sender, EventArgs e)
         {
 
         }

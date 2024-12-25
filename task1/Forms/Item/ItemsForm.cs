@@ -54,8 +54,13 @@ namespace task1.Forms.Item
 
                     InputItemForm inputItemForm = new InputItemForm(itemGuid);
 
-                    
-  
+                    inputItemForm.SetItemData(itemGuid,
+                                     selectedRow["ItemName"].ToString(),
+                                     selectedRow["ItemCode"].ToString(),
+                                     selectedRow["ItemDescription"].ToString(),
+                                     categoryGuid,
+                                     companyGuid);
+
                     inputItemForm.ShowDialog();
                 }
                 else

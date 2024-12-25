@@ -31,9 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InputItemForm));
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
-            this.companylookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.categorylookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.ItemNameText = new DevExpress.XtraEditors.TextEdit();
+            this.itemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ItemCodeText = new DevExpress.XtraEditors.TextEdit();
             this.ItemDescriptionText = new DevExpress.XtraEditors.TextEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -41,19 +40,18 @@
             this.ItemForItemName = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForItemCode = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForItemDescription = new DevExpress.XtraLayout.LayoutControlItem();
-            this.categorylayoutControlItem = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAddOrUpdate = new System.Windows.Forms.Button();
-            this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.itemBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comlookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.catlookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.companylookUpEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.categorylookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemNameText.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemCodeText.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemDescriptionText.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
@@ -61,65 +59,28 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForItemName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForItemCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForItemDescription)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.categorylayoutControlItem)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.comlookUpEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.catlookUpEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // dataLayoutControl1
             // 
-            this.dataLayoutControl1.Controls.Add(this.companylookUpEdit);
-            this.dataLayoutControl1.Controls.Add(this.categorylookUpEdit);
             this.dataLayoutControl1.Controls.Add(this.ItemNameText);
             this.dataLayoutControl1.Controls.Add(this.ItemCodeText);
             this.dataLayoutControl1.Controls.Add(this.ItemDescriptionText);
             this.dataLayoutControl1.DataSource = this.itemBindingSource;
-            this.dataLayoutControl1.Location = new System.Drawing.Point(36, 33);
+            this.dataLayoutControl1.Location = new System.Drawing.Point(26, 33);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.OptionsView.RightToLeftMirroringApplied = true;
             this.dataLayoutControl1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dataLayoutControl1.Root = this.Root;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(545, 230);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(555, 152);
             this.dataLayoutControl1.TabIndex = 0;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
-            // 
-            // companylookUpEdit
-            // 
-            this.companylookUpEdit.Location = new System.Drawing.Point(20, 188);
-            this.companylookUpEdit.Name = "companylookUpEdit";
-            this.companylookUpEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.companylookUpEdit.Properties.Appearance.Options.UseFont = true;
-            this.companylookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.companylookUpEdit.Properties.DataSource = this.companyBindingSource;
-            this.companylookUpEdit.Properties.DisplayMember = "CompanyName";
-            this.companylookUpEdit.Properties.ValueMember = "CompanyGuid";
-            this.companylookUpEdit.Size = new System.Drawing.Size(429, 22);
-            this.companylookUpEdit.StyleController = this.dataLayoutControl1;
-            this.companylookUpEdit.TabIndex = 8;
-            this.companylookUpEdit.EditValueChanged += new System.EventHandler(this.lookUpEdit1_EditValueChanged);
-            // 
-            // categorylookUpEdit
-            // 
-            this.categorylookUpEdit.Location = new System.Drawing.Point(20, 146);
-            this.categorylookUpEdit.Name = "categorylookUpEdit";
-            this.categorylookUpEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.categorylookUpEdit.Properties.Appearance.Options.UseFont = true;
-            this.categorylookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.categorylookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CategoryName", "اسم التصنيف"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CategoryGuid", "Name8")});
-            this.categorylookUpEdit.Properties.DisplayMember = "CategoryName";
-            this.categorylookUpEdit.Properties.ValueMember = "CategoryGuid";
-            this.categorylookUpEdit.Size = new System.Drawing.Size(429, 22);
-            this.categorylookUpEdit.StyleController = this.dataLayoutControl1;
-            this.categorylookUpEdit.TabIndex = 7;
-            this.categorylookUpEdit.EditValueChanged += new System.EventHandler(this.lookUpEdit2_EditValueChanged);
             // 
             // ItemNameText
             // 
@@ -128,9 +89,13 @@
             this.ItemNameText.Name = "ItemNameText";
             this.ItemNameText.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ItemNameText.Properties.Appearance.Options.UseFont = true;
-            this.ItemNameText.Size = new System.Drawing.Size(429, 22);
+            this.ItemNameText.Size = new System.Drawing.Size(439, 22);
             this.ItemNameText.StyleController = this.dataLayoutControl1;
             this.ItemNameText.TabIndex = 4;
+            // 
+            // itemBindingSource
+            // 
+            this.itemBindingSource.DataSource = typeof(task1.Model.Entities.Item);
             // 
             // ItemCodeText
             // 
@@ -139,7 +104,7 @@
             this.ItemCodeText.Name = "ItemCodeText";
             this.ItemCodeText.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ItemCodeText.Properties.Appearance.Options.UseFont = true;
-            this.ItemCodeText.Size = new System.Drawing.Size(429, 22);
+            this.ItemCodeText.Size = new System.Drawing.Size(439, 22);
             this.ItemCodeText.StyleController = this.dataLayoutControl1;
             this.ItemCodeText.TabIndex = 5;
             // 
@@ -150,7 +115,7 @@
             this.ItemDescriptionText.Name = "ItemDescriptionText";
             this.ItemDescriptionText.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ItemDescriptionText.Properties.Appearance.Options.UseFont = true;
-            this.ItemDescriptionText.Size = new System.Drawing.Size(429, 22);
+            this.ItemDescriptionText.Size = new System.Drawing.Size(439, 22);
             this.ItemDescriptionText.StyleController = this.dataLayoutControl1;
             this.ItemDescriptionText.TabIndex = 6;
             // 
@@ -159,11 +124,9 @@
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             this.Root.GroupBordersVisible = false;
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlGroup1,
-            this.categorylayoutControlItem,
-            this.layoutControlItem2});
+            this.layoutControlGroup1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(545, 230);
+            this.Root.Size = new System.Drawing.Size(555, 152);
             this.Root.TextVisible = false;
             // 
             // layoutControlGroup1
@@ -176,7 +139,7 @@
             this.ItemForItemDescription});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(525, 126);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(535, 132);
             // 
             // ItemForItemName
             // 
@@ -184,7 +147,7 @@
             this.ItemForItemName.Location = new System.Drawing.Point(0, 0);
             this.ItemForItemName.Name = "ItemForItemName";
             this.ItemForItemName.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
-            this.ItemForItemName.Size = new System.Drawing.Size(525, 42);
+            this.ItemForItemName.Size = new System.Drawing.Size(535, 42);
             this.ItemForItemName.TextSize = new System.Drawing.Size(64, 13);
             // 
             // ItemForItemCode
@@ -193,7 +156,7 @@
             this.ItemForItemCode.Location = new System.Drawing.Point(0, 42);
             this.ItemForItemCode.Name = "ItemForItemCode";
             this.ItemForItemCode.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
-            this.ItemForItemCode.Size = new System.Drawing.Size(525, 42);
+            this.ItemForItemCode.Size = new System.Drawing.Size(535, 42);
             this.ItemForItemCode.TextSize = new System.Drawing.Size(64, 13);
             // 
             // ItemForItemDescription
@@ -202,28 +165,8 @@
             this.ItemForItemDescription.Location = new System.Drawing.Point(0, 84);
             this.ItemForItemDescription.Name = "ItemForItemDescription";
             this.ItemForItemDescription.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
-            this.ItemForItemDescription.Size = new System.Drawing.Size(525, 42);
+            this.ItemForItemDescription.Size = new System.Drawing.Size(535, 48);
             this.ItemForItemDescription.TextSize = new System.Drawing.Size(64, 13);
-            // 
-            // categorylayoutControlItem
-            // 
-            this.categorylayoutControlItem.Control = this.categorylookUpEdit;
-            this.categorylayoutControlItem.Location = new System.Drawing.Point(0, 126);
-            this.categorylayoutControlItem.Name = "categorylayoutControlItem";
-            this.categorylayoutControlItem.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
-            this.categorylayoutControlItem.Size = new System.Drawing.Size(525, 42);
-            this.categorylayoutControlItem.Text = "اختر التصنيف";
-            this.categorylayoutControlItem.TextSize = new System.Drawing.Size(64, 13);
-            // 
-            // layoutControlItem2
-            // 
-            this.layoutControlItem2.Control = this.companylookUpEdit;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 168);
-            this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
-            this.layoutControlItem2.Size = new System.Drawing.Size(525, 42);
-            this.layoutControlItem2.Text = "اختر الشركه";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(64, 13);
             // 
             // panelControl1
             // 
@@ -258,23 +201,71 @@
             this.btnAddOrUpdate.UseVisualStyleBackColor = true;
             this.btnAddOrUpdate.Click += new System.EventHandler(this.btnAddOrUpdate_Click);
             // 
-            // companyBindingSource
+            // panelControl2
             // 
-            this.companyBindingSource.DataSource = typeof(task1.Model.Entities.Company);
+            this.panelControl2.Controls.Add(this.label2);
+            this.panelControl2.Controls.Add(this.label1);
+            this.panelControl2.Controls.Add(this.comlookUpEdit);
+            this.panelControl2.Controls.Add(this.catlookUpEdit);
+            this.panelControl2.Location = new System.Drawing.Point(37, 199);
+            this.panelControl2.Name = "panelControl2";
+            this.panelControl2.Size = new System.Drawing.Size(533, 72);
+            this.panelControl2.TabIndex = 2;
             // 
-            // itemBindingSource
+            // label2
             // 
-            this.itemBindingSource.DataSource = typeof(task1.Model.Entities.Item);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(193, 29);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(63, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "اختر الشركه";
             // 
-            // categoryBindingSource
+            // label1
             // 
-            this.categoryBindingSource.DataSource = typeof(task1.Model.Entities.Category);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(454, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(66, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "اختر التصنيف";
+            // 
+            // comlookUpEdit
+            // 
+            this.comlookUpEdit.Location = new System.Drawing.Point(10, 26);
+            this.comlookUpEdit.Name = "comlookUpEdit";
+            this.comlookUpEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comlookUpEdit.Properties.Appearance.Options.UseFont = true;
+            this.comlookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comlookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CompanyName", "اسم الشركه"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CompanyGuid", "رقم الشركه", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
+            this.comlookUpEdit.Size = new System.Drawing.Size(177, 22);
+            this.comlookUpEdit.TabIndex = 5;
+            this.comlookUpEdit.EditValueChanged += new System.EventHandler(this.comlookUpEdit_EditValueChanged);
+            // 
+            // catlookUpEdit
+            // 
+            this.catlookUpEdit.Location = new System.Drawing.Point(271, 26);
+            this.catlookUpEdit.Name = "catlookUpEdit";
+            this.catlookUpEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.catlookUpEdit.Properties.Appearance.Options.UseFont = true;
+            this.catlookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.catlookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CategoryName", "اسم التصنيف"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CategoryGuid", "رقم التصنيف", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
+            this.catlookUpEdit.Size = new System.Drawing.Size(177, 22);
+            this.catlookUpEdit.TabIndex = 4;
+            this.catlookUpEdit.EditValueChanged += new System.EventHandler(this.catlookUpEdit_EditValueChanged_1);
             // 
             // InputItemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(623, 413);
+            this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.dataLayoutControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -284,9 +275,8 @@
             this.Load += new System.EventHandler(this.InputItemForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.companylookUpEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.categorylookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemNameText.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemCodeText.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemDescriptionText.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
@@ -294,13 +284,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForItemName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForItemCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForItemDescription)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.categorylayoutControlItem)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
+            this.panelControl2.ResumeLayout(false);
+            this.panelControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.comlookUpEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.catlookUpEdit.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -320,11 +310,10 @@
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private System.Windows.Forms.Button btnAddOrUpdate;
         private System.Windows.Forms.Button btnDelete;
-        private DevExpress.XtraEditors.LookUpEdit companylookUpEdit;
-        private DevExpress.XtraEditors.LookUpEdit categorylookUpEdit;
-        private DevExpress.XtraLayout.LayoutControlItem categorylayoutControlItem;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
-        private System.Windows.Forms.BindingSource companyBindingSource;
-        private System.Windows.Forms.BindingSource categoryBindingSource;
+        private DevExpress.XtraEditors.PanelControl panelControl2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private DevExpress.XtraEditors.LookUpEdit comlookUpEdit;
+        private DevExpress.XtraEditors.LookUpEdit catlookUpEdit;
     }
 }
