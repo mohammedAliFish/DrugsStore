@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Windows.Forms;
 using task1.Forms.Category;
 using task1.Forms.Company;
 using task1.Forms.Item;
@@ -12,6 +12,7 @@ namespace task1
         public Form1()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void Form1_Load(object sender, EventArgs e)

@@ -17,8 +17,7 @@ namespace task1.Forms.Item
         {
             InitializeComponent();
         }
-        private bool isNewRecord = true;
-        private Guid selectedItemGuid = Guid.Empty;
+       
 
         public void LoadItemsData()
         {
@@ -29,189 +28,48 @@ namespace task1.Forms.Item
 
             itemGridView.ClearSelection();
             itemGridView.FocusedRowHandle = GridControl.InvalidRowHandle;
-
-            //isNewRecord = true;
-            //ItemCodeText.Text = string.Empty;
-            //ItemDescriptionText.Text = string.Empty;
-            //ItemNameText.Text = string.Empty;
-            //CategoryComboBox.SelectedIndex = -1;
-            //CompanyComboBox.SelectedIndex = -1;
-
-
-            CategoryRepository categoryRepository = new CategoryRepository();
-            CompanyRepository companyRepository = new CompanyRepository();
-
-            var categories = categoryRepository.GetCategories();
-            var companies = companyRepository.GetCompanies();
-
-
-            //CategoryComboBox.Properties.Items.Clear();
-            //foreach (var category in categories)
-            //{
-            //    CategoryComboBox.Properties.Items.Add(category);
-            //}
-
-            //CompanyComboBox.Properties.Items.Clear();
-            //foreach (var company in companies)
-            //{
-            //    CompanyComboBox.Properties.Items.Add(company);
-            //}
-
         }
-
-
-
-
         private void ItemsForm_Load(object sender, EventArgs e)
         {
             LoadItemsData();
         }
 
-        private void ItemNameTextEdit_EditValueChanged(object sender, EventArgs e)
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            
+            InputItemForm inputItemForm = new InputItemForm(Guid.NewGuid());
+            inputItemForm.OpenForNewRecord();
         }
 
-        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //if (CategoryComboBox.SelectedItem != null)
-            //{
-            //    string selectedCategory = CategoryComboBox.SelectedItem.ToString();
-            //    MessageBox.Show($" تم اختيار الفئه: {selectedCategory}");
-                
-            //}
-        }
-
-        private void CompanyComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //if (CompanyComboBox.SelectedItem != null) 
-            //{
-            
-            //    string selectedCompany = CompanyComboBox.SelectedItem.ToString();
-            //    MessageBox.Show($" تم اختيار الشركه : {selectedCompany}");
-            //}
-        }
-
-        //private void btnAddOrUpdate_Click(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        if (string.IsNullOrWhiteSpace(ItemNameText.Text) || CategoryComboBox.SelectedItem == null || CompanyComboBox.SelectedItem == null)
-        //        {
-        //            MessageBox.Show("الرجاء ملء جميع الحقول المطلوبة.");
-        //            return;
-        //        }
-
-              
-        //        var selectedCategory = CategoryComboBox.SelectedItem as Model.Entities.Category;
-        //        var selectedCompany = CompanyComboBox.SelectedItem as Model.Entities.Company;
-
-        //        if (selectedCategory == null || selectedCompany == null)
-        //        {
-        //            MessageBox.Show("الرجاء تحديد تصنيف وشركة صحيحين.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //            return;
-        //        }
-
-              
-        //        ItemRepository itemRepository = new ItemRepository();  
-
-        //        var item = new Model.Entities.Item
-        //        {
-        //            ItemGUID = isNewRecord ? Guid.Empty : selectedItemGuid,
-        //            ItemName = ItemNameText.Text.Trim(),
-        //            ItemCode = ItemCodeText.Text.Trim(),
-        //            ItemDescription = ItemDescriptionText.Text.Trim(),
-        //            Category = selectedCategory,
-        //            Company = selectedCompany
-        //        };
-
-                
-        //        itemRepository.SaveItem(item);
-
-        //        MessageBox.Show(isNewRecord ? "تمت إضافة العنصر بنجاح." : "تم تحديث العنصر بنجاح.", "نجاح", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-               
-        //        LoadItemsData();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show($"حدث خطأ: {ex.Message}", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
-
-
-
-
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            try
-            {
-             
-                if (itemGridView.FocusedRowHandle < 0)
-                {
-                    MessageBox.Show("الرجاء تحديد عنصر لحذفه.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-              
-                var selectedRow = itemGridView.GetFocusedDataRow();
-                if (selectedRow == null)
-                {
-                    MessageBox.Show("لا يوجد عنصر محدد.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-               
-                var confirmResult = MessageBox.Show("هل تريد بالتأكيد حذف هذا العنصر؟", "تأكيد الحذف", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (confirmResult != DialogResult.Yes)
-                {
-                    return;
-                }
-
-                Guid itemGuid = Guid.Parse(selectedRow["ItemGUID"].ToString());
-
-               
-                ItemRepository itemRepository = new ItemRepository();
-                itemRepository.DeleteItem(itemGuid);
-
-                MessageBox.Show("تم حذف العنصر بنجاح.", "حذف", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-           
-                LoadItemsData();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"حدث خطأ أثناء الحذف: {ex.Message}");
-            }
-        }
-
-        private void itemGridView_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        private void itemGridView_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
             try
             {
                 var selectedRow = itemGridView.GetFocusedDataRow();
                 if (selectedRow != null)
                 {
-                    selectedItemGuid = Guid.Parse(selectedRow["ItemGUID"].ToString());
-                    //ItemNameText.Text = selectedRow["ItemName"].ToString();
-                    //ItemCodeText.Text = selectedRow["ItemCode"].ToString();
-                    //ItemDescriptionText.Text = selectedRow["ItemDescription"].ToString();
-                    //CategoryComboBox.SelectedItem = selectedRow["CategoryName"].ToString();
-                    //CompanyComboBox.SelectedItem = selectedRow["CompanyName"].ToString();
-                    isNewRecord = false;
+                    
+                    Guid itemGuid = Guid.Parse(selectedRow["ItemGUID"].ToString());
+                    Guid categoryGuid = Guid.Parse(selectedRow["CategoryGUID"].ToString());
+                    Guid companyGuid = Guid.Parse(selectedRow["CompanyGUID"].ToString());
+
+                    InputItemForm inputItemForm = new InputItemForm(itemGuid);
+
+                    
+  
+                    inputItemForm.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("لا يوجد بيانات في الصف المحدد.");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"حدث خطأ أثناء تحميل البيانات: {ex.Message}");
+                MessageBox.Show($"حدث خطأ أثناء تحديد العنصر: {ex.Message}");
             }
         }
 
-        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            InputItemForm inputItemForm = new InputItemForm(this);
-            inputItemForm.ShowDialog();
-        }
+
+
     }
 }

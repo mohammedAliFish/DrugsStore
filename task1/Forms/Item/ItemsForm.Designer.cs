@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ItemsForm));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
@@ -191,6 +192,7 @@
             this.itemGridView.GridControl = this.itemGridControl;
             this.itemGridView.Name = "itemGridView";
             this.itemGridView.OptionsBehavior.Editable = false;
+            this.itemGridView.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.itemGridView_RowCellClick);
             // 
             // colItemGUID
             // 
@@ -259,9 +261,10 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("ItemsForm.IconOptions.Image")));
             this.Name = "ItemsForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Text = "ItemsForm";
+            this.Text = "جدول العناصر";
             this.Load += new System.EventHandler(this.ItemsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).EndInit();

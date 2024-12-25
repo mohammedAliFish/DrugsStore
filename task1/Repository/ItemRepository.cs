@@ -89,22 +89,25 @@ namespace task1.Data
     {
         try
         {
-            var parameters = new SqlParameter[]
-            {
-            new SqlParameter("@ItemGUID", item.ItemGUID == Guid.Empty ? (object)DBNull.Value : item.ItemGUID),
-            new SqlParameter("@ItemName", item.ItemName),
-            new SqlParameter("@ItemCode", item.ItemCode),
-            new SqlParameter("@ItemDescription", item.ItemDescription ?? (object)DBNull.Value),
-            new SqlParameter("@CategoryGUID", item.Category.CategoryGuid),
-            new SqlParameter("@CompanyGUID", item.Company.CompanyGuid)
-            };
+                var parameters = new SqlParameter[]
+     {
+    new SqlParameter("@ItemGUID", item.ItemGUID == Guid.Empty ? (object)DBNull.Value : item.ItemGUID),
+    new SqlParameter("@ItemName", item.ItemName ?? (object)DBNull.Value),
+    new SqlParameter("@ItemCode", item.ItemCode ?? (object)DBNull.Value),
+    new SqlParameter("@ItemDescription", item.ItemDescription ?? (object)DBNull.Value),
+    new SqlParameter("@CategoryGUID", item.Category?.CategoryGuid ?? (object)DBNull.Value),
+    new SqlParameter("@CompanyGUID", item.Company?.CompanyGuid ?? (object)DBNull.Value)
+     };
 
-            sqlHelper.ExecuteStoredProcedure("ItemSave", parameters);
+
+                sqlHelper.ExecuteStoredProcedure("ItemSave", parameters);
         }
         catch (Exception ex)
         {
-            throw new Exception("حدذ مشكله .", ex);
-        }
+                Console.WriteLine($"Error: {ex.Message}");
+                Console.WriteLine($"Stack Trace: {ex.StackTrace}");
+                throw new Exception("حدثت مشكلة أثناء حفظ العنصر.", ex);
+            }
     }
 
 
