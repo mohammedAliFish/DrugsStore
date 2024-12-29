@@ -101,9 +101,11 @@ namespace task1.Forms.Item
 
         private void btnAddOrUpdate_Click(object sender, EventArgs e)
         {
-      
+
+           
             try
             {
+                
                 if (string.IsNullOrWhiteSpace(ItemNameText.Text) ||
                     CategorylookUpEdit.EditValue == null ||
                     CompanylookUpEdit.EditValue == null ||
@@ -122,7 +124,7 @@ namespace task1.Forms.Item
                     return;
                 }
 
-             
+                
                 if (!decimal.TryParse(itemPriceTextBox.Text, out var itemPrice) ||
                     !decimal.TryParse(wholesalePriceTextBox.Text, out var wholesalePrice) ||
                     !decimal.TryParse(distributorPriceTextBox.Text, out var distributorPrice))
@@ -133,7 +135,6 @@ namespace task1.Forms.Item
 
                 
                 ItemRepository itemRepository = new ItemRepository();
-
                 var item = new Model.Entities.Item
                 {
                     ItemGUID = selectedItemGuid == Guid.Empty ? Guid.NewGuid() : selectedItemGuid,
@@ -146,22 +147,34 @@ namespace task1.Forms.Item
 
                 itemRepository.SaveItem(item);
 
-               
+              
+                if (selectedItemGuid == Guid.Empty)
+                {
+                    selectedItemGuid = itemRepository.GetItemGUIDByCode(item.ItemCode); 
+                }
+
+                if (selectedItemGuid == Guid.Empty)
+                {
+                    MessageBox.Show("حدث خطأ أثناء حفظ العنصر.");
+                    return;
+                }
+
+              
                 var pricesTable = new DataTable();
                 pricesTable.Columns.Add("PriceGUID", typeof(Guid));
                 pricesTable.Columns.Add("ItemGUID", typeof(Guid));
                 pricesTable.Columns.Add("ItemPrice", typeof(decimal));
                 pricesTable.Columns.Add("PriceNumber", typeof(byte));
 
-               
-                pricesTable.Rows.Add(Guid.NewGuid(), item.ItemGUID, itemPrice, 1); 
-                pricesTable.Rows.Add(Guid.NewGuid(), item.ItemGUID, wholesalePrice, 2); 
-                pricesTable.Rows.Add(Guid.NewGuid(), item.ItemGUID, distributorPrice, 3);
+                pricesTable.Rows.Add(Guid.NewGuid(), selectedItemGuid, itemPrice, 1);
+                pricesTable.Rows.Add(Guid.NewGuid(), selectedItemGuid, wholesalePrice, 2); 
+                pricesTable.Rows.Add(Guid.NewGuid(), selectedItemGuid, distributorPrice, 3); 
 
+               
                 SavePricesToDatabase(pricesTable);
 
                 MessageBox.Show("تم الحفظ بنجاح.", "نجاح", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DataUpdated?.Invoke();
+                DataUpdated?.Invoke(); 
                 Close();
             }
             catch (Exception ex)

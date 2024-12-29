@@ -22,8 +22,35 @@ namespace task1.Data
             }
         }
 
-       
 
+        public Guid GetItemGUIDByCode(string itemCode)
+        {
+            try
+            {
+                
+                var parameters = new SqlParameter[]
+                {
+                new SqlParameter("@ItemCode", itemCode)
+                };
+
+             
+                var result = sqlHelper.ExecuteScalar("GetItemGUIDByCode", CommandType.StoredProcedure, parameters);
+
+          
+                if (result != null && Guid.TryParse(result.ToString(), out var itemGuid))
+                {
+                    return itemGuid;
+                }
+
+             
+                throw new Exception("ItemGUID not found for the given ItemCode.");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("An error occurred while fetching the ItemGUID.", ex);
+            }
+        
+}
        
 
 
