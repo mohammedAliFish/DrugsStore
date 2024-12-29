@@ -64,6 +64,7 @@
     <Compile Include="CenterForm.Designer.cs">
       <DependentUpon>CenterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Enums\PriceTypeEnum.cs" />
     <Compile Include="Forms\Item\InputItemForm.cs">
       <SubType>Form</SubType>
     </Compile>

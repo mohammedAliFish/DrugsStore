@@ -81,10 +81,11 @@
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem12),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem13),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem12, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem13, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1, true)});
+            this.bar2.OptionsBar.AllowCollapse = true;
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -111,6 +112,8 @@
             // 
             this.barButtonItem13.Caption = "اداره الشركات";
             this.barButtonItem13.Id = 7;
+            this.barButtonItem13.ItemAppearance.Disabled.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.barButtonItem13.ItemAppearance.Disabled.Options.UseFont = true;
             this.barButtonItem13.Name = "barButtonItem13";
             this.barButtonItem13.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem13_ItemClick);
             // 
@@ -131,7 +134,7 @@
             this.barDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl1.Location = new System.Drawing.Point(0, 0);
             this.barDockControl1.Manager = this.barManager2;
-            this.barDockControl1.Size = new System.Drawing.Size(1019, 21);
+            this.barDockControl1.Size = new System.Drawing.Size(1019, 26);
             // 
             // barDockControl2
             // 
@@ -145,17 +148,17 @@
             // 
             this.barDockControl3.CausesValidation = false;
             this.barDockControl3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControl3.Location = new System.Drawing.Point(0, 21);
+            this.barDockControl3.Location = new System.Drawing.Point(0, 26);
             this.barDockControl3.Manager = this.barManager2;
-            this.barDockControl3.Size = new System.Drawing.Size(0, 826);
+            this.barDockControl3.Size = new System.Drawing.Size(0, 821);
             // 
             // barDockControl4
             // 
             this.barDockControl4.CausesValidation = false;
             this.barDockControl4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControl4.Location = new System.Drawing.Point(1019, 21);
+            this.barDockControl4.Location = new System.Drawing.Point(1019, 26);
             this.barDockControl4.Manager = this.barManager2;
-            this.barDockControl4.Size = new System.Drawing.Size(0, 826);
+            this.barDockControl4.Size = new System.Drawing.Size(0, 821);
             // 
             // barButtonItem6
             // 

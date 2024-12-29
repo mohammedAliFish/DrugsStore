@@ -45,6 +45,8 @@
             this.colCategoryGuid = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCategoryCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCategoryName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSaveOrUpdate = new System.Windows.Forms.Button();
@@ -174,6 +176,8 @@
             this.splitContainerControl1.Panel2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.splitContainerControl1.Panel2.Appearance.Options.UseBackColor = true;
             this.splitContainerControl1.Panel2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.splitContainerControl1.Panel2.Controls.Add(this.label2);
+            this.splitContainerControl1.Panel2.Controls.Add(this.label1);
             this.splitContainerControl1.Panel2.Controls.Add(this.panelControl1);
             this.splitContainerControl1.Panel2.Controls.Add(this.dataLayoutControl1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
@@ -227,6 +231,26 @@
             this.colCategoryName.Visible = true;
             this.colCategoryName.VisibleIndex = 1;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(386, 175);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 19);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "اسم التصنيف";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(386, 123);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(78, 19);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "رمز التصنيف";
+            // 
             // panelControl1
             // 
             this.panelControl1.Controls.Add(this.btnDelete);
@@ -261,16 +285,17 @@
             // dataLayoutControl1
             // 
             this.dataLayoutControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataLayoutControl1.BackColor = System.Drawing.Color.Silver;
+            this.dataLayoutControl1.BackColor = System.Drawing.Color.White;
             this.dataLayoutControl1.Controls.Add(this.CategoryCodeText);
             this.dataLayoutControl1.Controls.Add(this.CategoryNameText);
             this.dataLayoutControl1.DataSource = this.categoryBindingSource;
+            this.dataLayoutControl1.ForeColor = System.Drawing.Color.DarkGray;
             this.dataLayoutControl1.Location = new System.Drawing.Point(52, 102);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.OptionsView.RightToLeftMirroringApplied = true;
             this.dataLayoutControl1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dataLayoutControl1.Root = this.Root;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(404, 105);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(305, 117);
             this.dataLayoutControl1.TabIndex = 0;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
@@ -280,32 +305,34 @@
             this.CategoryCodeText.Location = new System.Drawing.Point(20, 20);
             this.CategoryCodeText.MenuManager = this.barManager1;
             this.CategoryCodeText.Name = "CategoryCodeText";
-            this.CategoryCodeText.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CategoryCodeText.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CategoryCodeText.Properties.Appearance.Options.UseFont = true;
-            this.CategoryCodeText.Size = new System.Drawing.Size(290, 22);
+            this.CategoryCodeText.Size = new System.Drawing.Size(265, 26);
             this.CategoryCodeText.StyleController = this.dataLayoutControl1;
             this.CategoryCodeText.TabIndex = 4;
             // 
             // CategoryNameText
             // 
             this.CategoryNameText.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.categoryBindingSource, "CategoryName", true));
-            this.CategoryNameText.Location = new System.Drawing.Point(20, 62);
+            this.CategoryNameText.Location = new System.Drawing.Point(20, 66);
             this.CategoryNameText.MenuManager = this.barManager1;
             this.CategoryNameText.Name = "CategoryNameText";
-            this.CategoryNameText.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CategoryNameText.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CategoryNameText.Properties.Appearance.Options.UseFont = true;
-            this.CategoryNameText.Size = new System.Drawing.Size(290, 22);
+            this.CategoryNameText.Size = new System.Drawing.Size(265, 26);
             this.CategoryNameText.StyleController = this.dataLayoutControl1;
             this.CategoryNameText.TabIndex = 5;
             // 
             // Root
             // 
+            this.Root.AppearanceItemCaption.BorderColor = System.Drawing.Color.White;
+            this.Root.AppearanceItemCaption.Options.UseBorderColor = true;
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             this.Root.GroupBordersVisible = false;
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(404, 105);
+            this.Root.Size = new System.Drawing.Size(305, 117);
             this.Root.TextVisible = false;
             // 
             // layoutControlGroup1
@@ -317,7 +344,7 @@
             this.ItemForCategoryName});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(384, 85);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(285, 97);
             // 
             // ItemForCategoryCode
             // 
@@ -325,17 +352,19 @@
             this.ItemForCategoryCode.Location = new System.Drawing.Point(0, 0);
             this.ItemForCategoryCode.Name = "ItemForCategoryCode";
             this.ItemForCategoryCode.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
-            this.ItemForCategoryCode.Size = new System.Drawing.Size(384, 42);
-            this.ItemForCategoryCode.TextSize = new System.Drawing.Size(62, 13);
+            this.ItemForCategoryCode.Size = new System.Drawing.Size(285, 46);
+            this.ItemForCategoryCode.TextSize = new System.Drawing.Size(0, 0);
+            this.ItemForCategoryCode.TextVisible = false;
             // 
             // ItemForCategoryName
             // 
             this.ItemForCategoryName.Control = this.CategoryNameText;
-            this.ItemForCategoryName.Location = new System.Drawing.Point(0, 42);
+            this.ItemForCategoryName.Location = new System.Drawing.Point(0, 46);
             this.ItemForCategoryName.Name = "ItemForCategoryName";
             this.ItemForCategoryName.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
-            this.ItemForCategoryName.Size = new System.Drawing.Size(384, 43);
-            this.ItemForCategoryName.TextSize = new System.Drawing.Size(62, 13);
+            this.ItemForCategoryName.Size = new System.Drawing.Size(285, 51);
+            this.ItemForCategoryName.TextSize = new System.Drawing.Size(0, 0);
+            this.ItemForCategoryName.TextVisible = false;
             // 
             // CategoryForm
             // 
@@ -359,6 +388,7 @@
             this.splitContainerControl1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel2)).EndInit();
             this.splitContainerControl1.Panel2.ResumeLayout(false);
+            this.splitContainerControl1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.categoryGridControl)).EndInit();
@@ -405,5 +435,7 @@
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSaveOrUpdate;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

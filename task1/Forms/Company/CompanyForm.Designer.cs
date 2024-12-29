@@ -37,6 +37,8 @@
             this.colCompanyGuid = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCompanyCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCompanyName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.btnSaveOrUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -98,6 +100,8 @@
             this.splitContainerControl1.Panel2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.splitContainerControl1.Panel2.Appearance.Options.UseBackColor = true;
             this.splitContainerControl1.Panel2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.splitContainerControl1.Panel2.Controls.Add(this.label2);
+            this.splitContainerControl1.Panel2.Controls.Add(this.label1);
             this.splitContainerControl1.Panel2.Controls.Add(this.panelControl1);
             this.splitContainerControl1.Panel2.Controls.Add(this.dataLayoutControl1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
@@ -156,6 +160,26 @@
             this.colCompanyName.Visible = true;
             this.colCompanyName.VisibleIndex = 1;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(372, 193);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(71, 19);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "اسم الشركه";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(372, 141);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 19);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "رمز الشركه";
+            // 
             // panelControl1
             // 
             this.panelControl1.Appearance.BackColor = System.Drawing.Color.Gray;
@@ -163,15 +187,15 @@
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.panelControl1.Controls.Add(this.btnSaveOrUpdate);
             this.panelControl1.Controls.Add(this.btnDelete);
-            this.panelControl1.Location = new System.Drawing.Point(26, 393);
+            this.panelControl1.Location = new System.Drawing.Point(26, 340);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(424, 144);
+            this.panelControl1.Size = new System.Drawing.Size(424, 104);
             this.panelControl1.TabIndex = 3;
             // 
             // btnSaveOrUpdate
             // 
             this.btnSaveOrUpdate.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveOrUpdate.Location = new System.Drawing.Point(223, 50);
+            this.btnSaveOrUpdate.Location = new System.Drawing.Point(221, 36);
             this.btnSaveOrUpdate.Name = "btnSaveOrUpdate";
             this.btnSaveOrUpdate.Size = new System.Drawing.Size(187, 34);
             this.btnSaveOrUpdate.TabIndex = 1;
@@ -183,7 +207,7 @@
             // 
             this.btnDelete.BackColor = System.Drawing.Color.White;
             this.btnDelete.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(12, 50);
+            this.btnDelete.Location = new System.Drawing.Point(10, 36);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(187, 34);
             this.btnDelete.TabIndex = 2;
@@ -194,7 +218,7 @@
             // dataLayoutControl1
             // 
             this.dataLayoutControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataLayoutControl1.BackColor = System.Drawing.Color.Silver;
+            this.dataLayoutControl1.BackColor = System.Drawing.Color.White;
             this.dataLayoutControl1.Controls.Add(this.CompanyCodeText);
             this.dataLayoutControl1.Controls.Add(this.CompanyNameText);
             this.dataLayoutControl1.DataSource = this.bindingSourceCompany;
@@ -203,7 +227,7 @@
             this.dataLayoutControl1.OptionsView.RightToLeftMirroringApplied = true;
             this.dataLayoutControl1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dataLayoutControl1.Root = this.Root;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(424, 105);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(323, 120);
             this.dataLayoutControl1.TabIndex = 0;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
@@ -213,9 +237,9 @@
             this.CompanyCodeText.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceCompany, "CompanyCode", true));
             this.CompanyCodeText.Location = new System.Drawing.Point(20, 20);
             this.CompanyCodeText.Name = "CompanyCodeText";
-            this.CompanyCodeText.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CompanyCodeText.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CompanyCodeText.Properties.Appearance.Options.UseFont = true;
-            this.CompanyCodeText.Size = new System.Drawing.Size(313, 22);
+            this.CompanyCodeText.Size = new System.Drawing.Size(283, 26);
             this.CompanyCodeText.StyleController = this.dataLayoutControl1;
             this.CompanyCodeText.TabIndex = 4;
             this.CompanyCodeText.EditValueChanged += new System.EventHandler(this.CompanyCodeTextEdit_EditValueChanged);
@@ -223,11 +247,11 @@
             // CompanyNameText
             // 
             this.CompanyNameText.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceCompany, "CompanyName", true));
-            this.CompanyNameText.Location = new System.Drawing.Point(20, 62);
+            this.CompanyNameText.Location = new System.Drawing.Point(20, 66);
             this.CompanyNameText.Name = "CompanyNameText";
-            this.CompanyNameText.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CompanyNameText.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CompanyNameText.Properties.Appearance.Options.UseFont = true;
-            this.CompanyNameText.Size = new System.Drawing.Size(313, 22);
+            this.CompanyNameText.Size = new System.Drawing.Size(283, 26);
             this.CompanyNameText.StyleController = this.dataLayoutControl1;
             this.CompanyNameText.TabIndex = 5;
             this.CompanyNameText.EditValueChanged += new System.EventHandler(this.CompanyNameTextEdit_EditValueChanged);
@@ -239,7 +263,7 @@
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(424, 105);
+            this.Root.Size = new System.Drawing.Size(323, 120);
             this.Root.TextVisible = false;
             // 
             // layoutControlGroup1
@@ -251,7 +275,7 @@
             this.ItemForCompanyName});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(404, 85);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(303, 100);
             // 
             // ItemForCompanyCode
             // 
@@ -259,17 +283,19 @@
             this.ItemForCompanyCode.Location = new System.Drawing.Point(0, 0);
             this.ItemForCompanyCode.Name = "ItemForCompanyCode";
             this.ItemForCompanyCode.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
-            this.ItemForCompanyCode.Size = new System.Drawing.Size(404, 42);
-            this.ItemForCompanyCode.TextSize = new System.Drawing.Size(59, 13);
+            this.ItemForCompanyCode.Size = new System.Drawing.Size(303, 46);
+            this.ItemForCompanyCode.TextSize = new System.Drawing.Size(0, 0);
+            this.ItemForCompanyCode.TextVisible = false;
             // 
             // ItemForCompanyName
             // 
             this.ItemForCompanyName.Control = this.CompanyNameText;
-            this.ItemForCompanyName.Location = new System.Drawing.Point(0, 42);
+            this.ItemForCompanyName.Location = new System.Drawing.Point(0, 46);
             this.ItemForCompanyName.Name = "ItemForCompanyName";
             this.ItemForCompanyName.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
-            this.ItemForCompanyName.Size = new System.Drawing.Size(404, 43);
-            this.ItemForCompanyName.TextSize = new System.Drawing.Size(59, 13);
+            this.ItemForCompanyName.Size = new System.Drawing.Size(303, 54);
+            this.ItemForCompanyName.TextSize = new System.Drawing.Size(0, 0);
+            this.ItemForCompanyName.TextVisible = false;
             // 
             // barManager1
             // 
@@ -371,6 +397,7 @@
             this.splitContainerControl1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel2)).EndInit();
             this.splitContainerControl1.Panel2.ResumeLayout(false);
+            this.splitContainerControl1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.companyGridControl)).EndInit();
@@ -421,5 +448,7 @@
         private System.Windows.Forms.Button btnSaveOrUpdate;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

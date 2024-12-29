@@ -1,8 +1,8 @@
 ﻿
 
 using System;
-using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 using task1.Data;
 
@@ -11,23 +11,26 @@ namespace task1.Forms.Item
     public partial class InputItemForm : Form 
     {
         private readonly Guid _itemsG;
-       
-        private DevExpress.XtraEditors.LookUpEdit catLookUpEdit;
-        private DevExpress.XtraEditors.LookUpEdit comLookUpEdit;
+        public event Action DataUpdated;
+
+
 
 
 
 
         private bool isNewRecord = true;
         private Guid selectedItemGuid = Guid.Empty;
+      
 
-       
         public InputItemForm(Guid itemsG)
         {
             InitializeComponent();
             _itemsG = itemsG;
-            
-            
+          
+
+           
+
+
         }
         public void OpenForNewRecord()
         {
@@ -38,10 +41,9 @@ namespace task1.Forms.Item
         {
             try
             {
+
               
 
-            
-                
                 LoadCategoriesAndCompanies();
             }
             catch (Exception ex)
@@ -73,19 +75,18 @@ namespace task1.Forms.Item
 
 
 
-                if (catLookUpEdit != null)
-                {
-                    catLookUpEdit.Properties.DataSource = categories;
-                    catLookUpEdit.Properties.DisplayMember = "CategoryName";
-                    catLookUpEdit.Properties.ValueMember = "CategoryGuid";
-                }
 
-                if (comLookUpEdit != null)
-                {
-                    comLookUpEdit.Properties.DataSource = companies;
-                    comLookUpEdit.Properties.DisplayMember = "CompanyName";
-                    comLookUpEdit.Properties.ValueMember = "CompanyGuid";
-                }
+
+                CategorylookUpEdit.Properties.DataSource = categories;
+                CategorylookUpEdit.Properties.DisplayMember = "CategoryName";
+                CategorylookUpEdit.Properties.ValueMember = "CategoryGuid";
+
+
+
+                CompanylookUpEdit.Properties.DataSource = companies;
+                CompanylookUpEdit.Properties.DisplayMember = "CompanyName";
+                CompanylookUpEdit.Properties.ValueMember = "CompanyGuid";
+               
 
 
 
@@ -100,26 +101,37 @@ namespace task1.Forms.Item
 
         private void btnAddOrUpdate_Click(object sender, EventArgs e)
         {
+      
             try
             {
-                
                 if (string.IsNullOrWhiteSpace(ItemNameText.Text) ||
-                    catLookUpEdit.EditValue == null ||
-                    comLookUpEdit.EditValue == null)
+                    CategorylookUpEdit.EditValue == null ||
+                    CompanylookUpEdit.EditValue == null ||
+                    string.IsNullOrWhiteSpace(itemPriceTextBox.Text) ||
+                    string.IsNullOrWhiteSpace(wholesalePriceTextBox.Text) ||
+                    string.IsNullOrWhiteSpace(distributorPriceTextBox.Text))
                 {
                     MessageBox.Show("الرجاء ملء جميع الحقول المطلوبة.");
                     return;
                 }
 
-              
-                if (!Guid.TryParse(catLookUpEdit.EditValue.ToString(), out var selectedCategoryGuid) ||
-                    !Guid.TryParse(comLookUpEdit.EditValue.ToString(), out var selectedCompanyGuid))
+                if (!Guid.TryParse(CategorylookUpEdit.EditValue.ToString(), out var selectedCategoryGuid) ||
+                    !Guid.TryParse(CompanylookUpEdit.EditValue.ToString(), out var selectedCompanyGuid))
                 {
-                    MessageBox.Show("Invalid category or company selection.");
+                    MessageBox.Show("خطأ في اختيار الشركة أو التصنيف.");
                     return;
                 }
 
              
+                if (!decimal.TryParse(itemPriceTextBox.Text, out var itemPrice) ||
+                    !decimal.TryParse(wholesalePriceTextBox.Text, out var wholesalePrice) ||
+                    !decimal.TryParse(distributorPriceTextBox.Text, out var distributorPrice))
+                {
+                    MessageBox.Show("الرجاء إدخال أسعار صحيحة.");
+                    return;
+                }
+
+                
                 ItemRepository itemRepository = new ItemRepository();
 
                 var item = new Model.Entities.Item
@@ -132,10 +144,24 @@ namespace task1.Forms.Item
                     Company = new Model.Entities.Company { CompanyGuid = selectedCompanyGuid }
                 };
 
-               
                 itemRepository.SaveItem(item);
 
+               
+                var pricesTable = new DataTable();
+                pricesTable.Columns.Add("PriceGUID", typeof(Guid));
+                pricesTable.Columns.Add("ItemGUID", typeof(Guid));
+                pricesTable.Columns.Add("ItemPrice", typeof(decimal));
+                pricesTable.Columns.Add("PriceNumber", typeof(byte));
+
+               
+                pricesTable.Rows.Add(Guid.NewGuid(), item.ItemGUID, itemPrice, 1); 
+                pricesTable.Rows.Add(Guid.NewGuid(), item.ItemGUID, wholesalePrice, 2); 
+                pricesTable.Rows.Add(Guid.NewGuid(), item.ItemGUID, distributorPrice, 3);
+
+                SavePricesToDatabase(pricesTable);
+
                 MessageBox.Show("تم الحفظ بنجاح.", "نجاح", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DataUpdated?.Invoke();
                 Close();
             }
             catch (Exception ex)
@@ -144,47 +170,66 @@ namespace task1.Forms.Item
             }
         }
 
+        private void SavePricesToDatabase(DataTable pricesTable)
+        {
+            try
+            {
+                var parameter = new SqlParameter
+                {
+                    ParameterName = "@Prices",
+                    SqlDbType = SqlDbType.Structured,
+                    Value = pricesTable,
+                    TypeName = "PriceTableType" 
+                };
+
+              
+                sqlHelper.ExecuteNonQuery("PriceSaveMultiple", CommandType.StoredProcedure, new[] { parameter });
+
+                MessageBox.Show("تم حفظ الأسعار بنجاح.", "نجاح", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"حدث خطأ أثناء حفظ الأسعار: {ex.Message}", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    if (_itemsForm != null && _itemsForm.ItemGridView != null)
-            //    {
-            //        var selectedRow = _itemsForm.ItemGridView.GetFocusedDataRow();
-            //        if (selectedRow == null)
-            //        {
-            //            MessageBox.Show("لا يوجد عنصر محدد.", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //            return;
-            //        }
+            try
+            {
+               
+                var confirmResult = MessageBox.Show("هل تريد  حذف  العنصر؟", "تأكيد الحذف", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (confirmResult != DialogResult.Yes)
+                {
+                    return; 
+                }
 
-            //        var confirmResult = MessageBox.Show("هل تريد بالتأكيد حذف هذا العنصر؟", "تأكيد الحذف", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            //        if (confirmResult != DialogResult.Yes)
-            //        {
-            //            return;
-            //        }
+              
+               
 
-            //        Guid itemGuid = Guid.Parse(selectedRow["ItemGUID"].ToString());
-            //        ItemRepository itemRepository = new ItemRepository();
-            //        itemRepository.DeleteItem(itemGuid);
+               
+                ItemRepository itemRepository = new ItemRepository();
+                itemRepository.DeleteItem(selectedItemGuid);
 
-            //        MessageBox.Show("تم حذف العنصر بنجاح.", "حذف", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("تم حذف  .", "حذف", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DataUpdated?.Invoke();
 
-            //        RefreshItemsFormGrid();
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show($"حدث خطأ أثناء الحذف: {ex.Message}");
-            //}
+
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"حدث خطأ  : {ex.Message}", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         public void SetItemData(Guid itemGuid, string itemName, string itemCode, string itemDescription, Guid categoryGuid, Guid companyGuid)
         {
             
 
             if (ItemNameText == null || ItemCodeText == null || ItemDescriptionText == null)
-                throw new NullReferenceException("Text controls are not initialized");
+                throw new NullReferenceException("حدث خطأ");
             selectedItemGuid = itemGuid;
             ItemNameText.Text = itemName;
             ItemCodeText.Text = itemCode;
@@ -192,24 +237,27 @@ namespace task1.Forms.Item
 
 
 
-            catLookUpEdit.EditValue = categoryGuid;
-            comLookUpEdit.EditValue = companyGuid;
+            CategorylookUpEdit.EditValue = categoryGuid;
+            CompanylookUpEdit.EditValue = companyGuid;
+
+         
 
 
 
             isNewRecord = false;
         }
 
-
-
-        
-
-        private void catlookUpEdit_EditValueChanged_1(object sender, EventArgs e)
+        private void itemPriceTextBox_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void comlookUpEdit_EditValueChanged(object sender, EventArgs e)
+        private void wholesalePriceTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void distributorPriceTextBox_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -1,7 +1,6 @@
 ﻿using System;
 using DevExpress.XtraGrid;
 using System.Data;
-using task1.Data;
 using System.Windows.Forms;
 
 
@@ -11,8 +10,7 @@ namespace task1.Forms.Item
 {
     public partial class ItemsForm : CenterForm
     {
-        public DevExpress.XtraGrid.GridControl ItemGridControl => itemGridControl;
-        public DevExpress.XtraGrid.Views.Grid.GridView ItemGridView => itemGridView;
+      
         public ItemsForm()
         {
             InitializeComponent();
@@ -53,7 +51,7 @@ namespace task1.Forms.Item
                     Guid companyGuid = Guid.Parse(selectedRow["CompanyGUID"].ToString());
 
                     InputItemForm inputItemForm = new InputItemForm(itemGuid);
-
+                    inputItemForm.LoadCategoriesAndCompanies();
                     inputItemForm.SetItemData(itemGuid,
                                      selectedRow["ItemName"].ToString(),
                                      selectedRow["ItemCode"].ToString(),
@@ -62,6 +60,7 @@ namespace task1.Forms.Item
                                      companyGuid);
 
                     inputItemForm.ShowDialog();
+                    LoadItemsData();
                 }
                 else
                 {
