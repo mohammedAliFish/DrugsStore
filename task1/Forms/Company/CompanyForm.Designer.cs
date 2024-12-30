@@ -40,6 +40,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.btnExport = new DevExpress.XtraEditors.SimpleButton();
             this.btnSaveOrUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
@@ -59,6 +60,7 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnShowTree = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
             this.splitContainerControl1.Panel1.SuspendLayout();
@@ -185,17 +187,31 @@
             this.panelControl1.Appearance.BackColor = System.Drawing.Color.Gray;
             this.panelControl1.Appearance.Options.UseBackColor = true;
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.panelControl1.Controls.Add(this.btnShowTree);
+            this.panelControl1.Controls.Add(this.btnExport);
             this.panelControl1.Controls.Add(this.btnSaveOrUpdate);
             this.panelControl1.Controls.Add(this.btnDelete);
-            this.panelControl1.Location = new System.Drawing.Point(26, 340);
+            this.panelControl1.Location = new System.Drawing.Point(26, 303);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(424, 104);
+            this.panelControl1.Size = new System.Drawing.Size(323, 285);
             this.panelControl1.TabIndex = 3;
+            // 
+            // btnExport
+            // 
+            this.btnExport.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExport.Appearance.Options.UseFont = true;
+            this.btnExport.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnExport.ImageOptions.SvgImage")));
+            this.btnExport.Location = new System.Drawing.Point(66, 206);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(187, 35);
+            this.btnExport.TabIndex = 3;
+            this.btnExport.Text = "تصدير الى اكسل";
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // btnSaveOrUpdate
             // 
             this.btnSaveOrUpdate.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveOrUpdate.Location = new System.Drawing.Point(221, 36);
+            this.btnSaveOrUpdate.Location = new System.Drawing.Point(66, 20);
             this.btnSaveOrUpdate.Name = "btnSaveOrUpdate";
             this.btnSaveOrUpdate.Size = new System.Drawing.Size(187, 34);
             this.btnSaveOrUpdate.TabIndex = 1;
@@ -207,7 +223,7 @@
             // 
             this.btnDelete.BackColor = System.Drawing.Color.White;
             this.btnDelete.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(10, 36);
+            this.btnDelete.Location = new System.Drawing.Point(66, 147);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(187, 34);
             this.btnDelete.TabIndex = 2;
@@ -377,6 +393,18 @@
             this.barButtonItem1.Id = 3;
             this.barButtonItem1.Name = "barButtonItem1";
             // 
+            // btnShowTree
+            // 
+            this.btnShowTree.BackColor = System.Drawing.Color.White;
+            this.btnShowTree.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShowTree.Location = new System.Drawing.Point(66, 86);
+            this.btnShowTree.Name = "btnShowTree";
+            this.btnShowTree.Size = new System.Drawing.Size(187, 34);
+            this.btnShowTree.TabIndex = 4;
+            this.btnShowTree.Text = "شجره الشركات";
+            this.btnShowTree.UseVisualStyleBackColor = false;
+            this.btnShowTree.Click += new System.EventHandler(this.btnShowTree_Click);
+            // 
             // CompanyForm
             // 
             this.Appearance.BackColor = System.Drawing.Color.Silver;
@@ -450,5 +478,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private DevExpress.XtraEditors.SimpleButton btnExport;
+        private System.Windows.Forms.Button btnShowTree;
     }
 }

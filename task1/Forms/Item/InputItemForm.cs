@@ -198,7 +198,7 @@ namespace task1.Forms.Item
               
                 sqlHelper.ExecuteNonQuery("PriceSaveMultiple", CommandType.StoredProcedure, new[] { parameter });
 
-                MessageBox.Show("تم حفظ الأسعار بنجاح.", "نجاح", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
             }
             catch (Exception ex)
             {

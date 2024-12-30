@@ -43,20 +43,20 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAddOrUpdate = new System.Windows.Forms.Button();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.CategorylookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.label2 = new System.Windows.Forms.Label();
             this.CompanylookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.label3 = new System.Windows.Forms.Label();
+            this.CategorylookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.itemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.itemPriceTextBox = new System.Windows.Forms.TextBox();
             this.wholesalePriceTextBox = new System.Windows.Forms.TextBox();
             this.distributorPriceTextBox = new System.Windows.Forms.TextBox();
+            this.itemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemNameText.Properties)).BeginInit();
@@ -71,8 +71,8 @@
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CategorylookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CompanylookUpEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CategorylookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -220,32 +220,6 @@
             this.panelControl2.Size = new System.Drawing.Size(533, 72);
             this.panelControl2.TabIndex = 2;
             // 
-            // CategorylookUpEdit
-            // 
-            this.CategorylookUpEdit.Location = new System.Drawing.Point(269, 28);
-            this.CategorylookUpEdit.Name = "CategorylookUpEdit";
-            this.CategorylookUpEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CategorylookUpEdit.Properties.Appearance.Options.UseFont = true;
-            this.CategorylookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.CategorylookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CategoryName", "اسم التصنيف"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CategoryGuid", "Name18", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
-            this.CategorylookUpEdit.Properties.NullText = "قائمه التصنيفات";
-            this.CategorylookUpEdit.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.CategorylookUpEdit.Size = new System.Drawing.Size(153, 22);
-            this.CategorylookUpEdit.TabIndex = 8;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(171, 31);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 19);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "اختر الشركه";
-            // 
             // CompanylookUpEdit
             // 
             this.CompanylookUpEdit.Location = new System.Drawing.Point(9, 28);
@@ -271,6 +245,32 @@
             this.label3.Size = new System.Drawing.Size(80, 19);
             this.label3.TabIndex = 9;
             this.label3.Text = "اختر التصنيف";
+            // 
+            // CategorylookUpEdit
+            // 
+            this.CategorylookUpEdit.Location = new System.Drawing.Point(269, 28);
+            this.CategorylookUpEdit.Name = "CategorylookUpEdit";
+            this.CategorylookUpEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CategorylookUpEdit.Properties.Appearance.Options.UseFont = true;
+            this.CategorylookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.CategorylookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CategoryName", "اسم التصنيف"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CategoryGuid", "Name18", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
+            this.CategorylookUpEdit.Properties.NullText = "قائمه التصنيفات";
+            this.CategorylookUpEdit.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.CategorylookUpEdit.Size = new System.Drawing.Size(153, 22);
+            this.CategorylookUpEdit.TabIndex = 8;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(171, 31);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(74, 19);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "اختر الشركه";
             // 
             // label1
             // 
@@ -301,10 +301,6 @@
             this.label5.Size = new System.Drawing.Size(81, 19);
             this.label5.TabIndex = 12;
             this.label5.Text = "وصف العنصر";
-            // 
-            // itemBindingSource
-            // 
-            this.itemBindingSource.DataSource = typeof(task1.Model.Entities.Item);
             // 
             // label6
             // 
@@ -341,6 +337,7 @@
             this.itemPriceTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemPriceTextBox.Location = new System.Drawing.Point(413, 324);
             this.itemPriceTextBox.Name = "itemPriceTextBox";
+            this.itemPriceTextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.itemPriceTextBox.Size = new System.Drawing.Size(151, 26);
             this.itemPriceTextBox.TabIndex = 16;
             this.itemPriceTextBox.TextChanged += new System.EventHandler(this.itemPriceTextBox_TextChanged);
@@ -350,6 +347,7 @@
             this.wholesalePriceTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.wholesalePriceTextBox.Location = new System.Drawing.Point(413, 372);
             this.wholesalePriceTextBox.Name = "wholesalePriceTextBox";
+            this.wholesalePriceTextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.wholesalePriceTextBox.Size = new System.Drawing.Size(151, 26);
             this.wholesalePriceTextBox.TabIndex = 17;
             this.wholesalePriceTextBox.TextChanged += new System.EventHandler(this.wholesalePriceTextBox_TextChanged);
@@ -359,9 +357,14 @@
             this.distributorPriceTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.distributorPriceTextBox.Location = new System.Drawing.Point(413, 416);
             this.distributorPriceTextBox.Name = "distributorPriceTextBox";
+            this.distributorPriceTextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.distributorPriceTextBox.Size = new System.Drawing.Size(151, 26);
             this.distributorPriceTextBox.TabIndex = 18;
             this.distributorPriceTextBox.TextChanged += new System.EventHandler(this.distributorPriceTextBox_TextChanged);
+            // 
+            // itemBindingSource
+            // 
+            this.itemBindingSource.DataSource = typeof(task1.Model.Entities.Item);
             // 
             // InputItemForm
             // 
@@ -401,8 +404,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CategorylookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CompanylookUpEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CategorylookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

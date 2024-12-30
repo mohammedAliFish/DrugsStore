@@ -73,7 +73,42 @@ namespace task1.Forms.Item
             }
         }
 
+        private void btnExport_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
 
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.Filter = "Excel Files|*.xlsx";
+                    saveFileDialog.Title = "Export Data to Excel";
+                    saveFileDialog.FileName = "ItemsData.xlsx";
 
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+
+                        string filePath = saveFileDialog.FileName;
+                        itemGridView.ExportToXlsx(filePath);
+
+                        MessageBox.Show("تم تصدير  الى كسل!", "نجاح", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        if (MessageBox.Show("هل تريد فتح الملف؟", "فتح الملف", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            System.Diagnostics.Process.Start(filePath);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"حدث خطأ أثناء التصدير ");
+            }
+        }
+
+        private void barButtonAddItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            InputItemForm inputItemForm = new InputItemForm(Guid.NewGuid());
+            inputItemForm.OpenForNewRecord();
+        }
     }
 }

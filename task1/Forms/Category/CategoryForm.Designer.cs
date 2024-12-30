@@ -48,6 +48,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.btnShowTree = new System.Windows.Forms.Button();
+            this.btnExport = new DevExpress.XtraEditors.SimpleButton();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSaveOrUpdate = new System.Windows.Forms.Button();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
@@ -253,19 +255,44 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.btnShowTree);
+            this.panelControl1.Controls.Add(this.btnExport);
             this.panelControl1.Controls.Add(this.btnDelete);
             this.panelControl1.Controls.Add(this.btnSaveOrUpdate);
             this.panelControl1.Location = new System.Drawing.Point(52, 289);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(404, 100);
+            this.panelControl1.Size = new System.Drawing.Size(305, 247);
             this.panelControl1.TabIndex = 1;
+            // 
+            // btnShowTree
+            // 
+            this.btnShowTree.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShowTree.Location = new System.Drawing.Point(74, 129);
+            this.btnShowTree.Name = "btnShowTree";
+            this.btnShowTree.Size = new System.Drawing.Size(161, 31);
+            this.btnShowTree.TabIndex = 14;
+            this.btnShowTree.Text = "شجره التصنيفات";
+            this.btnShowTree.UseVisualStyleBackColor = true;
+            this.btnShowTree.Click += new System.EventHandler(this.btnShowTree_Click);
+            // 
+            // btnExport
+            // 
+            this.btnExport.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExport.Appearance.Options.UseFont = true;
+            this.btnExport.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnExport.ImageOptions.SvgImage")));
+            this.btnExport.Location = new System.Drawing.Point(74, 189);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(161, 38);
+            this.btnExport.TabIndex = 13;
+            this.btnExport.Text = "تصدير الى اكسل";
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(59, 37);
+            this.btnDelete.Location = new System.Drawing.Point(74, 73);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(105, 31);
+            this.btnDelete.Size = new System.Drawing.Size(161, 31);
             this.btnDelete.TabIndex = 1;
             this.btnDelete.Text = "حذف";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -274,9 +301,9 @@
             // btnSaveOrUpdate
             // 
             this.btnSaveOrUpdate.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveOrUpdate.Location = new System.Drawing.Point(254, 37);
+            this.btnSaveOrUpdate.Location = new System.Drawing.Point(74, 26);
             this.btnSaveOrUpdate.Name = "btnSaveOrUpdate";
-            this.btnSaveOrUpdate.Size = new System.Drawing.Size(105, 31);
+            this.btnSaveOrUpdate.Size = new System.Drawing.Size(161, 31);
             this.btnSaveOrUpdate.TabIndex = 0;
             this.btnSaveOrUpdate.Text = "حفظ";
             this.btnSaveOrUpdate.UseVisualStyleBackColor = true;
@@ -437,5 +464,7 @@
         private System.Windows.Forms.Button btnSaveOrUpdate;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private DevExpress.XtraEditors.SimpleButton btnExport;
+        private System.Windows.Forms.Button btnShowTree;
     }
 }

@@ -17,7 +17,7 @@ namespace task1.Forms.Category
 
         private void CategoryForm_Load(object sender, EventArgs e)
         {
-            LoadCategoryData();
+                LoadCategoryData();
         }
 
         
@@ -171,9 +171,48 @@ namespace task1.Forms.Category
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"حدث خطأ أثناء الحذف: {ex.Message}");
+                MessageBox.Show($"حدث خطأ أثناء الحذف: لايمكن حذف التصنيف لان هنالك عناصر مرتبطه به");
             }
         }
 
+       
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.Filter = "Excel Files|*.xlsx";
+                    saveFileDialog.Title = "Export Data to Excel";
+                    saveFileDialog.FileName = "CategoryData.xlsx";
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                   
+                        string filePath = saveFileDialog.FileName;
+                        categoryGridView.ExportToXlsx(filePath);
+
+                        MessageBox.Show("تم تصدير  الى كسل!", "نجاح", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        if (MessageBox.Show("هل تريد فتح الملف؟", "فتح الملف", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            System.Diagnostics.Process.Start(filePath);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"حدث خطأ أثناء التصدير ");
+            }
+        }
+
+        private void btnShowTree_Click(object sender, EventArgs e)
+        {
+            CategoryTreeViewForm categoryTreeViewForm = new CategoryTreeViewForm();
+            categoryTreeViewForm.ShowDialog();
+        }
     }
 }

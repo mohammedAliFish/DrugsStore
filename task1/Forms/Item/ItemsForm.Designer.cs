@@ -32,8 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ItemsForm));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
+            this.btnExport = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -41,6 +41,8 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.itemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.itemGridControl = new DevExpress.XtraGrid.GridControl();
             this.itemGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -52,6 +54,7 @@
             this.colCompanyGUID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCategory = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCompany = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.barButtonAddItem = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemGridControl)).BeginInit();
@@ -72,9 +75,12 @@
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barButtonItem1,
             this.barButtonItem2,
-            this.barButtonItem3});
+            this.barButtonItem3,
+            this.barButtonItem4,
+            this.btnExport,
+            this.barButtonAddItem});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 3;
+            this.barManager1.MaxItemId = 6;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -83,16 +89,7 @@
             this.bar1.DockCol = 0;
             this.bar1.DockRow = 1;
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3)});
             this.bar1.Text = "Tools";
-            // 
-            // barButtonItem3
-            // 
-            this.barButtonItem3.Caption = "اضافه عنصر";
-            this.barButtonItem3.Id = 2;
-            this.barButtonItem3.Name = "barButtonItem3";
-            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
             // bar2
             // 
@@ -100,9 +97,19 @@
             this.bar2.DockCol = 0;
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonAddItem, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnExport, true)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
+            // 
+            // btnExport
+            // 
+            this.btnExport.Caption = "تصدير الى اكسل";
+            this.btnExport.Id = 4;
+            this.btnExport.Name = "btnExport";
+            this.btnExport.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExport_ItemClick);
             // 
             // bar3
             // 
@@ -159,6 +166,19 @@
             this.barButtonItem2.Caption = "اضافه عنصر";
             this.barButtonItem2.Id = 1;
             this.barButtonItem2.Name = "barButtonItem2";
+            // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "اضافه عنصر";
+            this.barButtonItem3.Id = 2;
+            this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
+            // 
+            // barButtonItem4
+            // 
+            this.barButtonItem4.Caption = "barButtonItem4";
+            this.barButtonItem4.Id = 3;
+            this.barButtonItem4.Name = "barButtonItem4";
             // 
             // itemBindingSource
             // 
@@ -249,6 +269,13 @@
             this.colCompany.Visible = true;
             this.colCompany.VisibleIndex = 4;
             // 
+            // barButtonAddItem
+            // 
+            this.barButtonAddItem.Caption = "اضافه عنصر";
+            this.barButtonAddItem.Id = 5;
+            this.barButtonAddItem.Name = "barButtonAddItem";
+            this.barButtonAddItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonAddItem_ItemClick);
+            // 
             // ItemsForm
             // 
             this.Appearance.BackColor = System.Drawing.Color.Silver;
@@ -299,5 +326,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn colCompanyGUID;
         private DevExpress.XtraGrid.Columns.GridColumn colCategory;
         private DevExpress.XtraGrid.Columns.GridColumn colCompany;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        private DevExpress.XtraBars.BarButtonItem btnExport;
+        private DevExpress.XtraBars.BarButtonItem barButtonAddItem;
     }
 }

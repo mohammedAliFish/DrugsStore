@@ -96,7 +96,7 @@ namespace task1.Forms.Company
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"حدث خطأ أثناء الحذف: {ex.Message}");
+                MessageBox.Show($"حدث خطأ أثناء الحذف: لايمكن حذف الشركه لانها مرتبطه بعناصر");
             }
         }
 
@@ -200,7 +200,7 @@ namespace task1.Forms.Company
             {
                 if (e.RowHandle >= 0)
                 {
-                    // Ensure these column names exist in the data source
+                  
                     var companyCode = companyGridView.GetRowCellValue(e.RowHandle, "CompanyCode")?.ToString();
                     var companyName = companyGridView.GetRowCellValue(e.RowHandle, "CompanyName")?.ToString();
 
@@ -209,7 +209,7 @@ namespace task1.Forms.Company
                         CompanyCodeText.Text = companyCode;
                         CompanyNameText.Text = companyName;
 
-                        // Mark as not a new record
+                     
                         isNewRecord = false;
                     }
                     else
@@ -224,5 +224,42 @@ namespace task1.Forms.Company
             }
         }
 
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.Filter = "Excel Files|*.xlsx";
+                    saveFileDialog.Title = "Export Data to Excel";
+                    saveFileDialog.FileName = "CompanyData.xlsx";
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+
+                        string filePath = saveFileDialog.FileName;
+                        companyGridView.ExportToXlsx(filePath);
+
+                        MessageBox.Show("تم تصدير  الى كسل!", "نجاح", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        if (MessageBox.Show("هل تريد فتح الملف؟", "فتح الملف", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            System.Diagnostics.Process.Start(filePath);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"حدث خطأ أثناء التصدير ");
+            }
+        }
+
+        private void btnShowTree_Click(object sender, EventArgs e)
+        {
+            CompanyTreeViewForm companyTreeViewForm = new CompanyTreeViewForm();
+            companyTreeViewForm.ShowDialog();
+        }
     }
 }
