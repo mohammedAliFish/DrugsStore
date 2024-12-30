@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 
 namespace task1.Forms.Category
 {
@@ -46,7 +39,7 @@ namespace task1.Forms.Category
                     Value = Guid.Parse(categoryRow["CategoryGUID"].ToString())
                 }
                     };
-                    DataTable items = sqlHelper.ExecuteStoredProcedure("GetItemsByCategory", parameters);
+                    DataTable items = sqlHelper.ExecuteStoredProcedure("ItemsByCategoryGet", parameters);
 
                     foreach (DataRow itemRow in items.Rows)
                     {
@@ -67,7 +60,7 @@ namespace task1.Forms.Category
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"حدث خطأ أثناء تحميل TreeView: {ex.Message}", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"حدث خطأ أثناء تحميل الشجرخ : ");
             }
         }
 
