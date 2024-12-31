@@ -4,6 +4,7 @@ using task1.Forms.Category;
 using task1.Forms.Company;
 using task1.Forms.Item;
 using task1.Forms.Price;
+using task1.Forms.Report;
 
 namespace task1
 {
@@ -42,6 +43,12 @@ namespace task1
         {
             PriceForm priceForm = new PriceForm();
             priceForm.Show();
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ReportForm reportForm = new ReportForm();
+            reportForm.Show();
         }
     }
 }

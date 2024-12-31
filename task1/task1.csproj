@@ -101,7 +101,15 @@
     <Compile Include="Forms\Price\PriceForm.Designer.cs">
       <DependentUpon>PriceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Report\ReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Report\ReportForm.Designer.cs">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entities\All.cs" />
     <Compile Include="Model\Entities\Price.cs" />
+    <Compile Include="Repository\AllRepository.cs" />
     <Compile Include="Repository\CategoryRepository.cs" />
     <Compile Include="Repository\CompanyRepository.cs" />
     <Compile Include="Repository\ItemRepository.cs" />
@@ -163,6 +171,9 @@
     <EmbeddedResource Include="Forms\Price\PriceForm.resx">
       <DependentUpon>PriceForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Report\ReportForm.resx">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -174,6 +185,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="App.config" />
+    <None Include="Properties\DataSources\task1.Model.Entities.All.datasource" />
     <None Include="Properties\DataSources\task1.Model.Entities.Category.datasource" />
     <None Include="Properties\DataSources\task1.Model.Entities.Company.datasource" />
     <None Include="Properties\DataSources\task1.Model.Entities.Item.datasource" />

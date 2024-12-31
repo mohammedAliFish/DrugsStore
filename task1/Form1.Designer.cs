@@ -36,6 +36,7 @@
             this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem13 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl2 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl3 = new DevExpress.XtraBars.BarDockControl();
@@ -67,9 +68,10 @@
             this.barButtonItem11,
             this.barButtonItem12,
             this.barButtonItem13,
-            this.barButtonItem1});
+            this.barButtonItem1,
+            this.barButtonItem2});
             this.barManager2.MainMenu = this.bar2;
-            this.barManager2.MaxItemId = 9;
+            this.barManager2.MaxItemId = 10;
             this.barManager2.RightToLeft = DevExpress.Utils.DefaultBoolean.True;
             // 
             // bar2
@@ -84,7 +86,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem12, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem13, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2, true)});
             this.bar2.OptionsBar.AllowCollapse = true;
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
@@ -127,6 +130,13 @@
             this.barButtonItem1.ItemAppearance.Hovered.Options.UseFont = true;
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "التقارير";
+            this.barButtonItem2.Id = 9;
+            this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
             // barDockControl1
             // 
@@ -230,6 +240,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem12;
         private DevExpress.XtraBars.BarButtonItem barButtonItem13;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
     }
 }
 
