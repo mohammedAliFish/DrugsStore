@@ -30,14 +30,32 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportForm));
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bar2 = new DevExpress.XtraBars.Bar();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.allGridControl = new DevExpress.XtraGrid.GridControl();
             this.allBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -56,14 +74,18 @@
             this.colWholesalePrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDistributorPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
-            this.CompanyNameTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.CategoryNameTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemNameBtnEdit = new DevExpress.XtraEditors.ButtonEdit();
+            this.CompanyNameBtnEdit = new DevExpress.XtraEditors.ButtonEdit();
+            this.CategoryNameBtnEdit = new DevExpress.XtraEditors.ButtonEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.ItemForItemName = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForCompanyName = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForCategoryName = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemNameTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnSearch = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
@@ -76,14 +98,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.allGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CompanyNameTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CategoryNameTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemNameBtnEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CompanyNameBtnEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CategoryNameBtnEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForItemName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCompanyName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCategoryName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemNameTextEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -97,7 +119,12 @@
             this.barManager1.DockControls.Add(this.barDockControlLeft);
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.Form = this;
+            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.barButtonItem1,
+            this.barButtonItem2,
+            this.barButtonItem3});
             this.barManager1.MainMenu = this.bar2;
+            this.barManager1.MaxItemId = 3;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -114,9 +141,21 @@
             this.bar2.DockCol = 0;
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
+            // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.barButtonItem3.Caption = "بحث";
+            this.barButtonItem3.Id = 2;
+            this.barButtonItem3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
+            this.barButtonItem3.ImageToTextAlignment = DevExpress.XtraBars.BarItemImageToTextAlignment.AfterText;
+            this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // bar3
             // 
@@ -132,11 +171,13 @@
             // 
             // barDockControlTop
             // 
+            this.barDockControlTop.Appearance.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.barDockControlTop.Appearance.Options.UseFont = true;
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1241, 41);
+            this.barDockControlTop.Size = new System.Drawing.Size(1241, 45);
             // 
             // barDockControlBottom
             // 
@@ -150,17 +191,32 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 41);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 45);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 601);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 597);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1241, 41);
+            this.barDockControlRight.Location = new System.Drawing.Point(1241, 45);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 601);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 597);
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "بحث";
+            this.barButtonItem1.Id = 0;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.barButtonItem2.Caption = "بحث";
+            this.barButtonItem2.Id = 1;
+            this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
             // splitContainerControl1
             // 
@@ -176,6 +232,10 @@
             // splitContainerControl1.Panel2
             // 
             this.splitContainerControl1.Panel2.Controls.Add(this.dataLayoutControl1);
+            this.splitContainerControl1.Panel2.Controls.Add(this.label3);
+            this.splitContainerControl1.Panel2.Controls.Add(this.label2);
+            this.splitContainerControl1.Panel2.Controls.Add(this.label1);
+            this.splitContainerControl1.Panel2.Controls.Add(this.btnSearch);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(1217, 603);
             this.splitContainerControl1.SplitterPosition = 823;
@@ -305,44 +365,68 @@
             // 
             // dataLayoutControl1
             // 
-            this.dataLayoutControl1.Controls.Add(this.CompanyNameTextEdit);
-            this.dataLayoutControl1.Controls.Add(this.CategoryNameTextEdit);
-            this.dataLayoutControl1.Controls.Add(this.ItemNameTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.ItemNameBtnEdit);
+            this.dataLayoutControl1.Controls.Add(this.CompanyNameBtnEdit);
+            this.dataLayoutControl1.Controls.Add(this.CategoryNameBtnEdit);
             this.dataLayoutControl1.DataSource = this.allBindingSource;
-            this.dataLayoutControl1.Location = new System.Drawing.Point(-1, 88);
+            this.dataLayoutControl1.Location = new System.Drawing.Point(10, 96);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
-            this.dataLayoutControl1.OptionsView.RightToLeftMirroringApplied = true;
-            this.dataLayoutControl1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dataLayoutControl1.Root = this.Root;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(378, 162);
-            this.dataLayoutControl1.TabIndex = 0;
+            this.dataLayoutControl1.Size = new System.Drawing.Size(278, 141);
+            this.dataLayoutControl1.TabIndex = 5;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
-            // CompanyNameTextEdit
+            // ItemNameBtnEdit
             // 
-            this.CompanyNameTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.allBindingSource, "CompanyName", true));
-            this.CompanyNameTextEdit.Location = new System.Drawing.Point(20, 66);
-            this.CompanyNameTextEdit.MenuManager = this.barManager1;
-            this.CompanyNameTextEdit.Name = "CompanyNameTextEdit";
-            this.CompanyNameTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CompanyNameTextEdit.Properties.Appearance.Options.UseFont = true;
-            this.CompanyNameTextEdit.Size = new System.Drawing.Size(262, 26);
-            this.CompanyNameTextEdit.StyleController = this.dataLayoutControl1;
-            this.CompanyNameTextEdit.TabIndex = 5;
-            this.CompanyNameTextEdit.EditValueChanged += new System.EventHandler(this.CompanyNameTextEdit_EditValueChanged);
+            this.ItemNameBtnEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.allBindingSource, "ItemName", true));
+            this.ItemNameBtnEdit.Location = new System.Drawing.Point(12, 12);
+            this.ItemNameBtnEdit.MenuManager = this.barManager1;
+            this.ItemNameBtnEdit.Name = "ItemNameBtnEdit";
+            this.ItemNameBtnEdit.Properties.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ItemNameBtnEdit.Properties.Appearance.Options.UseFont = true;
+            this.ItemNameBtnEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search, "", -1, true, true, true, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.ItemNameBtnEdit.Properties.Padding = new System.Windows.Forms.Padding(5);
+            this.ItemNameBtnEdit.Properties.Click += new System.EventHandler(this.ItemNameBtnEdit_Properties_Click);
+            this.ItemNameBtnEdit.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.ItemNameBtnEdit.Size = new System.Drawing.Size(254, 36);
+            this.ItemNameBtnEdit.StyleController = this.dataLayoutControl1;
+            this.ItemNameBtnEdit.TabIndex = 4;
+            this.ItemNameBtnEdit.EditValueChanged += new System.EventHandler(this.ItemNameBtnEdit_EditValueChanged);
             // 
-            // CategoryNameTextEdit
+            // CompanyNameBtnEdit
             // 
-            this.CategoryNameTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.allBindingSource, "CategoryName", true));
-            this.CategoryNameTextEdit.Location = new System.Drawing.Point(20, 112);
-            this.CategoryNameTextEdit.MenuManager = this.barManager1;
-            this.CategoryNameTextEdit.Name = "CategoryNameTextEdit";
-            this.CategoryNameTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CategoryNameTextEdit.Properties.Appearance.Options.UseFont = true;
-            this.CategoryNameTextEdit.Size = new System.Drawing.Size(262, 26);
-            this.CategoryNameTextEdit.StyleController = this.dataLayoutControl1;
-            this.CategoryNameTextEdit.TabIndex = 6;
-            this.CategoryNameTextEdit.EditValueChanged += new System.EventHandler(this.CategoryNameTextEdit_EditValueChanged);
+            this.CompanyNameBtnEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.allBindingSource, "CompanyName", true));
+            this.CompanyNameBtnEdit.Location = new System.Drawing.Point(12, 52);
+            this.CompanyNameBtnEdit.MenuManager = this.barManager1;
+            this.CompanyNameBtnEdit.Name = "CompanyNameBtnEdit";
+            this.CompanyNameBtnEdit.Properties.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CompanyNameBtnEdit.Properties.Appearance.Options.UseFont = true;
+            this.CompanyNameBtnEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search, "", -1, true, true, true, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.CompanyNameBtnEdit.Properties.Padding = new System.Windows.Forms.Padding(5);
+            this.CompanyNameBtnEdit.Properties.Click += new System.EventHandler(this.CompanyNameBtnEdit_Properties_Click);
+            this.CompanyNameBtnEdit.Size = new System.Drawing.Size(254, 36);
+            this.CompanyNameBtnEdit.StyleController = this.dataLayoutControl1;
+            this.CompanyNameBtnEdit.TabIndex = 5;
+            this.CompanyNameBtnEdit.EditValueChanged += new System.EventHandler(this.CompanyNameBtnEdit_EditValueChanged);
+            // 
+            // CategoryNameBtnEdit
+            // 
+            this.CategoryNameBtnEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.allBindingSource, "CategoryName", true));
+            this.CategoryNameBtnEdit.Location = new System.Drawing.Point(12, 92);
+            this.CategoryNameBtnEdit.MenuManager = this.barManager1;
+            this.CategoryNameBtnEdit.Name = "CategoryNameBtnEdit";
+            this.CategoryNameBtnEdit.Properties.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CategoryNameBtnEdit.Properties.Appearance.Options.UseFont = true;
+            this.CategoryNameBtnEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search, "", -1, true, true, true, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.CategoryNameBtnEdit.Properties.Padding = new System.Windows.Forms.Padding(5);
+            this.CategoryNameBtnEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.CategoryNameBtnEdit_Properties_ButtonClick);
+            this.CategoryNameBtnEdit.Size = new System.Drawing.Size(254, 36);
+            this.CategoryNameBtnEdit.StyleController = this.dataLayoutControl1;
+            this.CategoryNameBtnEdit.TabIndex = 6;
+            this.CategoryNameBtnEdit.EditValueChanged += new System.EventHandler(this.CategoryNameBtnEdit_EditValueChanged);
             // 
             // Root
             // 
@@ -351,7 +435,7 @@
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(378, 162);
+            this.Root.Size = new System.Drawing.Size(278, 141);
             this.Root.TextVisible = false;
             // 
             // layoutControlGroup1
@@ -364,48 +448,75 @@
             this.ItemForCategoryName});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(358, 142);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(258, 121);
             // 
             // ItemForItemName
             // 
-            this.ItemForItemName.Control = this.ItemNameTextEdit;
+            this.ItemForItemName.Control = this.ItemNameBtnEdit;
             this.ItemForItemName.Location = new System.Drawing.Point(0, 0);
             this.ItemForItemName.Name = "ItemForItemName";
-            this.ItemForItemName.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
-            this.ItemForItemName.Size = new System.Drawing.Size(358, 46);
-            this.ItemForItemName.TextSize = new System.Drawing.Size(64, 13);
+            this.ItemForItemName.Size = new System.Drawing.Size(258, 40);
+            this.ItemForItemName.TextSize = new System.Drawing.Size(0, 0);
+            this.ItemForItemName.TextVisible = false;
             // 
             // ItemForCompanyName
             // 
-            this.ItemForCompanyName.Control = this.CompanyNameTextEdit;
-            this.ItemForCompanyName.Location = new System.Drawing.Point(0, 46);
+            this.ItemForCompanyName.Control = this.CompanyNameBtnEdit;
+            this.ItemForCompanyName.Location = new System.Drawing.Point(0, 40);
             this.ItemForCompanyName.Name = "ItemForCompanyName";
-            this.ItemForCompanyName.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
-            this.ItemForCompanyName.Size = new System.Drawing.Size(358, 46);
-            this.ItemForCompanyName.TextSize = new System.Drawing.Size(64, 13);
+            this.ItemForCompanyName.Size = new System.Drawing.Size(258, 40);
+            this.ItemForCompanyName.TextSize = new System.Drawing.Size(0, 0);
+            this.ItemForCompanyName.TextVisible = false;
             // 
             // ItemForCategoryName
             // 
-            this.ItemForCategoryName.Control = this.CategoryNameTextEdit;
-            this.ItemForCategoryName.Location = new System.Drawing.Point(0, 92);
+            this.ItemForCategoryName.Control = this.CategoryNameBtnEdit;
+            this.ItemForCategoryName.Location = new System.Drawing.Point(0, 80);
             this.ItemForCategoryName.Name = "ItemForCategoryName";
-            this.ItemForCategoryName.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 10, 10);
-            this.ItemForCategoryName.Size = new System.Drawing.Size(358, 50);
-            this.ItemForCategoryName.TextSize = new System.Drawing.Size(64, 13);
+            this.ItemForCategoryName.Size = new System.Drawing.Size(258, 41);
+            this.ItemForCategoryName.TextSize = new System.Drawing.Size(0, 0);
+            this.ItemForCategoryName.TextVisible = false;
             // 
-            // ItemNameTextEdit
+            // label3
             // 
-            this.ItemNameTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.allBindingSource, "ItemName", true));
-            this.ItemNameTextEdit.Location = new System.Drawing.Point(20, 20);
-            this.ItemNameTextEdit.MenuManager = this.barManager1;
-            this.ItemNameTextEdit.Name = "ItemNameTextEdit";
-            this.ItemNameTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ItemNameTextEdit.Properties.Appearance.Options.UseFont = true;
-            this.ItemNameTextEdit.Properties.EditValueChanged += new System.EventHandler(this.ItemNameTextEdit_Properties_EditValueChanged);
-            this.ItemNameTextEdit.Size = new System.Drawing.Size(262, 26);
-            this.ItemNameTextEdit.StyleController = this.dataLayoutControl1;
-            this.ItemNameTextEdit.TabIndex = 4;
-            this.ItemNameTextEdit.EditValueChanged += new System.EventHandler(this.ItemNameTextEdit_EditValueChanged);
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(294, 203);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 19);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "اسم التصنيف";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(300, 157);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(71, 19);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "اسم الشركه";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(301, 111);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 19);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "اسم العنصر";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Appearance.Options.UseFont = true;
+            this.btnSearch.Location = new System.Drawing.Point(165, 277);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(113, 32);
+            this.btnSearch.TabIndex = 1;
+            this.btnSearch.Text = "بحث";
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // ReportForm
             // 
@@ -426,6 +537,7 @@
             this.splitContainerControl1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel2)).EndInit();
             this.splitContainerControl1.Panel2.ResumeLayout(false);
+            this.splitContainerControl1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.allGridControl)).EndInit();
@@ -433,14 +545,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.allGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.CompanyNameTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CategoryNameTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemNameBtnEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CompanyNameBtnEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CategoryNameBtnEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForItemName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCompanyName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCategoryName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemNameTextEdit.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -473,14 +585,21 @@
         private DevExpress.XtraGrid.Columns.GridColumn colItemPrice;
         private DevExpress.XtraGrid.Columns.GridColumn colWholesalePrice;
         private DevExpress.XtraGrid.Columns.GridColumn colDistributorPrice;
+        private DevExpress.XtraEditors.SimpleButton btnSearch;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraDataLayout.DataLayoutControl dataLayoutControl1;
-        private DevExpress.XtraEditors.TextEdit CompanyNameTextEdit;
-        private DevExpress.XtraEditors.TextEdit CategoryNameTextEdit;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlItem ItemForItemName;
         private DevExpress.XtraLayout.LayoutControlItem ItemForCompanyName;
         private DevExpress.XtraLayout.LayoutControlItem ItemForCategoryName;
-        private DevExpress.XtraEditors.TextEdit ItemNameTextEdit;
+        private DevExpress.XtraEditors.ButtonEdit ItemNameBtnEdit;
+        private DevExpress.XtraEditors.ButtonEdit CompanyNameBtnEdit;
+        private DevExpress.XtraEditors.ButtonEdit CategoryNameBtnEdit;
     }
 }

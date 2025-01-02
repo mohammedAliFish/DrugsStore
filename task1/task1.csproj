@@ -45,16 +45,21 @@
     <Reference Include="DevExpress.RichEdit.v23.2.Export, Version=23.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v23.2" />
     <Reference Include="DevExpress.Sparkline.v23.2.Core" />
+    <Reference Include="DevExpress.Utils.v23.2.UI, Version=23.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Xpo.v23.2, Version=23.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraBars.v23.2, Version=23.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraCharts.v23.2, Version=23.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v23.2.UI, Version=23.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v23.2.Wizard, Version=23.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraEditors.v23.2" />
     <Reference Include="DevExpress.Printing.v23.2.Core" />
     <Reference Include="DevExpress.Drawing.v23.2" />
+    <Reference Include="DevExpress.XtraGauges.v23.2.Core, Version=23.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v23.2, Version=23.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v23.2, Version=23.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v23.2, Version=23.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraReports.v23.2, Version=23.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v23.2.Extensions, Version=23.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraTreeList.v23.2, Version=23.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -77,11 +82,23 @@
       <DependentUpon>CenterForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Enums\PriceTypeEnum.cs" />
+    <Compile Include="Forms\Category\CategoryPopupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Category\CategoryPopupForm.Designer.cs">
+      <DependentUpon>CategoryPopupForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Category\CategoryTreeViewForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Category\CategoryTreeViewForm.Designer.cs">
       <DependentUpon>CategoryTreeViewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Company\CompanyPopupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Company\CompanyPopupForm.Designer.cs">
+      <DependentUpon>CompanyPopupForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Company\CompanyTreeViewForm.cs">
       <SubType>Form</SubType>
@@ -94,6 +111,12 @@
     </Compile>
     <Compile Include="Forms\Item\InputItemForm.Designer.cs">
       <DependentUpon>InputItemForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Item\ItemPopupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Item\ItemPopupForm.Designer.cs">
+      <DependentUpon>ItemPopupForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Price\PriceForm.cs">
       <SubType>Form</SubType>
@@ -109,6 +132,12 @@
     </Compile>
     <Compile Include="Model\Entities\All.cs" />
     <Compile Include="Model\Entities\Price.cs" />
+    <Compile Include="Reports\ItemsReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ItemsReport.Designer.cs">
+      <DependentUpon>ItemsReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repository\AllRepository.cs" />
     <Compile Include="Repository\CategoryRepository.cs" />
     <Compile Include="Repository\CompanyRepository.cs" />
@@ -153,17 +182,26 @@
     <EmbeddedResource Include="Forms\Category\CategoryForm.resx">
       <DependentUpon>CategoryForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Category\CategoryPopupForm.resx">
+      <DependentUpon>CategoryPopupForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Category\CategoryTreeViewForm.resx">
       <DependentUpon>CategoryTreeViewForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Company\CompanyForm.resx">
       <DependentUpon>CompanyForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Company\CompanyPopupForm.resx">
+      <DependentUpon>CompanyPopupForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Company\CompanyTreeViewForm.resx">
       <DependentUpon>CompanyTreeViewForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Item\InputItemForm.resx">
       <DependentUpon>InputItemForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Item\ItemPopupForm.resx">
+      <DependentUpon>ItemPopupForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Item\ItemsForm.resx">
       <DependentUpon>ItemsForm.cs</DependentUpon>
@@ -183,7 +221,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reports\ItemsReport.resx">
+      <DependentUpon>ItemsReport.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Properties\DataSources\task1.Model.Entities.All.datasource" />
     <None Include="Properties\DataSources\task1.Model.Entities.Category.datasource" />
@@ -202,6 +244,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Forms\Barcode\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pharmacy_Management_Logo.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

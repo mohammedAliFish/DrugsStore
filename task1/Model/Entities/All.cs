@@ -19,8 +19,7 @@ namespace task1.Model.Entities
         [Display(Name = "  وصف العنصر")]
         public string ItemDescription { get; set; }
 
-        //[Key]
-        //public Guid CompanyGuid { get; set; }
+    
 
         [Display(Name = "  رمز الشركه")]
         public string CompanyCode { get; set; }
@@ -28,8 +27,7 @@ namespace task1.Model.Entities
         [Display(Name = "اسم الشركه")]
         public string CompanyName { get; set; }
 
-        //[Key]
-       // public Guid CategoryGuid { get; set; }
+        
 
         [Display(Name = "  رمز التصنيف")]
         public string CategoryCode { get; set; }

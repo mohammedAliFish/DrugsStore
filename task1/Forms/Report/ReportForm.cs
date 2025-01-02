@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using task1.Forms.Category;
+using task1.Forms.Company;
+using task1.Forms.Item;
 using task1.Model.Entities;
 using task1.Repository;
+
 
 namespace task1.Forms.Report
 {
     public partial class ReportForm : CenterForm
     {
         private AllRepository allRepository;
+        public CategoryPopupForm SelectedCategory { get; private set; }
+
 
         public ReportForm()
         {
@@ -16,51 +22,119 @@ namespace task1.Forms.Report
             allRepository = new AllRepository();
         }
 
-        private void LoadData(string itemName = null, string categoryName = null, string companyName = null)
+       
+      
+        private void ReportForm_Load(object sender, EventArgs e)
         {
             try
             {
-                List<All> filteredData = allRepository.FilterData(itemName, categoryName, companyName);
-                allGridControl.DataSource = filteredData;
+                LoadItemsToSearchLookUpEdit();
+
+          
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"حدث خطأ أثناء تحميل البيانات: {ex.Message}");
             }
         }
-        private void ApplyFilter()
-        {
-            string itemName = ItemNameTextEdit.Text?.Trim();
-            string categoryName = CategoryNameTextEdit.Text?.Trim();
-            string companyName = CompanyNameTextEdit.Text?.Trim();
 
-            LoadData(itemName, categoryName, companyName);
-        }
-        private void ReportForm_Load(object sender, EventArgs e)
-        {
-            List<All> allData = allRepository.GetAllData();
-            allGridControl.DataSource = allData;
-        }
 
-        private void ItemNameTextEdit_EditValueChanged(object sender, EventArgs e)
-        {
+        
 
+
+
+
+
+
+        private void LoadItemsToSearchLookUpEdit()
+        {
+           
         }
 
-        private void CompanyNameTextEdit_EditValueChanged(object sender, EventArgs e)
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ApplyFilter();
+
         }
 
-        private void CategoryNameTextEdit_EditValueChanged(object sender, EventArgs e)
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ApplyFilter();
+
         }
 
-        private void ItemNameTextEdit_Properties_EditValueChanged(object sender, EventArgs e)
-        {
-             ApplyFilter();
+        
+
        
+       
+
+    
+       
+       
+
+       
+
+        private void ItemNameBtnEdit_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CompanyNameBtnEdit_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CategoryNameBtnEdit_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CategoryNameBtnEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            var categoryPopupForm = new CategoryPopupForm();
+
+           
+            if (categoryPopupForm.ShowDialog() == DialogResult.OK)
+            {
+                var selectedCategory = categoryPopupForm.SelectedCategory;
+                if (selectedCategory != null)
+                {
+
+                    CategoryNameBtnEdit.EditValue = selectedCategory.CategoryName;
+
+
+                    CategoryNameBtnEdit.Tag = selectedCategory.CategoryGuid;
+                }
+            }
+        }
+
+        private void CompanyNameBtnEdit_Properties_Click(object sender, EventArgs e)
+        {
+            var companyPopupForm = new CompanyPopupForm();
+            if(companyPopupForm.ShowDialog() == DialogResult.OK)
+            {
+                var selectedCompany = companyPopupForm.SelectedCompany;
+                if (selectedCompany != null)
+                {
+                    CompanyNameBtnEdit.EditValue = selectedCompany.CompanyName;
+                    CompanyNameBtnEdit.Tag = selectedCompany.CompanyGuid;
+                }
+            }
+
+        }
+
+        private void ItemNameBtnEdit_Properties_Click(object sender, EventArgs e)
+        {
+            var popupForm = new ItemPopupForm();
+            if (popupForm.ShowDialog() == DialogResult.OK && popupForm.SelectedItem != null)
+            {
+        
+                ItemNameBtnEdit.EditValue = popupForm.SelectedItem.ItemName;
+                ItemNameBtnEdit.Tag = popupForm.SelectedItem.ItemGUID;
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
