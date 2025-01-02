@@ -81,6 +81,14 @@
     <Compile Include="CenterForm.Designer.cs">
       <DependentUpon>CenterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\All.cs">
+      <DependentUpon>All.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\All.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>All.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Enums\PriceTypeEnum.cs" />
     <Compile Include="Forms\Category\CategoryPopupForm.cs">
       <SubType>Form</SubType>
@@ -129,6 +137,11 @@
     </Compile>
     <Compile Include="Forms\Report\ReportForm.Designer.cs">
       <DependentUpon>ReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ItemsDataset.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ItemsDataset.xsd</DependentUpon>
     </Compile>
     <Compile Include="Model\Entities\All.cs" />
     <Compile Include="Model\Entities\Price.cs" />
@@ -227,6 +240,28 @@
       <DependentUpon>ItemsReport.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
+    <None Include="DataSet\All.xsc">
+      <DependentUpon>All.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\All.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>All.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet\All.xss">
+      <DependentUpon>All.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\ItemsDataset.xsc">
+      <DependentUpon>ItemsDataset.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\ItemsDataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ItemsDataset.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet\ItemsDataset.xss">
+      <DependentUpon>ItemsDataset.xsd</DependentUpon>
+    </None>
     <None Include="Properties\DataSources\task1.Model.Entities.All.datasource" />
     <None Include="Properties\DataSources\task1.Model.Entities.Category.datasource" />
     <None Include="Properties\DataSources\task1.Model.Entities.Company.datasource" />

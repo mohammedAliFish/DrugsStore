@@ -46,6 +46,7 @@
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,9 +70,10 @@
             this.barButtonItem12,
             this.barButtonItem13,
             this.barButtonItem1,
-            this.barButtonItem2});
+            this.barButtonItem2,
+            this.barButtonItem3});
             this.barManager2.MainMenu = this.bar2;
-            this.barManager2.MaxItemId = 10;
+            this.barManager2.MaxItemId = 11;
             this.barManager2.RightToLeft = DevExpress.Utils.DefaultBoolean.True;
             // 
             // bar2
@@ -87,7 +89,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem12, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem13, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3, true)});
             this.bar2.OptionsBar.AllowCollapse = true;
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
@@ -201,6 +204,13 @@
             this.barButtonItem11.Id = 5;
             this.barButtonItem11.Name = "barButtonItem11";
             // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "انشاء تقرير";
+            this.barButtonItem3.Id = 10;
+            this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -241,6 +251,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem13;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
     }
 }
 

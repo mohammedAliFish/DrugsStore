@@ -270,6 +270,56 @@ namespace task1.Forms.Report
         {
 
         }
+
+        private void printReport_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            //try
+            //{
+            //    var dataSource = allGridControl.DataSource;
+            //    if (dataSource == null)
+            //    {
+            //        MessageBox.Show("No data to print.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //        return;
+            //    }
+
+            //    FilteredReport report = new FilteredReport
+            //    {
+            //        DataSource = dataSource,
+            //        DataMember = "YourTableName" 
+            //    };
+
+            //    using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            //    {
+            //        saveFileDialog.Filter = "PDF Files|*.pdf|Excel Files|*.xlsx";
+            //        saveFileDialog.Title = "Export Report";
+            //        if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            //        {
+            //            string filePath = saveFileDialog.FileName;
+            //            if (filePath.EndsWith(".pdf"))
+            //            {
+            //                report.ExportToPdf(filePath);
+            //            }
+            //            else if (filePath.EndsWith(".xlsx"))
+            //            {
+            //                report.ExportToXlsx(filePath);
+            //            }
+
+            //            MessageBox.Show("Report exported successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        
+            //            if (MessageBox.Show("Do you want to open the file?", "Open File", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            //            {
+            //                System.Diagnostics.Process.Start(filePath);
+            //            }
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+        }
+
     }
 }
 
