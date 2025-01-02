@@ -31,8 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ItemPopupForm));
             this.itemPopupGridControl = new DevExpress.XtraGrid.GridControl();
-            this.itemGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.itemBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.itemGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colItemGUID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colItemName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colItemCode = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -40,8 +40,8 @@
             this.colCategory = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCompany = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.itemPopupGridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // itemPopupGridControl
@@ -57,6 +57,10 @@
             this.itemPopupGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.itemGridView});
             // 
+            // itemBindingSource
+            // 
+            this.itemBindingSource.DataSource = typeof(task1.Model.Entities.Item);
+            // 
             // itemGridView
             // 
             this.itemGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
@@ -68,11 +72,9 @@
             this.colCompany});
             this.itemGridView.GridControl = this.itemPopupGridControl;
             this.itemGridView.Name = "itemGridView";
+            this.itemGridView.OptionsBehavior.Editable = false;
+            this.itemGridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.itemGridView_RowClick);
             this.itemGridView.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.itemGridView_RowCellClick);
-            // 
-            // itemBindingSource
-            // 
-            this.itemBindingSource.DataSource = typeof(task1.Model.Entities.Item);
             // 
             // colItemGUID
             // 
@@ -125,8 +127,8 @@
             this.Text = "نافذه العناصر";
             this.Load += new System.EventHandler(this.ItemPopupForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.itemPopupGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemGridView)).EndInit();
             this.ResumeLayout(false);
 
         }

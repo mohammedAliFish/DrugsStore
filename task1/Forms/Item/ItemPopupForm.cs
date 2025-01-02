@@ -1,20 +1,24 @@
 ﻿using System;
 using DevExpress.XtraGrid.Views.Grid;
 using System.Windows.Forms;
-using task1.Repository;
+
 using task1.Data;
+
 
 
 namespace task1.Forms.Item
 {
     public partial class ItemPopupForm : CenterForm
     {
+        public task1.Model.Entities.Item SelectedItem { get; private set; }
+
         private readonly ItemRepository itemRepository;
-        public Model.Entities.Item SelectedItem { get; private set; }
+
         public ItemPopupForm()
         {
             InitializeComponent();
             itemRepository = new ItemRepository();
+
         }
 
         private void ItemPopupForm_Load(object sender, EventArgs e)
@@ -23,19 +27,10 @@ namespace task1.Forms.Item
         }
         private void LoadItems()
         {
-            try
-            {
-                var items = itemRepository.GetItems();
-                Console.WriteLine($"Loaded {items.Count} items.");
-                itemPopupGridControl.DataSource = items;
+            var items = itemRepository.GetItems();
 
-                var gridView = itemPopupGridControl.MainView as GridView;
-               
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error loading items: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            itemPopupGridControl.DataSource = items;
+
         }
 
 
@@ -44,22 +39,44 @@ namespace task1.Forms.Item
             var gridView = itemPopupGridControl.MainView as GridView;
             if (gridView != null)
             {
-                
-                var itemGuid = gridView.GetRowCellValue(gridView.FocusedRowHandle, "ItemGUID");
-                var itemName = gridView.GetRowCellValue(gridView.FocusedRowHandle, "ItemName");
-                var itemCode = gridView.GetRowCellValue(gridView.FocusedRowHandle, "ItemCode");
+               
+                var row = gridView.GetFocusedRow() as task1.Model.Entities.Item;
 
-                
-                SelectedItem = new Model.Entities.Item
+                if (row != null)
                 {
-                    ItemGUID = Guid.Parse(itemGuid.ToString()),
-                    ItemName = itemName.ToString(),
-                    ItemCode = itemCode.ToString()
-                };
+                 
+                    SelectedItem = row;
 
-            
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                  
+                   
+
+                   
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+            }
+        }
+
+        private void itemGridView_RowClick(object sender, RowClickEventArgs e)
+        {
+            var gridView = itemPopupGridControl.MainView as GridView;
+            if (gridView != null)
+            {
+
+                var row = gridView.GetFocusedRow() as task1.Model.Entities.Item;
+
+                if (row != null)
+                {
+
+                    SelectedItem = row;
+
+
+                    
+
+
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
             }
         }
     }

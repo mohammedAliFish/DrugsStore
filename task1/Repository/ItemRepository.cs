@@ -10,17 +10,7 @@ namespace task1.Data
     {
        
 
-        public DataTable GetItemsTable()
-        {
-            try
-            {
-                return sqlHelper.ExecuteStoredProcedure("ItemGetAll");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("حدث خطا", ex);
-            }
-        }
+      
 
 
         public Guid GetItemGUIDByCode(string itemCode)
@@ -51,15 +41,15 @@ namespace task1.Data
             }
         
 }
-       
 
-
+        
+        
 
         public List<Item> GetItems()
         {
             try
             {
-                DataTable dt = sqlHelper.ExecuteStoredProcedure("ItemGetAll");
+                DataTable dt = sqlHelper.ExecuteStoredProcedure("ItemGet");
 
                 List<Item> items = new List<Item>();
                 foreach (DataRow row in dt.Rows)
@@ -131,8 +121,7 @@ namespace task1.Data
         }
         catch (Exception ex)
         {
-                Console.WriteLine($"Error: {ex.Message}");
-                Console.WriteLine($"Stack Trace: {ex.StackTrace}");
+           
                 throw new Exception("حدثت مشكلة أثناء حفظ العنصر.", ex);
             }
     }
