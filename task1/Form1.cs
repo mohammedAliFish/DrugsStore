@@ -62,35 +62,43 @@ namespace task1
         {
             try
             {
-
+                
                 System.Data.DataSet allDataSet = new System.Data.DataSet("All");
 
-
+               
                 DataTable allDataTable = sqlHelper.ExecuteStoredProcedure("GetAllTables");
 
-                
-                allDataSet.Tables.Add(allDataTable);
-                allDataSet.Tables[0].TableName = "AllDataTable"; 
-
-             
-                XtraReport report = new XtraReport
-                {
-                    DataSource = allDataSet,
-                    DataMember = "AllDataTable" 
-                };
-
               
-                DevExpress.XtraReports.UserDesigner.XRDesignForm designForm = new DevExpress.XtraReports.UserDesigner.XRDesignForm();
-                designForm.OpenReport(report);
+                if (allDataTable != null && allDataTable.Rows.Count > 0)
+                {
+                    allDataSet.Tables.Add(allDataTable);
+                    allDataSet.Tables[0].TableName = "AllDataTable"; 
 
-        
-                designForm.ShowDialog();
+                    
+                    XtraReport report = new XtraReport
+                    {
+                        DataSource = allDataSet,
+                        DataMember = "AllDataTable" 
+                    };
+
+                   
+                    DevExpress.XtraReports.UserDesigner.XRDesignForm designForm = new DevExpress.XtraReports.UserDesigner.XRDesignForm();
+                    designForm.OpenReport(report);
+
+                    
+                    designForm.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("No data available for the report.", "Data Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error loading report: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
     }
 }

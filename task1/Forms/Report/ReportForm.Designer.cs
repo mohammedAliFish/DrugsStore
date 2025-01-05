@@ -71,6 +71,9 @@
             this.colCompanyName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCategoryCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCategoryName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colItem_price = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.ItemNameBtnEdit = new DevExpress.XtraEditors.ButtonEdit();
             this.CompanyNameBtnEdit = new DevExpress.XtraEditors.ButtonEdit();
@@ -231,7 +234,6 @@
             this.barButtonItem1.Caption = "بحث";
             this.barButtonItem1.Id = 0;
             this.barButtonItem1.Name = "barButtonItem1";
-            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // barButtonItem2
             // 
@@ -239,7 +241,6 @@
             this.barButtonItem2.Caption = "بحث";
             this.barButtonItem2.Id = 1;
             this.barButtonItem2.Name = "barButtonItem2";
-            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
             // barButtonItem4
             // 
@@ -298,9 +299,13 @@
             this.colCompanyCode,
             this.colCompanyName,
             this.colCategoryCode,
-            this.colCategoryName});
+            this.colCategoryName,
+            this.colItem_price,
+            this.gridColumn1,
+            this.gridColumn2});
             this.allGridView.GridControl = this.allGridControl;
             this.allGridView.Name = "allGridView";
+            this.allGridView.OptionsBehavior.Editable = false;
             // 
             // colItemGUID
             // 
@@ -363,6 +368,30 @@
             this.colCategoryName.Visible = true;
             this.colCategoryName.VisibleIndex = 6;
             // 
+            // colItem_price
+            // 
+            this.colItem_price.Caption = "سعر المفرد";
+            this.colItem_price.FieldName = "Item_Price";
+            this.colItem_price.Name = "colItem_price";
+            this.colItem_price.Visible = true;
+            this.colItem_price.VisibleIndex = 7;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "سعر الجمله";
+            this.gridColumn1.FieldName = "Wholesale_Price";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 8;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "سعر الموزع";
+            this.gridColumn2.FieldName = "Distributor_Price";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 9;
+            // 
             // dataLayoutControl1
             // 
             this.dataLayoutControl1.Controls.Add(this.ItemNameBtnEdit);
@@ -388,14 +417,11 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search, "", -1, true, true, true, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.ItemNameBtnEdit.Properties.Padding = new System.Windows.Forms.Padding(5);
             this.ItemNameBtnEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.ItemNameBtnEdit_Properties_ButtonClick);
-            this.ItemNameBtnEdit.Properties.Click += new System.EventHandler(this.ItemNameBtnEdit_Properties_Click);
-            this.ItemNameBtnEdit.Properties.DoubleClick += new System.EventHandler(this.ItemNameBtnEdit_Properties_DoubleClick);
             this.ItemNameBtnEdit.Properties.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ItemNameBtnEdit_Properties_KeyDown);
             this.ItemNameBtnEdit.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.ItemNameBtnEdit.Size = new System.Drawing.Size(254, 36);
             this.ItemNameBtnEdit.StyleController = this.dataLayoutControl1;
             this.ItemNameBtnEdit.TabIndex = 4;
-            this.ItemNameBtnEdit.EditValueChanged += new System.EventHandler(this.ItemNameBtnEdit_EditValueChanged);
             // 
             // CompanyNameBtnEdit
             // 
@@ -408,13 +434,11 @@
             this.CompanyNameBtnEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search, "", -1, true, true, true, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.CompanyNameBtnEdit.Properties.Padding = new System.Windows.Forms.Padding(5);
-            this.CompanyNameBtnEdit.Properties.Click += new System.EventHandler(this.CompanyNameBtnEdit_Properties_Click);
-            this.CompanyNameBtnEdit.Properties.DoubleClick += new System.EventHandler(this.CompanyNameBtnEdit_Properties_DoubleClick);
+            this.CompanyNameBtnEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.CompanyNameBtnEdit_Properties_ButtonClick);
             this.CompanyNameBtnEdit.Properties.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CompanyNameBtnEdit_Properties_KeyDown);
             this.CompanyNameBtnEdit.Size = new System.Drawing.Size(254, 36);
             this.CompanyNameBtnEdit.StyleController = this.dataLayoutControl1;
             this.CompanyNameBtnEdit.TabIndex = 5;
-            this.CompanyNameBtnEdit.EditValueChanged += new System.EventHandler(this.CompanyNameBtnEdit_EditValueChanged);
             // 
             // CategoryNameBtnEdit
             // 
@@ -432,7 +456,6 @@
             this.CategoryNameBtnEdit.Size = new System.Drawing.Size(254, 36);
             this.CategoryNameBtnEdit.StyleController = this.dataLayoutControl1;
             this.CategoryNameBtnEdit.TabIndex = 6;
-            this.CategoryNameBtnEdit.EditValueChanged += new System.EventHandler(this.CategoryNameBtnEdit_EditValueChanged);
             // 
             // Root
             // 
@@ -526,7 +549,6 @@
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("ReportForm.IconOptions.Image")));
             this.Name = "ReportForm";
             this.Text = "التقارير";
-            this.Load += new System.EventHandler(this.ReportForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).EndInit();
             this.splitContainerControl1.Panel1.ResumeLayout(false);
@@ -595,5 +617,8 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarButtonItem printReport;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        private DevExpress.XtraGrid.Columns.GridColumn colItem_price;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
     }
 }

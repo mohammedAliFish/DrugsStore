@@ -5,6 +5,7 @@ using System.Data;
 using System;
 using task1.Model.Entities;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace task1.Repository
 {
@@ -29,9 +30,32 @@ namespace task1.Repository
             }
             catch (Exception ex)
             {
-                throw new Exception("An error occurred while retrieving filtered items.", ex);
+                throw new Exception("خطا", ex);
             }
         }
+
+        public DataTable GetFilteredItemsByName(string itemName = null, string categoryName = null, string companyName = null)
+        {
+            try
+            {
+               
+                var allItemDetails = new List<SqlParameter>
+        {
+            new SqlParameter("@ItemName", (object)itemName ?? DBNull.Value),
+            new SqlParameter("@CategoryName", (object)categoryName ?? DBNull.Value),
+            new SqlParameter("@CompanyName", (object)companyName ?? DBNull.Value)
+        };
+
+                
+                return sqlHelper.ExecuteStoredProcedure("FilterItemByName", allItemDetails.ToArray());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("خطا", ex);
+            }
+        }
+
+
 
 
         public List<Company> GetCompanies()

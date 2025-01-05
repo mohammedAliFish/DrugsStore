@@ -69,6 +69,7 @@
             this.categoryPopupGridView.Name = "categoryPopupGridView";
             this.categoryPopupGridView.OptionsBehavior.Editable = false;
             this.categoryPopupGridView.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.categoryPopupGridView_RowCellClick);
+            this.categoryPopupGridView.DoubleClick += new System.EventHandler(this.categoryPopupGridView_DoubleClick);
             // 
             // colCategoryGuid
             // 

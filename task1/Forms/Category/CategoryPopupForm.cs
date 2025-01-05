@@ -32,7 +32,7 @@ namespace task1.Forms.Category
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error loading data: {ex.Message}");
+                MessageBox.Show($"error  data: {ex.Message}");
             }
         }
         private void categoryPopupGridControl_Click(object sender, EventArgs e)
@@ -64,8 +64,14 @@ namespace task1.Forms.Category
                 }
             }
         }
+       
 
         private void CategoryPopupForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void categoryPopupGridView_DoubleClick(object sender, EventArgs e)
         {
 
         }

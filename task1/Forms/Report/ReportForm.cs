@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Data;
 using System.Windows.Forms;
 using DevExpress.XtraReports.UI;
-
 using task1.Forms.Category;
+using task1.Forms.Company;
 using task1.Forms.Item;
 using task1.Reports;
 using task1.Repository;
@@ -15,100 +16,10 @@ namespace task1.Forms.Report
         private AllRepository allRepository;
         public ItemPopupForm SelectedItem { get; private set; }
         
-
-
         public ReportForm()
         {
             InitializeComponent();
             allRepository = new AllRepository();
-        }
-
-       
-      
-        private void ReportForm_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                LoadItemsToSearchLookUpEdit();
-
-          
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"حدث خطأ أثناء تحميل البيانات: {ex.Message}");
-            }
-        }
-
-
-        
-
-
-
-
-
-
-        private void LoadItemsToSearchLookUpEdit()
-        {
-           
-        }
-
-        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
-        }
-
-        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
-        }
-
-        
-
-       
-       
-
-    
-       
-       
-
-       
-
-        private void ItemNameBtnEdit_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void CompanyNameBtnEdit_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void CategoryNameBtnEdit_EditValueChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                
-                var itemGuid = ItemNameBtnEdit.Tag as Guid?;
-                var categoryGuid = CategoryNameBtnEdit.Tag as Guid?;
-                var companyGuid = CompanyNameBtnEdit.Tag as Guid?;
-
-              
-                var filteredData = allRepository.GetFilteredItems(itemGuid, categoryGuid, companyGuid);
-
-            
-                if (filteredData == null || filteredData.Rows.Count == 0)
-                {
-                    MessageBox.Show("No data ");
-                    return;
-                }
-
-                
-                allGridControl.DataSource = filteredData;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($" error  {ex.Message}");
-            }
         }
 
         private void CategoryNameBtnEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -121,27 +32,13 @@ namespace task1.Forms.Report
                 var selectedCategory = categoryPopupForm.SelectedCategory;
                 if (selectedCategory != null)
                 {
-
                     CategoryNameBtnEdit.EditValue = selectedCategory.CategoryName;
-
-
                     CategoryNameBtnEdit.Tag = selectedCategory.CategoryGuid;
                 }
             }
         }
 
-        private void CompanyNameBtnEdit_Properties_Click(object sender, EventArgs e)
-        {
-       
-
-        }
-
-        private void ItemNameBtnEdit_Properties_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-
+  
 
         private void barButtonItemShow_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -150,35 +47,29 @@ namespace task1.Forms.Report
                 var itemGuid = ItemNameBtnEdit.Tag as Guid?;
                 var categoryGuid = CategoryNameBtnEdit.Tag as Guid?;
                 var companyGuid = CompanyNameBtnEdit.Tag as Guid?;
+                string itemName = ItemNameBtnEdit.Text.Trim();
+                string categoryName = CategoryNameBtnEdit.Text.Trim();
+                string companyName = CompanyNameBtnEdit.Text.Trim();
+                if (string.IsNullOrEmpty(itemName)) itemGuid = null;
+                if (string.IsNullOrEmpty(categoryName)) categoryGuid = null;
+                if (string.IsNullOrEmpty(companyName)) companyGuid = null;
 
                 var filteredData = allRepository.GetFilteredItems(itemGuid, categoryGuid, companyGuid);
 
                 if (filteredData == null || filteredData.Rows.Count == 0)
                 {
-                    MessageBox.Show("No data ");
+                    MessageBox.Show("ماكو بيانات ");
                     return;
                 }
 
                 allGridControl.DataSource = filteredData;
-                // ItemNameBtnEdit.EditValue = null;
-                // ItemNameBtnEdit.Text = string.Empty;
-                // ItemNameBtnEdit.Tag = null;
-
-                //CategoryNameBtnEdit.EditValue = null;
-                //CategoryNameBtnEdit.Text = string.Empty;
-                //CategoryNameBtnEdit.Tag = null;
-
-                //CompanyNameBtnEdit.EditValue = null;
-                //CompanyNameBtnEdit.Text = string.Empty;
-                //CompanyNameBtnEdit.Tag = null;
+               
             }
             catch (Exception ex)
             {
-                MessageBox.Show($" error  {ex.Message}");
+                MessageBox.Show($" خطا  {ex.Message}");
             }
         }
-
-
 
         private void ItemNameBtnEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
@@ -231,124 +122,154 @@ namespace task1.Forms.Report
 
                 if (filteredData == null || filteredData.Rows.Count == 0)
                 {
-                    MessageBox.Show("No data ");
+                    MessageBox.Show(" ماكو بيانات ");
                     return;
                 }
 
                 allGridControl.DataSource = filteredData;
 
                
-                ItemNameBtnEdit.EditValue = null;
-                ItemNameBtnEdit.Text = string.Empty;
-                ItemNameBtnEdit.Tag = null;
-
-                CategoryNameBtnEdit.EditValue = null;
-                CategoryNameBtnEdit.Text = string.Empty;
-                CategoryNameBtnEdit.Tag = null;
-
-                CompanyNameBtnEdit.EditValue = null;
-                CompanyNameBtnEdit.Text = string.Empty;
-                CompanyNameBtnEdit.Tag = null;
+            
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred: {ex.Message}");
+                MessageBox.Show($" خطا : {ex.Message}");
             }
         }
+        private void PerformSearchByName()
+        {
+            try
+            {
+                string itemName = ItemNameBtnEdit.Text.Trim();    
+                string categoryName = CategoryNameBtnEdit.Text.Trim(); 
+                string companyName = CompanyNameBtnEdit.Text.Trim(); 
+
+                DataTable filteredData = allRepository.GetFilteredItemsByName(itemName, categoryName, companyName);
+
+                if (filteredData != null && filteredData.Rows.Count > 0)
+                {
+                    allGridControl.DataSource = filteredData;
+                }
+                else
+                {
+                    MessageBox.Show("ماكو بنات");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
+        }
+
         private void ItemNameBtnEdit_Properties_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                PerformSearch();
-                e.Handled = true;
-                e.SuppressKeyPress = true; 
+                PerformSearchByName();
+
+
             }
         }
 
         private void CompanyNameBtnEdit_Properties_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.Enter)
+            {
+                PerformSearchByName();
 
+
+            }
+       
         }
 
         private void CategoryNameBtnEdit_Properties_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter) 
+            if (e.KeyCode == Keys.Enter)
             {
-                try
-                {
-                   
-                    var itemGuid = ItemNameBtnEdit.Tag as Guid?;
-                    var categoryGuid = CategoryNameBtnEdit.Tag as Guid?;
-                    var companyGuid = CompanyNameBtnEdit.Tag as Guid?;
 
-                   
-                    var filteredData = allRepository.GetFilteredItems(itemGuid, categoryGuid, companyGuid);
 
-                   
-                    if (filteredData == null || filteredData.Rows.Count == 0)
-                    {
-                        MessageBox.Show("No data found for the selected criteria.");
-                        return;
-                    }
 
-                   
-                    allGridControl.DataSource = filteredData;
+                PerformSearchByName();
 
-                    
-                    e.Handled = true;
-                    e.SuppressKeyPress = true;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"An error occurred: {ex.Message}");
-                }
             }
-        }
-
-
-        private void ItemNameBtnEdit_Properties_DoubleClick(object sender, EventArgs e)
-        {
            
         }
-
-        private void CompanyNameBtnEdit_Properties_DoubleClick(object sender, EventArgs e)
-        {
-
-        }
-
         private void printReport_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             try
             {
-                
-                var itemGuid = ItemNameBtnEdit.Tag as Guid?;
-                var categoryGuid = CategoryNameBtnEdit.Tag as Guid?;
-                var companyGuid = CompanyNameBtnEdit.Tag as Guid?;
-                var filteredData = allRepository.GetFilteredItems(itemGuid, categoryGuid, companyGuid);
 
-                if (filteredData == null || filteredData.Rows.Count == 0)
+                var gridView = allGridControl.MainView as DevExpress.XtraGrid.Views.Grid.GridView;
+
+
+                if (gridView == null || gridView.RowCount == 0)
                 {
-                    MessageBox.Show("No data ");
+                    MessageBox.Show("ماكو بيانات  ");
                     return;
                 }
 
-                
-                var report = new itemsReport();
 
-               
-                report.DataSource = filteredData;
-                report.DataMember = filteredData.TableName ;
+                var dataTable = new DataTable();
 
-                
+
+                foreach (DevExpress.XtraGrid.Columns.GridColumn column in gridView.Columns)
+                {
+                    dataTable.Columns.Add(column.FieldName, column.ColumnType);
+                    Console.WriteLine($"Column Name: {column.FieldName}");
+                }
+
+
+                for (int i = 0; i < gridView.RowCount; i++)
+                {
+                    var row = dataTable.NewRow();
+                    foreach (DevExpress.XtraGrid.Columns.GridColumn column in gridView.Columns)
+                    {
+                        row[column.FieldName] = gridView.GetRowCellValue(i, column);
+                    }
+                    dataTable.Rows.Add(row);
+                }
+
+
+                if (dataTable.Rows.Count == 0)
+                {
+                    MessageBox.Show("ماكو بيانات للطباعة");
+                    return;
+                }
+
+
+                var report = new itemsReport
+                {
+                    DataSource = dataTable,
+                    DataMember = dataTable.TableName
+                };
+
+
                 ReportPrintTool printTool = new ReportPrintTool(report);
                 printTool.ShowPreviewDialog();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($" error printing the report {ex.Message}");
+                MessageBox.Show($"خطأ أثناء الطباعة: {ex.Message}");
             }
         }
 
+
+ 
+
+
+        private void CompanyNameBtnEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            var companyPopupForm = new CompanyPopupForm();
+            if (companyPopupForm.ShowDialog() == DialogResult.OK)
+            {
+                var selectedCompany = companyPopupForm.SelectedCompany;
+                if (selectedCompany != null)
+                {
+                    CompanyNameBtnEdit.EditValue = selectedCompany.CompanyName;
+                    CompanyNameBtnEdit.Tag = selectedCompany.CompanyGuid;
+                }
+            }
+        }
     }
 }
 
