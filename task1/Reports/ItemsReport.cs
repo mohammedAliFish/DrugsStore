@@ -6,9 +6,9 @@ using DevExpress.XtraReports.UI;
 
 namespace task1.Reports
 {
-    public partial class ItemsReport : DevExpress.XtraReports.UI.XtraReport
+    public partial class itemsReport : DevExpress.XtraReports.UI.XtraReport
     {
-        public ItemsReport()
+        public itemsReport()
         {
             InitializeComponent();
         }

@@ -48,6 +48,7 @@
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bar2 = new DevExpress.XtraBars.Bar();
+            this.printReport = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemShow = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
@@ -57,6 +58,7 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.allGridControl = new DevExpress.XtraGrid.GridControl();
             this.allBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -65,15 +67,10 @@
             this.colItemName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colItemCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colItemDescription = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colCompanyGuid = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCompanyCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCompanyName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colCategoryGuid = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCategoryCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCategoryName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colItemPrice = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colWholesalePrice = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDistributorPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.ItemNameBtnEdit = new DevExpress.XtraEditors.ButtonEdit();
             this.CompanyNameBtnEdit = new DevExpress.XtraEditors.ButtonEdit();
@@ -87,8 +84,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
-            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-            this.printReport = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
@@ -155,6 +150,14 @@
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
+            // 
+            // printReport
+            // 
+            this.printReport.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.printReport.Caption = "طباعه البيانات";
+            this.printReport.Id = 5;
+            this.printReport.Name = "printReport";
+            this.printReport.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.printReport_ItemClick);
             // 
             // barButtonItem3
             // 
@@ -238,6 +241,12 @@
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
+            // barButtonItem4
+            // 
+            this.barButtonItem4.Caption = "\'طباعه البيانات";
+            this.barButtonItem4.Id = 4;
+            this.barButtonItem4.Name = "barButtonItem4";
+            // 
             // splitContainerControl1
             // 
             this.splitContainerControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
@@ -286,15 +295,10 @@
             this.colItemName,
             this.colItemCode,
             this.colItemDescription,
-            this.colCompanyGuid,
             this.colCompanyCode,
             this.colCompanyName,
-            this.colCategoryGuid,
             this.colCategoryCode,
-            this.colCategoryName,
-            this.colItemPrice,
-            this.colWholesalePrice,
-            this.colDistributorPrice});
+            this.colCategoryName});
             this.allGridView.GridControl = this.allGridControl;
             this.allGridView.Name = "allGridView";
             // 
@@ -327,11 +331,6 @@
             this.colItemDescription.Visible = true;
             this.colItemDescription.VisibleIndex = 2;
             // 
-            // colCompanyGuid
-            // 
-            this.colCompanyGuid.FieldName = "CompanyGuid";
-            this.colCompanyGuid.Name = "colCompanyGuid";
-            // 
             // colCompanyCode
             // 
             this.colCompanyCode.Caption = "رمز الشركه";
@@ -348,11 +347,6 @@
             this.colCompanyName.Visible = true;
             this.colCompanyName.VisibleIndex = 4;
             // 
-            // colCategoryGuid
-            // 
-            this.colCategoryGuid.FieldName = "CategoryGuid";
-            this.colCategoryGuid.Name = "colCategoryGuid";
-            // 
             // colCategoryCode
             // 
             this.colCategoryCode.Caption = "رمز التصنيف";
@@ -368,30 +362,6 @@
             this.colCategoryName.Name = "colCategoryName";
             this.colCategoryName.Visible = true;
             this.colCategoryName.VisibleIndex = 6;
-            // 
-            // colItemPrice
-            // 
-            this.colItemPrice.Caption = "سعر العنصر";
-            this.colItemPrice.FieldName = "Item_Price";
-            this.colItemPrice.Name = "colItemPrice";
-            this.colItemPrice.Visible = true;
-            this.colItemPrice.VisibleIndex = 7;
-            // 
-            // colWholesalePrice
-            // 
-            this.colWholesalePrice.Caption = "سعر الجمله";
-            this.colWholesalePrice.FieldName = "Wholesale_Price";
-            this.colWholesalePrice.Name = "colWholesalePrice";
-            this.colWholesalePrice.Visible = true;
-            this.colWholesalePrice.VisibleIndex = 8;
-            // 
-            // colDistributorPrice
-            // 
-            this.colDistributorPrice.Caption = "سعر الموزع";
-            this.colDistributorPrice.FieldName = "Distributor_Price";
-            this.colDistributorPrice.Name = "colDistributorPrice";
-            this.colDistributorPrice.Visible = true;
-            this.colDistributorPrice.VisibleIndex = 9;
             // 
             // dataLayoutControl1
             // 
@@ -543,20 +513,6 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "اسم العنصر";
             // 
-            // barButtonItem4
-            // 
-            this.barButtonItem4.Caption = "\'طباعه البيانات";
-            this.barButtonItem4.Id = 4;
-            this.barButtonItem4.Name = "barButtonItem4";
-            // 
-            // printReport
-            // 
-            this.printReport.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.printReport.Caption = "طباعه البيانات";
-            this.printReport.Id = 5;
-            this.printReport.Name = "printReport";
-            this.printReport.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.printReport_ItemClick);
-            // 
             // ReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -616,15 +572,10 @@
         private DevExpress.XtraGrid.Columns.GridColumn colItemName;
         private DevExpress.XtraGrid.Columns.GridColumn colItemCode;
         private DevExpress.XtraGrid.Columns.GridColumn colItemDescription;
-        private DevExpress.XtraGrid.Columns.GridColumn colCompanyGuid;
         private DevExpress.XtraGrid.Columns.GridColumn colCompanyCode;
         private DevExpress.XtraGrid.Columns.GridColumn colCompanyName;
-        private DevExpress.XtraGrid.Columns.GridColumn colCategoryGuid;
         private DevExpress.XtraGrid.Columns.GridColumn colCategoryCode;
         private DevExpress.XtraGrid.Columns.GridColumn colCategoryName;
-        private DevExpress.XtraGrid.Columns.GridColumn colItemPrice;
-        private DevExpress.XtraGrid.Columns.GridColumn colWholesalePrice;
-        private DevExpress.XtraGrid.Columns.GridColumn colDistributorPrice;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;

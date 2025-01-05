@@ -138,18 +138,13 @@
     <Compile Include="Forms\Report\ReportForm.Designer.cs">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\ItemsDataset.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ItemsDataset.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Model\Entities\All.cs" />
     <Compile Include="Model\Entities\Price.cs" />
-    <Compile Include="Reports\ItemsReport.cs">
+    <Compile Include="Reports\itemsReport.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reports\ItemsReport.Designer.cs">
-      <DependentUpon>ItemsReport.cs</DependentUpon>
+    <Compile Include="Reports\itemsReport.Designer.cs">
+      <DependentUpon>itemsReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Repository\AllRepository.cs" />
     <Compile Include="Repository\CategoryRepository.cs" />
@@ -236,8 +231,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Reports\ItemsReport.resx">
-      <DependentUpon>ItemsReport.cs</DependentUpon>
+    <EmbeddedResource Include="Reports\itemsReport.resx">
+      <DependentUpon>itemsReport.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="DataSet\All.xsc">
@@ -250,17 +245,6 @@
     </None>
     <None Include="DataSet\All.xss">
       <DependentUpon>All.xsd</DependentUpon>
-    </None>
-    <None Include="DataSet\ItemsDataset.xsc">
-      <DependentUpon>ItemsDataset.xsd</DependentUpon>
-    </None>
-    <None Include="DataSet\ItemsDataset.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ItemsDataset.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="DataSet\ItemsDataset.xss">
-      <DependentUpon>ItemsDataset.xsd</DependentUpon>
     </None>
     <None Include="Properties\DataSources\task1.Model.Entities.All.datasource" />
     <None Include="Properties\DataSources\task1.Model.Entities.Category.datasource" />

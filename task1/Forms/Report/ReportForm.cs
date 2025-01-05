@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
+using DevExpress.XtraReports.UI;
+
 using task1.Forms.Category;
-using task1.Forms.Company;
 using task1.Forms.Item;
-using task1.Model.Entities;
+using task1.Reports;
 using task1.Repository;
 
 
@@ -85,7 +85,30 @@ namespace task1.Forms.Report
 
         private void CategoryNameBtnEdit_EditValueChanged(object sender, EventArgs e)
         {
+            try
+            {
+                
+                var itemGuid = ItemNameBtnEdit.Tag as Guid?;
+                var categoryGuid = CategoryNameBtnEdit.Tag as Guid?;
+                var companyGuid = CompanyNameBtnEdit.Tag as Guid?;
 
+              
+                var filteredData = allRepository.GetFilteredItems(itemGuid, categoryGuid, companyGuid);
+
+            
+                if (filteredData == null || filteredData.Rows.Count == 0)
+                {
+                    MessageBox.Show("No data ");
+                    return;
+                }
+
+                
+                allGridControl.DataSource = filteredData;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($" error  {ex.Message}");
+            }
         }
 
         private void CategoryNameBtnEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -109,32 +132,13 @@ namespace task1.Forms.Report
 
         private void CompanyNameBtnEdit_Properties_Click(object sender, EventArgs e)
         {
-            var companyPopupForm = new CompanyPopupForm();
-            if(companyPopupForm.ShowDialog() == DialogResult.OK)
-            {
-                var selectedCompany = companyPopupForm.SelectedCompany;
-                if (selectedCompany != null)
-                {
-                    CompanyNameBtnEdit.EditValue = selectedCompany.CompanyName;
-                    CompanyNameBtnEdit.Tag = selectedCompany.CompanyGuid;
-                }
-            }
+       
 
         }
 
         private void ItemNameBtnEdit_Properties_Click(object sender, EventArgs e)
         {
-            var popupForm = new ItemPopupForm();
-            if (popupForm.ShowDialog() == DialogResult.OK && popupForm.SelectedItem != null)
-            {
-                var item = popupForm.SelectedItem;
-                if (item != null)
-                {
-                    ItemNameBtnEdit.EditValue = item.ItemName;
-                    ItemNameBtnEdit.Tag = item.ItemGUID;
-                }
-
-            }
+            
         }
 
 
@@ -151,7 +155,7 @@ namespace task1.Forms.Report
 
                 if (filteredData == null || filteredData.Rows.Count == 0)
                 {
-                    MessageBox.Show("No data found for the selected criteria.");
+                    MessageBox.Show("No data ");
                     return;
                 }
 
@@ -170,7 +174,7 @@ namespace task1.Forms.Report
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred: {ex.Message}");
+                MessageBox.Show($" error  {ex.Message}");
             }
         }
 
@@ -178,7 +182,17 @@ namespace task1.Forms.Report
 
         private void ItemNameBtnEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-           
+            var popupForm = new ItemPopupForm();
+            if (popupForm.ShowDialog() == DialogResult.OK && popupForm.SelectedItem != null)
+            {
+                var item = popupForm.SelectedItem;
+                if (item != null)
+                {
+                    ItemNameBtnEdit.EditValue = item.ItemName;
+                    ItemNameBtnEdit.Tag = item.ItemGUID;
+                }
+
+            }
         }
 
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -217,7 +231,7 @@ namespace task1.Forms.Report
 
                 if (filteredData == null || filteredData.Rows.Count == 0)
                 {
-                    MessageBox.Show("No data found for the selected criteria.");
+                    MessageBox.Show("No data ");
                     return;
                 }
 
@@ -258,8 +272,39 @@ namespace task1.Forms.Report
 
         private void CategoryNameBtnEdit_Properties_KeyDown(object sender, KeyEventArgs e)
         {
-             
+            if (e.KeyCode == Keys.Enter) 
+            {
+                try
+                {
+                   
+                    var itemGuid = ItemNameBtnEdit.Tag as Guid?;
+                    var categoryGuid = CategoryNameBtnEdit.Tag as Guid?;
+                    var companyGuid = CompanyNameBtnEdit.Tag as Guid?;
+
+                   
+                    var filteredData = allRepository.GetFilteredItems(itemGuid, categoryGuid, companyGuid);
+
+                   
+                    if (filteredData == null || filteredData.Rows.Count == 0)
+                    {
+                        MessageBox.Show("No data found for the selected criteria.");
+                        return;
+                    }
+
+                   
+                    allGridControl.DataSource = filteredData;
+
+                    
+                    e.Handled = true;
+                    e.SuppressKeyPress = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred: {ex.Message}");
+                }
+            }
         }
+
 
         private void ItemNameBtnEdit_Properties_DoubleClick(object sender, EventArgs e)
         {
@@ -273,51 +318,35 @@ namespace task1.Forms.Report
 
         private void printReport_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //try
-            //{
-            //    var dataSource = allGridControl.DataSource;
-            //    if (dataSource == null)
-            //    {
-            //        MessageBox.Show("No data to print.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        return;
-            //    }
+            try
+            {
+                
+                var itemGuid = ItemNameBtnEdit.Tag as Guid?;
+                var categoryGuid = CategoryNameBtnEdit.Tag as Guid?;
+                var companyGuid = CompanyNameBtnEdit.Tag as Guid?;
+                var filteredData = allRepository.GetFilteredItems(itemGuid, categoryGuid, companyGuid);
 
-            //    FilteredReport report = new FilteredReport
-            //    {
-            //        DataSource = dataSource,
-            //        DataMember = "YourTableName" 
-            //    };
+                if (filteredData == null || filteredData.Rows.Count == 0)
+                {
+                    MessageBox.Show("No data ");
+                    return;
+                }
 
-            //    using (SaveFileDialog saveFileDialog = new SaveFileDialog())
-            //    {
-            //        saveFileDialog.Filter = "PDF Files|*.pdf|Excel Files|*.xlsx";
-            //        saveFileDialog.Title = "Export Report";
-            //        if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            //        {
-            //            string filePath = saveFileDialog.FileName;
-            //            if (filePath.EndsWith(".pdf"))
-            //            {
-            //                report.ExportToPdf(filePath);
-            //            }
-            //            else if (filePath.EndsWith(".xlsx"))
-            //            {
-            //                report.ExportToXlsx(filePath);
-            //            }
+                
+                var report = new itemsReport();
 
-            //            MessageBox.Show("Report exported successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+               
+                report.DataSource = filteredData;
+                report.DataMember = filteredData.TableName ;
 
-                        
-            //            if (MessageBox.Show("Do you want to open the file?", "Open File", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            //            {
-            //                System.Diagnostics.Process.Start(filePath);
-            //            }
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+                
+                ReportPrintTool printTool = new ReportPrintTool(report);
+                printTool.ShowPreviewDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($" error printing the report {ex.Message}");
+            }
         }
 
     }

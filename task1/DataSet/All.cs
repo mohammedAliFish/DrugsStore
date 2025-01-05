@@ -1,4 +1,4 @@
-﻿namespace task1.DataSet
+﻿namespace task1.DataSetNamespace
 {
 }
 
@@ -6,10 +6,19 @@ namespace task1.DataSet
 {
 
 
-    partial class DataSet
+    public class DataSet
     {
         partial class AllDataTableDataTable
         {
         }
+    }
+}
+
+namespace task1.DataSet
+{
+
+
+    partial class All 
+    {
     }
 }
