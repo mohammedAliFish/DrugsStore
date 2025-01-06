@@ -22,6 +22,7 @@ namespace task1.Forms.Report
             allRepository = new AllRepository();
         }
 
+
         private void CategoryNameBtnEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             var categoryPopupForm = new CategoryPopupForm();
@@ -37,38 +38,27 @@ namespace task1.Forms.Report
                 }
             }
         }
-
-  
-
-        private void barButtonItemShow_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void CompanyNameBtnEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            try
+            var companyPopupForm = new CompanyPopupForm();
+            if (companyPopupForm.ShowDialog() == DialogResult.OK)
             {
-                var itemGuid = ItemNameBtnEdit.Tag as Guid?;
-                var categoryGuid = CategoryNameBtnEdit.Tag as Guid?;
-                var companyGuid = CompanyNameBtnEdit.Tag as Guid?;
-                string itemName = ItemNameBtnEdit.Text.Trim();
-                string categoryName = CategoryNameBtnEdit.Text.Trim();
-                string companyName = CompanyNameBtnEdit.Text.Trim();
-                if (string.IsNullOrEmpty(itemName)) itemGuid = null;
-                if (string.IsNullOrEmpty(categoryName)) categoryGuid = null;
-                if (string.IsNullOrEmpty(companyName)) companyGuid = null;
-
-                var filteredData = allRepository.GetFilteredItems(itemGuid, categoryGuid, companyGuid);
-
-                if (filteredData == null || filteredData.Rows.Count == 0)
+                var selectedCompany = companyPopupForm.SelectedCompany;
+                if (selectedCompany != null)
                 {
-                    MessageBox.Show("ماكو بيانات ");
-                    return;
+                    CompanyNameBtnEdit.EditValue = selectedCompany.CompanyName;
+                    CompanyNameBtnEdit.Tag = selectedCompany.CompanyGuid;
                 }
+            }
+        }
 
-                allGridControl.DataSource = filteredData;
-               
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($" خطا  {ex.Message}");
-            }
+        public DataTable GetFilteredItemsByName(string itemName, string categoryName, string companyName)
+        {
+            
+            var dataTable = new DataTable();
+
+            
+            return dataTable;
         }
 
         private void ItemNameBtnEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -85,6 +75,16 @@ namespace task1.Forms.Report
 
             }
         }
+
+
+
+
+
+        private void barButtonItemShow_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            PerformSearch();
+        }
+       
 
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -112,29 +112,36 @@ namespace task1.Forms.Report
         }
         private void PerformSearch()
         {
+
             try
             {
                 var itemGuid = ItemNameBtnEdit.Tag as Guid?;
                 var categoryGuid = CategoryNameBtnEdit.Tag as Guid?;
                 var companyGuid = CompanyNameBtnEdit.Tag as Guid?;
+                string itemName = ItemNameBtnEdit.Text.Trim();
+                string categoryName = CategoryNameBtnEdit.Text.Trim();
+                string companyName = CompanyNameBtnEdit.Text.Trim();
+                if (string.IsNullOrEmpty(itemName)) itemGuid = null;
+                if (string.IsNullOrEmpty(categoryName)) categoryGuid = null;
+                if (string.IsNullOrEmpty(companyName)) companyGuid = null;
 
                 var filteredData = allRepository.GetFilteredItems(itemGuid, categoryGuid, companyGuid);
 
                 if (filteredData == null || filteredData.Rows.Count == 0)
                 {
-                    MessageBox.Show(" ماكو بيانات ");
+                    MessageBox.Show("ماكو بيانات ");
                     return;
                 }
 
                 allGridControl.DataSource = filteredData;
 
-               
-            
             }
             catch (Exception ex)
             {
-                MessageBox.Show($" خطا : {ex.Message}");
+                MessageBox.Show($" خطا  {ex.Message}");
             }
+
+        
         }
         private void PerformSearchByName()
         {
@@ -166,9 +173,8 @@ namespace task1.Forms.Report
             if (e.KeyCode == Keys.Enter)
             {
                 PerformSearchByName();
-
-
             }
+
         }
 
         private void CompanyNameBtnEdit_Properties_KeyDown(object sender, KeyEventArgs e)
@@ -176,8 +182,6 @@ namespace task1.Forms.Report
             if (e.KeyCode == Keys.Enter)
             {
                 PerformSearchByName();
-
-
             }
        
         }
@@ -186,11 +190,7 @@ namespace task1.Forms.Report
         {
             if (e.KeyCode == Keys.Enter)
             {
-
-
-
                 PerformSearchByName();
-
             }
            
         }
@@ -257,19 +257,7 @@ namespace task1.Forms.Report
  
 
 
-        private void CompanyNameBtnEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            var companyPopupForm = new CompanyPopupForm();
-            if (companyPopupForm.ShowDialog() == DialogResult.OK)
-            {
-                var selectedCompany = companyPopupForm.SelectedCompany;
-                if (selectedCompany != null)
-                {
-                    CompanyNameBtnEdit.EditValue = selectedCompany.CompanyName;
-                    CompanyNameBtnEdit.Tag = selectedCompany.CompanyGuid;
-                }
-            }
-        }
+      
     }
 }
 

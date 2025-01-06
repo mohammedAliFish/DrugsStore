@@ -8,15 +8,15 @@ namespace task1.Model.Entities
         [Key]
         public Guid CompanyGuid { get; set; }
 
+        [MaxLength(30)]
         [Display(Name = "  رمز الشركه")]
         public string CompanyCode { get; set; }
 
+        [Required]
+        [MaxLength(50)]
         [Display(Name = "اسم الشركه")]
         public string CompanyName { get; set; }
 
-        public override string ToString()
-        {
-            return CompanyName;
-        }
+       
     }
 }

@@ -10,6 +10,7 @@ namespace task1.Model.Entities
         [Key]
         public Guid PriceGUID { get; set; }
 
+        [Required]
         [Display(Name = "   اسم العنصر")]
         public Item Item { get; set; }
         [Range(0, int.MaxValue, ErrorMessage = "السعر يجب أن يكون قيمة موجبة")]

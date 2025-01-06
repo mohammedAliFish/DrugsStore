@@ -140,6 +140,9 @@
     </Compile>
     <Compile Include="Model\Entities\All.cs" />
     <Compile Include="Model\Entities\Price.cs" />
+    <Compile Include="Reports\CustomReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\itemsReport.cs">
       <SubType>Component</SubType>
     </Compile>

@@ -3,6 +3,8 @@ using DevExpress.XtraGrid.Views.Grid;
 using System.Windows.Forms;
 
 using task1.Data;
+using DevExpress.XtraGrid;
+using task1.Repository;
 
 
 
@@ -18,9 +20,31 @@ namespace task1.Forms.Item
         {
             InitializeComponent();
             itemRepository = new ItemRepository();
+           
 
         }
+        private void LoadFilteredData(string filterText)
+        {
+            try
+            {
+                var allRepository = new AllRepository();
+                var filteredData = allRepository.GetFilteredItemsByName(filterText, null, null);
 
+                if (filteredData != null && filteredData.Rows.Count > 0)
+                {
+
+                    itemPopupGridControl.DataSource = filteredData;
+                }
+                else
+                {
+                    MessageBox.Show("لم يتم العثور على نتائج!", "معلومة", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"خطأ أثناء تحميل البيانات: {ex.Message}");
+            }
+        }
         private void ItemPopupForm_Load(object sender, EventArgs e)
         {
             LoadItems();
@@ -72,6 +96,34 @@ namespace task1.Forms.Item
 
 
                     
+
+
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+            }
+        }
+
+        private void itemPopupGridControl_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void itemGridView_DoubleClick(object sender, EventArgs e)
+        {
+            var gridView = itemPopupGridControl.MainView as GridView;
+            if (gridView != null)
+            {
+
+                var row = gridView.GetFocusedRow() as task1.Model.Entities.Item;
+
+                if (row != null)
+                {
+
+                    SelectedItem = row;
+
+
+
 
 
                     this.DialogResult = DialogResult.OK;

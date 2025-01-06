@@ -52,15 +52,18 @@ namespace task1.Forms.Category
 
         private void categoryPopupGridView_RowCellClick(object sender, RowCellClickEventArgs e)
         {
-            var gridView = categoryPopupGridControl.MainView as GridView;
-            if (gridView != null)
+            if (e.Clicks == 2)
             {
-                var row = gridView.GetFocusedRow() as task1.Model.Entities.Category;
-                if (row != null)
+                var gridView = sender as GridView;
+                if (gridView != null)
                 {
-                    SelectedCategory = row;
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
+                    var row = gridView.GetRow(e.RowHandle) as task1.Model.Entities.Category;
+                    if (row != null)
+                    {
+                        SelectedCategory = row;
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
                 }
             }
         }

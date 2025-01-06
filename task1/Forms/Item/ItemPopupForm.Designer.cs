@@ -56,6 +56,7 @@
             this.itemPopupGridControl.TabIndex = 0;
             this.itemPopupGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.itemGridView});
+            this.itemPopupGridControl.Click += new System.EventHandler(this.itemPopupGridControl_Click);
             // 
             // itemBindingSource
             // 
@@ -75,6 +76,7 @@
             this.itemGridView.OptionsBehavior.Editable = false;
             this.itemGridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.itemGridView_RowClick);
             this.itemGridView.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.itemGridView_RowCellClick);
+            this.itemGridView.DoubleClick += new System.EventHandler(this.itemGridView_DoubleClick);
             // 
             // colItemGUID
             // 
