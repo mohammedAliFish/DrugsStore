@@ -5,7 +5,7 @@ using System.Data;
 using System;
 using task1.Model.Entities;
 using System.Data.SqlClient;
-using System.Windows.Forms;
+
 
 namespace task1.Repository
 {
@@ -52,6 +52,51 @@ namespace task1.Repository
             catch (Exception ex)
             {
                 throw new Exception("خطا", ex);
+            }
+        }
+
+        public List<Item> GetFilteredItemsName(string itemName = null, string categoryName = null, string companyName = null)
+        {
+            try
+            {
+                var allItemDetails = new List<SqlParameter>
+        {
+            new SqlParameter("@ItemName", (object)itemName ?? DBNull.Value),
+            new SqlParameter("@CategoryName", (object)categoryName ?? DBNull.Value),
+            new SqlParameter("@CompanyName", (object)companyName ?? DBNull.Value)
+        };
+
+                
+                DataTable dt = sqlHelper.ExecuteStoredProcedure("FilterItemByName", allItemDetails.ToArray());
+
+               
+                var items = new List<Item>();
+                foreach (DataRow row in dt.Rows)
+                {
+                    items.Add(new Item
+                    {
+                        ItemGUID = Guid.Parse(row["ItemGUID"].ToString()),
+                        ItemName = row["ItemName"]?.ToString(),
+                        ItemCode = row["ItemCode"]?.ToString(),
+                        ItemDescription = row["ItemDescription"]?.ToString(),
+                        Category = new Category
+                        {
+                            CategoryGuid = Guid.Parse(row["CategoryGUID"].ToString()),
+                            CategoryName = row["CategoryName"]?.ToString()
+                        },
+                        Company = new Company
+                        {
+                            CompanyGuid = Guid.Parse(row["CompanyGUID"].ToString()),
+                            CompanyName = row["CompanyName"]?.ToString()
+                        }
+                    });
+                }
+
+                return items;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("An error occurred while fetching filtered items.", ex);
             }
         }
 

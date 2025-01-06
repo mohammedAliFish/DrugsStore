@@ -2,6 +2,7 @@
 using DevExpress.XtraGrid.Views.Grid;
 using System.Windows.Forms;
 using task1.Repository;
+using System.Linq;
 
 
 namespace task1.Forms.Company
@@ -39,18 +40,33 @@ namespace task1.Forms.Company
         {
 
         }
+        public void FilterCategories(string filterText)
+        {
+            if (!string.IsNullOrWhiteSpace(filterText))
+            {
+                var filteredData = allRepository.GetCompanies()
+                    .Where(c => c.CompanyName != null && c.CompanyName.IndexOf(filterText, StringComparison.OrdinalIgnoreCase) >= 0)
+
+                .ToList();
+
+                companyPopupGridControl.DataSource = filteredData;
+            }
+        }
 
         private void companyGridView_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
-            var gridView = companyPopupGridControl.MainView as GridView;
-            if (gridView != null)
+            if (e.Clicks == 2)
             {
-                var row = gridView.GetFocusedRow() as task1.Model.Entities.Company;
-                if (row != null)
+                var gridView = companyPopupGridControl.MainView as GridView;
+                if (gridView != null)
                 {
-                    SelectedCompany = row;
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
+                    var row = gridView.GetFocusedRow() as task1.Model.Entities.Company;
+                    if (row != null)
+                    {
+                        SelectedCompany = row;
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
                 }
             }
         }

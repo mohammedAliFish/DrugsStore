@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
+using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using task1.Repository;
 
@@ -37,16 +39,18 @@ namespace task1.Forms.Category
         }
         private void categoryPopupGridControl_Click(object sender, EventArgs e)
         {
-            var gridView = categoryPopupGridControl.MainView as GridView;
-            if (gridView != null)
+           
+        }
+        public void FilterCategories(string filterText)
+        {
+            if (!string.IsNullOrWhiteSpace(filterText))
             {
-                var row = gridView.GetFocusedRow() as task1.Model.Entities.Category; 
-                if (row != null)
-                {
-                    SelectedCategory = row;
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
-                }
+                var filteredData = allRepository.GetCategories()
+                    .Where(c => c.CategoryName != null && c.CategoryName.IndexOf(filterText, StringComparison.OrdinalIgnoreCase) >= 0)
+
+                .ToList();
+
+                categoryPopupGridControl.DataSource = filteredData; 
             }
         }
 

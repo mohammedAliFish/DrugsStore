@@ -172,27 +172,64 @@ namespace task1.Forms.Report
         {
             if (e.KeyCode == Keys.Enter)
             {
-                PerformSearchByName();
-            }
+                var filterText = ItemNameBtnEdit.Text.Trim();
+                var itemPopupForm = new ItemPopupForm();
+                itemPopupForm.FilterItems(filterText);
+                if (itemPopupForm.ShowDialog() == DialogResult.OK)
+                {
+                    var selectedItem = itemPopupForm.SelectedItem;
+                    if (selectedItem != null)
+                    {
+                        ItemNameBtnEdit.EditValue = selectedItem.ItemName;
+                        ItemNameBtnEdit.Tag = selectedItem.ItemGUID;
+                    }
+                }
 
+            }
         }
 
         private void CompanyNameBtnEdit_Properties_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                PerformSearchByName();
+                var filterText = CompanyNameBtnEdit.Text.Trim();
+                var companyPopupForm = new CompanyPopupForm();
+                companyPopupForm.FilterCategories(filterText);
+               if (companyPopupForm.ShowDialog() == DialogResult.OK)
+                {
+                    var selectedCompany = companyPopupForm.SelectedCompany;
+                    if (selectedCompany != null)
+                    {
+                        CompanyNameBtnEdit.EditValue = selectedCompany.CompanyName;
+                        CompanyNameBtnEdit.Tag = selectedCompany.CompanyGuid;
+                    }
+                }
+
             }
-       
         }
 
         private void CategoryNameBtnEdit_Properties_KeyDown(object sender, KeyEventArgs e)
         {
+           
             if (e.KeyCode == Keys.Enter)
             {
-                PerformSearchByName();
+                var filterText = CategoryNameBtnEdit.Text.Trim();
+                var categoryPopupForm = new CategoryPopupForm();
+
+
+                categoryPopupForm.FilterCategories(filterText);
+
+                if (categoryPopupForm.ShowDialog() == DialogResult.OK)
+                {
+                    var selectedCategory = categoryPopupForm.SelectedCategory;
+                    if (selectedCategory != null)
+                    {
+                        CategoryNameBtnEdit.EditValue = selectedCategory.CategoryName;
+                        CategoryNameBtnEdit.Tag = selectedCategory.CategoryGuid;
+                    }
+                }
+
             }
-           
         }
         private void printReport_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
