@@ -33,6 +33,7 @@
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bar2 = new DevExpress.XtraBars.Bar();
+            this.barButtonAddItem = new DevExpress.XtraBars.BarButtonItem();
             this.btnExport = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -54,7 +55,6 @@
             this.colCompanyGUID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCategory = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCompany = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.barButtonAddItem = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemGridControl)).BeginInit();
@@ -104,11 +104,24 @@
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
             // 
+            // barButtonAddItem
+            // 
+            this.barButtonAddItem.Caption = "اضافه عنصر";
+            this.barButtonAddItem.Id = 5;
+            this.barButtonAddItem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonAddItem.ImageOptions.SvgImage")));
+            this.barButtonAddItem.ImageToTextAlignment = DevExpress.XtraBars.BarItemImageToTextAlignment.AfterText;
+            this.barButtonAddItem.Name = "barButtonAddItem";
+            this.barButtonAddItem.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonAddItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonAddItem_ItemClick);
+            // 
             // btnExport
             // 
             this.btnExport.Caption = "تصدير الى اكسل";
             this.btnExport.Id = 4;
+            this.btnExport.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnExport.ImageOptions.SvgImage")));
+            this.btnExport.ImageToTextAlignment = DevExpress.XtraBars.BarItemImageToTextAlignment.AfterText;
             this.btnExport.Name = "btnExport";
+            this.btnExport.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.btnExport.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExport_ItemClick);
             // 
             // bar3
@@ -129,7 +142,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1266, 41);
+            this.barDockControlTop.Size = new System.Drawing.Size(1266, 45);
             // 
             // barDockControlBottom
             // 
@@ -143,17 +156,17 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 41);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 45);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 581);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 577);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1266, 41);
+            this.barDockControlRight.Location = new System.Drawing.Point(1266, 45);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 581);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 577);
             // 
             // barButtonItem1
             // 
@@ -188,12 +201,13 @@
             // 
             this.itemGridControl.DataSource = this.itemBindingSource;
             this.itemGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.itemGridControl.Location = new System.Drawing.Point(0, 41);
+            this.itemGridControl.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemGridControl.Location = new System.Drawing.Point(0, 45);
             this.itemGridControl.MainView = this.itemGridView;
             this.itemGridControl.MenuManager = this.barManager1;
             this.itemGridControl.Name = "itemGridControl";
             this.itemGridControl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.itemGridControl.Size = new System.Drawing.Size(1266, 581);
+            this.itemGridControl.Size = new System.Drawing.Size(1266, 577);
             this.itemGridControl.TabIndex = 9;
             this.itemGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.itemGridView});
@@ -268,13 +282,6 @@
             this.colCompany.Name = "colCompany";
             this.colCompany.Visible = true;
             this.colCompany.VisibleIndex = 4;
-            // 
-            // barButtonAddItem
-            // 
-            this.barButtonAddItem.Caption = "اضافه عنصر";
-            this.barButtonAddItem.Id = 5;
-            this.barButtonAddItem.Name = "barButtonAddItem";
-            this.barButtonAddItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonAddItem_ItemClick);
             // 
             // ItemsForm
             // 

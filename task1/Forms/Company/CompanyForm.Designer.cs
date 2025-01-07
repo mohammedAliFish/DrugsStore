@@ -40,6 +40,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.btnShowTree = new System.Windows.Forms.Button();
             this.btnExport = new DevExpress.XtraEditors.SimpleButton();
             this.btnSaveOrUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -60,7 +61,6 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.btnShowTree = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
             this.splitContainerControl1.Panel1.SuspendLayout();
@@ -86,7 +86,8 @@
             // splitContainerControl1
             // 
             this.splitContainerControl1.CollapsePanel = DevExpress.XtraEditors.SplitCollapsePanel.Panel2;
-            this.splitContainerControl1.Location = new System.Drawing.Point(27, 44);
+            this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 20);
             this.splitContainerControl1.Name = "splitContainerControl1";
             // 
             // splitContainerControl1.Panel1
@@ -99,7 +100,7 @@
             // 
             // splitContainerControl1.Panel2
             // 
-            this.splitContainerControl1.Panel2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.splitContainerControl1.Panel2.Appearance.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.splitContainerControl1.Panel2.Appearance.Options.UseBackColor = true;
             this.splitContainerControl1.Panel2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.splitContainerControl1.Panel2.Controls.Add(this.label2);
@@ -107,7 +108,7 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.panelControl1);
             this.splitContainerControl1.Panel2.Controls.Add(this.dataLayoutControl1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(944, 617);
+            this.splitContainerControl1.Size = new System.Drawing.Size(995, 682);
             this.splitContainerControl1.SplitterPosition = 458;
             this.splitContainerControl1.TabIndex = 0;
             // 
@@ -119,7 +120,7 @@
             this.companyGridControl.MainView = this.companyGridView;
             this.companyGridControl.Name = "companyGridControl";
             this.companyGridControl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.companyGridControl.Size = new System.Drawing.Size(454, 613);
+            this.companyGridControl.Size = new System.Drawing.Size(454, 678);
             this.companyGridControl.TabIndex = 0;
             this.companyGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.companyGridView});
@@ -166,7 +167,8 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(372, 193);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(396, 192);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 19);
             this.label2.TabIndex = 14;
@@ -176,7 +178,8 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(372, 141);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(396, 142);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 19);
             this.label1.TabIndex = 13;
@@ -191,10 +194,22 @@
             this.panelControl1.Controls.Add(this.btnExport);
             this.panelControl1.Controls.Add(this.btnSaveOrUpdate);
             this.panelControl1.Controls.Add(this.btnDelete);
-            this.panelControl1.Location = new System.Drawing.Point(26, 303);
+            this.panelControl1.Location = new System.Drawing.Point(57, 305);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(323, 285);
             this.panelControl1.TabIndex = 3;
+            // 
+            // btnShowTree
+            // 
+            this.btnShowTree.BackColor = System.Drawing.Color.White;
+            this.btnShowTree.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShowTree.Location = new System.Drawing.Point(66, 86);
+            this.btnShowTree.Name = "btnShowTree";
+            this.btnShowTree.Size = new System.Drawing.Size(187, 34);
+            this.btnShowTree.TabIndex = 4;
+            this.btnShowTree.Text = "شجره الشركات";
+            this.btnShowTree.UseVisualStyleBackColor = false;
+            this.btnShowTree.Click += new System.EventHandler(this.btnShowTree_Click);
             // 
             // btnExport
             // 
@@ -238,7 +253,7 @@
             this.dataLayoutControl1.Controls.Add(this.CompanyCodeText);
             this.dataLayoutControl1.Controls.Add(this.CompanyNameText);
             this.dataLayoutControl1.DataSource = this.bindingSourceCompany;
-            this.dataLayoutControl1.Location = new System.Drawing.Point(26, 120);
+            this.dataLayoutControl1.Location = new System.Drawing.Point(57, 119);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.OptionsView.RightToLeftMirroringApplied = true;
             this.dataLayoutControl1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -393,21 +408,9 @@
             this.barButtonItem1.Id = 3;
             this.barButtonItem1.Name = "barButtonItem1";
             // 
-            // btnShowTree
-            // 
-            this.btnShowTree.BackColor = System.Drawing.Color.White;
-            this.btnShowTree.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnShowTree.Location = new System.Drawing.Point(66, 86);
-            this.btnShowTree.Name = "btnShowTree";
-            this.btnShowTree.Size = new System.Drawing.Size(187, 34);
-            this.btnShowTree.TabIndex = 4;
-            this.btnShowTree.Text = "شجره الشركات";
-            this.btnShowTree.UseVisualStyleBackColor = false;
-            this.btnShowTree.Click += new System.EventHandler(this.btnShowTree_Click);
-            // 
             // CompanyForm
             // 
-            this.Appearance.BackColor = System.Drawing.Color.Silver;
+            this.Appearance.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -418,6 +421,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("CompanyForm.IconOptions.Image")));
+            this.MaximizeBox = false;
             this.Name = "CompanyForm";
             this.Text = "اداره الشركات";
             this.Load += new System.EventHandler(this.CompanyForm_Load);

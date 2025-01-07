@@ -214,5 +214,10 @@ namespace task1.Forms.Category
             CategoryTreeViewForm categoryTreeViewForm = new CategoryTreeViewForm();
             categoryTreeViewForm.ShowDialog();
         }
+
+        private void panelControl1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

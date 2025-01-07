@@ -163,9 +163,9 @@
             // 
             // splitContainerControl1
             // 
-            this.splitContainerControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.splitContainerControl1.CollapsePanel = DevExpress.XtraEditors.SplitCollapsePanel.Panel2;
-            this.splitContainerControl1.Location = new System.Drawing.Point(28, 67);
+            this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 41);
             this.splitContainerControl1.Name = "splitContainerControl1";
             // 
             // splitContainerControl1.Panel1
@@ -175,15 +175,17 @@
             // 
             // splitContainerControl1.Panel2
             // 
-            this.splitContainerControl1.Panel2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.splitContainerControl1.Panel2.Appearance.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.splitContainerControl1.Panel2.Appearance.BorderColor = System.Drawing.SystemColors.MenuHighlight;
             this.splitContainerControl1.Panel2.Appearance.Options.UseBackColor = true;
+            this.splitContainerControl1.Panel2.Appearance.Options.UseBorderColor = true;
             this.splitContainerControl1.Panel2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.splitContainerControl1.Panel2.Controls.Add(this.label2);
             this.splitContainerControl1.Panel2.Controls.Add(this.label1);
             this.splitContainerControl1.Panel2.Controls.Add(this.panelControl1);
             this.splitContainerControl1.Panel2.Controls.Add(this.dataLayoutControl1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(997, 555);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1054, 634);
             this.splitContainerControl1.SplitterPosition = 492;
             this.splitContainerControl1.TabIndex = 9;
             // 
@@ -196,7 +198,7 @@
             this.categoryGridControl.MenuManager = this.barManager1;
             this.categoryGridControl.Name = "categoryGridControl";
             this.categoryGridControl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.categoryGridControl.Size = new System.Drawing.Size(492, 551);
+            this.categoryGridControl.Size = new System.Drawing.Size(492, 634);
             this.categoryGridControl.TabIndex = 0;
             this.categoryGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.categoryGridView});
@@ -237,6 +239,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(386, 175);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 19);
@@ -247,6 +250,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(386, 123);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(78, 19);
@@ -263,6 +267,7 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(305, 247);
             this.panelControl1.TabIndex = 1;
+            this.panelControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl1_Paint);
             // 
             // btnShowTree
             // 
@@ -317,7 +322,7 @@
             this.dataLayoutControl1.Controls.Add(this.CategoryNameText);
             this.dataLayoutControl1.DataSource = this.categoryBindingSource;
             this.dataLayoutControl1.ForeColor = System.Drawing.Color.DarkGray;
-            this.dataLayoutControl1.Location = new System.Drawing.Point(52, 102);
+            this.dataLayoutControl1.Location = new System.Drawing.Point(52, 105);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.OptionsView.RightToLeftMirroringApplied = true;
             this.dataLayoutControl1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -395,7 +400,7 @@
             // 
             // CategoryForm
             // 
-            this.Appearance.BackColor = System.Drawing.Color.Silver;
+            this.Appearance.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -406,6 +411,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("CategoryForm.IconOptions.Image")));
+            this.MaximizeBox = false;
             this.Name = "CategoryForm";
             this.Text = "اداره التصنيفات";
             this.Load += new System.EventHandler(this.CategoryForm_Load);
